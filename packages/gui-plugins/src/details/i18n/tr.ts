@@ -35,15 +35,15 @@ export default {
   "move.recovery.remove": "Çalışma ağacını sil",
   "mcp.manage": "MCP sunucularını yönet",
   timedOut: "Sunucunun yanıt vermesi çok uzun sürdü",
-  "setup.mcp": "OpenCode ile sunucu ekle",
+  "setup.mcp": "Aerless Code ile sunucu ekle",
   "setup.mcp.prompt":
-    "Genel OpenCode yapılandırmama bir MCP sunucusu eklememe yardım et. Hangi hizmeti bağlamak istediğimi sor, ardından kur ve bağlandığını kontrol et.",
-  "setup.plugins": "OpenCode ile eklenti ekle",
+    "Genel Aerless Code yapılandırmama bir MCP sunucusu eklememe yardım et. Hangi hizmeti bağlamak istediğimi sor, ardından kur ve bağlandığını kontrol et.",
+  "setup.plugins": "Aerless Code ile eklenti ekle",
   "setup.plugins.prompt":
-    "Genel OpenCode yapılandırmama bir eklenti eklememe yardım et. Ne yapmasını istediğimi sor, bir eklenti öner, ardından ekle.",
-  "setup.skills": "OpenCode ile yeni beceri",
+    "Genel Aerless Code yapılandırmama bir eklenti eklememe yardım et. Ne yapmasını istediğimi sor, bir eklenti öner, ardından ekle.",
+  "setup.skills": "Aerless Code ile yeni beceri",
   "setup.skills.prompt":
-    "Genel yapılandırmamda yeni bir OpenCode becerisi yazmama yardım et. Sana ne öğretmesi gerektiğini sor, ardından SKILL.md dosyasını yaz.",
+    "Genel yapılandırmamda yeni bir Aerless Code becerisi yazmama yardım et. Sana ne öğretmesi gerektiğini sor, ardından SKILL.md dosyasını yaz.",
   changesFailed: "Değişiklikler yüklenemedi",
   changesOffline: "Bu sunucuya ulaşılamıyor",
   "mcp.signIn": "Oturum aç",
@@ -55,7 +55,7 @@ export default {
   "mcp.error.actionLabel": "{{name}} ayrıntıları",
   "mcp.signIn.open": "{{name}} hesabında oturum aç",
   "mcp.signIn.description":
-    "{{name}} hesabında oturum açabilmeniz için tarayıcınız açılır. Tarayıcı OpenCode'u çalıştıran makineye erişemiyorsa, yönlendirildiği URL'yi aşağıya yapıştırın.",
+    "{{name}} hesabında oturum açabilmeniz için tarayıcınız açılır. Tarayıcı Aerless Code'u çalıştıran makineye erişemiyorsa, yönlendirildiği URL'yi aşağıya yapıştırın.",
   "mcp.signIn.waiting": "Yetkilendirme bekleniyor…",
   "mcp.signIn.failed": "Yetkilendirme başarısız: {{error}}",
   "mcp.signIn.expired": "Yetkilendirmenin süresi doldu",

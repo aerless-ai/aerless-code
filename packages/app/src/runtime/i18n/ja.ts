@@ -1,5 +1,5 @@
 export const dict = {
-  "desktop.menu.app": "OpenCode",
+  "desktop.menu.app": "Aerless Code",
   "desktop.menu.file": "ファイル",
   "desktop.menu.edit": "編集",
   "desktop.menu.view": "表示",
@@ -620,7 +620,7 @@ export const dict = {
   "command.project.copyID": "プロジェクト ID をコピー",
   "command.session.copyID": "セッション ID をコピー",
   "server.row.incompatible":
-    "このサーバーでは、このアプリと互換性のない OpenCode {{version}} が実行されています。続行するには OpenCode V2 にアップグレードしてください。",
+    "このサーバーでは、このアプリと互換性のない Aerless Code {{version}} が実行されています。続行するには Aerless Code V2 にアップグレードしてください。",
   "toast.session.copyID.failed.title": "セッション ID をコピーできませんでした",
   "toast.session.copyID.failed.description": "セッション ID のコピー中にエラーが発生しました",
   "toast.project.copyID.failed.title": "プロジェクト ID をコピーできませんでした",
@@ -630,7 +630,7 @@ export const dict = {
   "error.page.action.reload": "再読み込み",
   "session.error.incompatible": "このサーバーバージョンはサポートされていません",
   "session.error.incompatible.description":
-    "{{server}} では、このアプリと互換性のない OpenCode {{version}} が実行されています。続行するには、サーバーを OpenCode V2 にアップグレードしてください。",
+    "{{server}} では、このアプリと互換性のない Aerless Code {{version}} が実行されています。続行するには、サーバーを Aerless Code V2 にアップグレードしてください。",
   "session.background.moveInline": "{{keybind}} を押して実行中の作業をバックグラウンドに移動",
   "dialog.server.menu.hide": "プロジェクト一覧に表示しない",
   "dialog.server.menu.show": "プロジェクト一覧に表示",
@@ -680,16 +680,9 @@ export const dict = {
   "settings.about.version": "バージョン{{version}}",
   "settings.about.devVersion": "開発",
   "settings.about.license": "MITライセンスの下でリリースされました",
-  "settings.about.otherContributor.one": "{{count}}その他",
-  "settings.about.otherContributor.other": "他{{count}}人",
-  "settings.about.firstPublished": "米国ミズーリ州で初公開",
-  "settings.about.firstIllustrated": "イングランド、ロンドンで最初のイラスト",
-  "settings.about.website": "www.opencode.ai",
-  "settings.about.description": "オープンソースのコーディングエージェントであるOpenCode",
+  "settings.about.description": "オープンソースのコーディングエージェントであるAerless Code",
   "settings.about.trademark": "OpenCodeはAnomaly Innovations, Inc.の登録商標です。",
   "settings.about.typeset": "InterおよびIBM Plex Monoのタイプセット",
-  "settings.about.tagline": "AIはあなたなしで素晴らしいソフトウェアを構築することはできません",
-  "settings.about.copyright": "© Anomaly Innovations, Inc.",
   "project.settings.title": "プロジェクトを編集",
   "settings.timeline.title": "タイムライン",
   "settings.timeline.detail": "タイムラインの詳細",
@@ -716,8 +709,6 @@ export const dict = {
   "settings.timeline.category.notices": "お知らせ",
   "settings.timeline.category.tools": "その他のツール",
 
-  "settings.about.writtenByNames": "{{names}}によって書かれました",
-  "settings.about.illustratedByNames": "イラスト: {{names}}",
   "server.action.authenticate": "認証",
   "server.status.connecting": "SSHで接続中…",
   "server.status.authentication": "認証が必要です",
@@ -737,9 +728,9 @@ export const dict = {
   "server.connect.address.invalid": "有効なHTTPまたはHTTPSサーバーアドレスを入力してください。",
   "server.connect.failed": "接続できませんでした。サーバーアドレスとパスワードを確認して、もう一度お試しください。",
   "server.connect.scan": "QRコードをスキャン",
-  "server.connect.scan.description": "opencode pair に表示されたQRコードにカメラを向けてください。",
+  "server.connect.scan.description": "aerless-code pair に表示されたQRコードにカメラを向けてください。",
   "server.connect.scan.invalid":
-    "これはOpenCodeのペアリングコードではありません。opencode pair に表示されたコードをスキャンしてください。",
+    "これはOpenCodeのペアリングコードではありません。aerless-code pair に表示されたコードをスキャンしてください。",
   "server.connect.camera": "ペアリング用カメラ",
   "server.connect.camera.starting": "カメラを開いています…",
   "server.connect.mixedContent":
@@ -843,7 +834,7 @@ export const dict = {
   "voice.captions.hide": "字幕を非表示",
   "voice.connecting": "接続中…",
   "voice.you": "あなた:",
-  "voice.assistant": "OpenCode:",
+  "voice.assistant": "Aerless Code:",
   "voice.failure.unavailable": "音声通話を使用するには、このサーバーにOpenAI APIキーが必要です。",
   "voice.failure.microphone": "通話するにはマイクへのアクセスが必要です。",
   "voice.failure.dropped": "通話が切断されました。",
@@ -878,7 +869,7 @@ export const dict = {
   "command.config.reload.done": "設定を再読み込みしました",
   "command.config.reload.failed": "設定を再読み込みできませんでした",
   "command.usage.view": "使用量を表示",
-  "command.usage.view.description": "OpenCode Goの利用枠とConsoleの予算を確認",
+  "command.usage.view.description": "Aerless Code Goの利用枠とConsoleの予算を確認",
   "command.session.branch.choose": "ベースブランチを選択",
   "session.location.toggle": "セッションの場所を切り替え",
   "command.commands.search": "コマンドを検索",
@@ -930,7 +921,7 @@ export const dict = {
   "provider.connect.opencode.freeName": "OpenCode Free",
   "provider.connect.console.retry": "再試行",
   "provider.connect.console.serviceKeyDescription":
-    "OpenCode Consoleのサービスアカウント用APIキーを使用して接続します。",
+    "Aerless Code Consoleのサービスアカウント用APIキーを使用して接続します。",
   "provider.connect.console.instructions":
     "ブラウザーで続行してください。ブラウザーに表示されたコードが下のコードと一致することを確認してください。",
   "provider.connect.console.deviceCode": "デバイスコード",
@@ -1070,22 +1061,22 @@ export const dict = {
   "server.connect.link": "ペアリングリンク",
   "server.connect.link.placeholder": "http://192.168.1.2:4096/auth/connect/…",
   "server.connect.link.invalid":
-    "opencode pair、またはサーバーのコンピューターの「設定 → ペアリング」で表示されるペアリングリンクを完全な形で貼り付けてください。",
+    "aerless-code pair、またはサーバーのコンピューターの「設定 → ペアリング」で表示されるペアリングリンクを完全な形で貼り付けてください。",
   "server.connect.password.prompt": "ペアリングリンクがありませんか？",
   "server.connect.password.use": "パスワードを使用",
   "server.connect.password.hint":
-    "パスワードを確認するには、サーバーのコンピューターで opencode service get password を実行してください。",
+    "パスワードを確認するには、サーバーのコンピューターで aerless-code service get password を実行してください。",
   "server.connect.link.prompt": "ペアリングリンクをお持ちですか？",
   "server.connect.link.use": "ペアリングリンクを使用",
   "server.connect.pair.link":
     "サーバーのコンピューターでこのコマンドを実行して、ペアリングリンクとQRコードを取得してください。",
   "server.connect.scan.failed": "このブラウザーではQRコードを読み取れませんでした。接続情報を手動で入力してください。",
   "server.connect.link.expired":
-    "このペアリングリンクは期限切れか、すでに使用されています。opencode pair を実行して新しいリンクを取得してください。",
+    "このペアリングリンクは期限切れか、すでに使用されています。aerless-code pair を実行して新しいリンクを取得してください。",
   "server.connect.link.unreachable":
     "{{url}}にアクセスできませんでした。このデバイスからサーバーにアクセスできることを確認して、再試行してください。",
   "server.connect.link.legacy":
-    "このペアリングコードは古いバージョンのOpenCodeのものです。サーバーのOpenCodeを更新してから、もう一度 opencode pair を実行してください。",
+    "このペアリングコードは古いバージョンのOpenCodeのものです。サーバーのOpenCodeを更新してから、もう一度 aerless-code pair を実行してください。",
   "server.connect.camera.native":
     "このページではHTTP経由でカメラを使用できません。上にペアリングリンクを貼り付けてください。",
   "dialog.server.signedOut":
@@ -1338,7 +1329,7 @@ export const dict = {
   "settings.extensions.sources.loadFailed": "拡張機能のソースを読み込めませんでした",
   "settings.extensions.console.temporary":
     "スイッチは現在のプロジェクトのMCP接続を一時的に制御するもので、Consoleの設定は変更しません。サーバー設定が変更されると再接続される場合があります。",
-  "settings.extensions.console.replaced": "OpenCode Consoleを置き換えます",
+  "settings.extensions.console.replaced": "Aerless Code Consoleを置き換えます",
   "settings.extensions.console.connect": "Consoleで{{name}}を接続",
   "settings.extensions.console.manage": "Consoleで{{name}}を管理",
   "project.settings.autoAccept.description": "このプロジェクトの権限の要求を確認なしで承認します",
@@ -1480,8 +1471,8 @@ export const dict = {
   "usage.footer.budgetsReset": "予算は{{time}}にリセット",
   "usage.footer.creditsOnly": "支出は{{workspace}}のクレジットによってのみ制限されます",
   "usage.footer.details": "詳細を表示",
-  "usage.signedOut.title": "OpenCode Consoleにサインインしていません",
-  "usage.signedOut.body": "OpenCode Consoleを接続すると、ワークスペースの予算とGoの使用量を確認できます。",
+  "usage.signedOut.title": "Aerless Code Consoleにサインインしていません",
+  "usage.signedOut.body": "Aerless Code Consoleを接続すると、ワークスペースの予算とGoの使用量を確認できます。",
   "usage.error": "利用上限を読み込めませんでした。",
   "usage.retry": "再試行",
 }

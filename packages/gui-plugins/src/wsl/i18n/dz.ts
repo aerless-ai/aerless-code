@@ -14,7 +14,7 @@ export default {
   "onboarding.checkAgain": "ལོག་སྟེ་ཞིབ་དཔྱད་འབད།",
   "onboarding.distroStatus.ready": "གྲ་སྒྲིག་ཚུད་ཡོདཔ",
   "onboarding.distroStatus.checking": "ཞིབ་དཔྱད་འབད་དོ།",
-  "onboarding.distroStatus.opencodeMissing": "OpenCode གཞི་བཙུགས་མ་འབད་བས།",
+  "onboarding.distroStatus.opencodeMissing": "Aerless Code གཞི་བཙུགས་མ་འབད་བས།",
   "onboarding.distroStatus.missingTools": "བཱཤ་, ཀརལ་བརླག་སྟོར་ཞུགསཔ་ཨིན།",
   "onboarding.distroStatus.unsupported": "རྒྱབ་སྐྱོར་མ་འབད་བ · WSL 2 ལག་ལེན་འཐབ།",
   "onboarding.needAnotherDistro": "གཞན་མི་ཌི་སི་ཊོ་དགོཔ་ཨིན་ན?",
@@ -26,7 +26,7 @@ export default {
   "onboarding.wslUnavailable.description": "OpenCodeགིས་ འཕྲུལ་ཆས་འདི་གུ་ WSL བདེན་སྦྱོར་འབད་མ་ཚུགས།",
   "onboarding.installWsl": "WSLགཞི་བཙུགས་འབད།",
   "onboarding.windowsRestartRequired":
-    "WSL གཞི་བཙུགས་འབད་ནི་མཇུག་བསྡུ་ནིའི་དོན་ལུ་ Windows ལོག་འགོ་བཙུགསཔ་དང་ དེ་ལས་ OpenCode ལོག་ཁ་ཕྱེ།",
+    "WSL གཞི་བཙུགས་འབད་ནི་མཇུག་བསྡུ་ནིའི་དོན་ལུ་ Windows ལོག་འགོ་བཙུགསཔ་དང་ དེ་ལས་ Aerless Code ལོག་ཁ་ཕྱེ།",
   "onboarding.allDistrosAdded": "གཞི་བཙུགས་འབད་ཡོད་པའི་ཌིསི་ཊོ་ཚུ་ཆ་མཉམ་ཧེ་མ་ལས་ཁ་སྐོང་བརྐྱབ་ཡོདཔ་ཨིན།",
   "onboarding.noDistros": "ད་ལྟོ་ཡང་ བཀྲམ་སྤེལ་འབད་མི་ཚུ་ ཤེས་རྟོགས་མ་བྱུང་པས།",
   "onboarding.installDistro": "ཌི་སི་ཊོ་གཞི་བཙུགས་འབད།",
@@ -42,9 +42,9 @@ export default {
   "error.alreadyAdded": "{{distro}} འདི་ ཧེ་མ་ལས་རང་ཁ་སྐོང་བརྐྱབ་ཟིན།",
   "error.opencodeMissing": "ཌིསི་ཊོ་འདི་ནང་ opencode གཞི་བཙུགས་མ་འབད་བས།",
   "error.opencodeCannotRun": "opencode འདི་གཞི་བཙུགས་འབད་ཡོད་རུང་ གཡོག་བཀོལ་མ་ཚུགས།",
-  "error.opencodeNotInstalled": "OpenCode འདི་ {{distro}} ནང་གཞི་བཙུགས་མ་འབད་བས།",
+  "error.opencodeNotInstalled": "Aerless Code འདི་ {{distro}} ནང་གཞི་བཙུགས་མ་འབད་བས།",
   "error.updateVersion":
-    "OpenCode དུས་མཐུན་བཟོ་ཚར་ཡི་ དེ་འབདཝ་ད་ {{distro}}གིས་ ད་ལྟོ་ཡང་ {{installed}} སྙན་ཞུ་འབདཝ་ཨིན། རེ་བ་བསྐྱེད་པའི་ {{expected}}",
+    "Aerless Code དུས་མཐུན་བཟོ་ཚར་ཡི་ དེ་འབདཝ་ད་ {{distro}}གིས་ ད་ལྟོ་ཡང་ {{installed}} སྙན་ཞུ་འབདཝ་ཨིན། རེ་བ་བསྐྱེད་པའི་ {{expected}}",
   "error.noVersion": "ཐོན་རིམ་མེད།",
   "error.serverExited":
     "WSL སར་བར་འདི་ འགོ་བཙུགས་པའི་ཤུལ་ལས་ ཕྱིར་འཐོན་འབད་ཡོདཔ་ཨིན་ (ཨང་རྟགས་={{code}} བརྡ་རྟགས་={{signal}})",

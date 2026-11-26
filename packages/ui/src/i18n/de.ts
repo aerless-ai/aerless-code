@@ -293,9 +293,9 @@ export const dict = {
     "Modellbudget erreicht · dieses Modell ist bis zur Zurücksetzung pausiert",
   "ui.sessionTurn.budgetLimit.useFreeModel": "Kostenloses Modell verwenden",
   "ui.sessionTurn.budgetLimit.switchModel": "Modell wechseln",
-  "ui.sessionTurn.goLimit.title": "Sie haben Ihr OpenCode-Go-Nutzungslimit erreicht.",
+  "ui.sessionTurn.goLimit.title": "Sie haben Ihr Aerless Code-Go-Nutzungslimit erreicht.",
   "ui.sessionTurn.goLimit.lineReset":
-    "Sie haben Ihr OpenCode-Go-Nutzungslimit erreicht. Es wird um {{time}} zurückgesetzt.",
+    "Sie haben Ihr Aerless Code-Go-Nutzungslimit erreicht. Es wird um {{time}} zurückgesetzt.",
   "dialog.usageExceeded.freeTier.reset": "Ihre kostenlosen Nachrichten werden um {{time}} zurückgesetzt.",
   "ui.messagePart.compaction.queued": "Sitzungskomprimierung in der Warteschlange",
   "ui.messagePart.compaction.done": "Komprimiert",

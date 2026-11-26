@@ -15,7 +15,7 @@ export default {
   "create.failed": "ተርሚናል መፍጠር አልተቻለም",
   "create.unsupported": "ይህ አገልጋይ ለተርሚናሎች በጣም የቆየ ነው። በዚህ አገልጋይ ላይ OpenCodeን ያዘምኑ።",
   "rename.failed": "ተርሚናሉን ዳግም መሰየም አልተቻለም",
-  "rename.unsupported": "የOpenCode ተርሚናል አገልግሎት ዳግም ከተጀመረ በኋላ ተርሚናልን ዳግም መሰየም ይገኛል",
+  "rename.unsupported": "የAerless Code ተርሚናል አገልግሎት ዳግም ከተጀመረ በኋላ ተርሚናልን ዳግም መሰየም ይገኛል",
   disconnected: "ተርሚናሉ ተቋርጧል",
   connectionFailed: "የተርሚናል ግንኙነት አልተሳካም",
   serverOutdated: "ይህ አገልጋይ ለተርሚናሎች በጣም የቆየ ነው፤ በእሱ ላይ OpenCodeን ያዘምኑ",

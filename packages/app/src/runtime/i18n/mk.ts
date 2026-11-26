@@ -1,5 +1,5 @@
 export const dict = {
-  "desktop.menu.app": "OpenCode",
+  "desktop.menu.app": "Aerless Code",
   "desktop.menu.file": "Датотека",
   "desktop.menu.edit": "Уреди",
   "desktop.menu.view": "Прикажи",
@@ -38,18 +38,18 @@ export const dict = {
   "desktop.menu.nextProject": "Следен проект",
   "desktop.menu.minimize": "Минимизирајте",
   "desktop.menu.maximize": "Максимизирај",
-  "desktop.menu.documentation": "OpenCode Документација",
+  "desktop.menu.documentation": "Aerless Code Документација",
   "desktop.menu.supportForum": "Форум за поддршка",
   "desktop.menu.shareFeedback": "Споделете повратни информации",
   "desktop.menu.reportBug": "Пријавете бубачка",
-  "desktop.menu.ariaLabel": "OpenCode мени",
+  "desktop.menu.ariaLabel": "Aerless Code мени",
   "desktop.recovery.action.relaunch": "Рестартирајте",
   "desktop.recovery.action.exportLogs": "Извоз на дневници",
   "desktop.recovery.action.keepWaiting": "Продолжете да чекате",
   "desktop.recovery.action.quit": "Откажи",
-  "desktop.recovery.loadFailed": "OpenCode не успеа да се вчита",
-  "desktop.recovery.terminated": "Прозорецот OpenCode неочекувано заврши",
-  "desktop.recovery.unresponsive": "OpenCode не реагира",
+  "desktop.recovery.loadFailed": "Aerless Code не успеа да се вчита",
+  "desktop.recovery.terminated": "Прозорецот Aerless Code неочекувано заврши",
+  "desktop.recovery.unresponsive": "Aerless Code не реагира",
   "desktop.recovery.unresponsive.detail":
     "Може да ја рестартирате апликацијата, да ги отворите дневниците или да продолжите да чекате.",
   "desktop.recovery.loadFailed.detail": "Прозорец: {{window}}\nURL: {{url}}\nГрешка: {{code}} {{description}}",
@@ -152,7 +152,7 @@ export const dict = {
   "provider.connect.status.waiting": "Се чека овластување",
   "provider.connect.status.failed": "Овластувањето не успеа: {{error}}",
   "provider.connect.apiKey.description":
-    "Внесете го вашиот клуч {{provider}} API за да ја поврзете вашата сметка и да користите {{provider}} модели во OpenCode.",
+    "Внесете го вашиот клуч {{provider}} API за да ја поврзете вашата сметка и да користите {{provider}} модели во Aerless Code.",
   "provider.connect.apiKey.label": "{{provider}} API клуч",
   "provider.connect.apiKey.placeholder": "клуч API",
   "provider.connect.apiKey.required": "Потребен е клуч API",
@@ -266,7 +266,7 @@ export const dict = {
   "error.page.action.checkUpdates": "Проверете дали има ажурирања",
   "error.page.action.updateTo": "Ажурирајте до {{version}}",
   "error.page.circular": "[Кружни]",
-  "error.page.report.prefix": "Ве молиме пријавете ја оваа грешка на тимот OpenCode",
+  "error.page.report.prefix": "Ве молиме пријавете ја оваа грешка на тимот Aerless Code",
   "error.page.report.discord": "на Discord",
   "error.page.version": "Верзија: {{version}}",
   "error.dev.rootNotFound":
@@ -288,7 +288,7 @@ export const dict = {
   "error.chain.modelNotFound": "Моделот не е пронајден: {{provider}}/{{model}}",
   "error.chain.checkConfig": "Проверете ги имињата на давателот/моделот за конфигурација (opencode.json).",
   "error.chain.mcpFailed":
-    "MCP серверот „{{name}}“ не успеа. Забелешка, OpenCode сè уште не поддржува автентикација MCP.",
+    "MCP серверот „{{name}}“ не успеа. Забелешка, Aerless Code сè уште не поддржува автентикација MCP.",
   "error.chain.providerAuthFailed": "Неуспешна автентикација на провајдерот ({{provider}}): {{message}}",
   "error.chain.providerInitFailed":
     "Не успеа да се иницијализира провајдерот „{{provider}}“. Проверете ги ингеренциите и конфигурацијата.",
@@ -391,15 +391,15 @@ export const dict = {
   "settings.general.section.notifications": "Системски известувања",
   "settings.general.section.sounds": "Звучни ефекти",
   "settings.general.row.language.title": "Јазик",
-  "settings.general.row.language.description": "Променете го јазикот на прикажување за OpenCode",
+  "settings.general.row.language.description": "Променете го јазикот на прикажување за Aerless Code",
   "settings.general.row.shell.title": "Терминал shell",
   "settings.general.row.shell.description": "Школката ја користат алатките за терминал и агент",
   "settings.general.row.shell.autoDefault": "Автоматски (стандардно)",
   "settings.general.row.shell.terminalOnly": "само терминал",
   "settings.general.row.colorScheme.title": "Шема на бои",
-  "settings.general.row.colorScheme.description": "Изберете дали OpenCode ја следи системската, светла или темна тема",
+  "settings.general.row.colorScheme.description": "Изберете дали Aerless Code ја следи системската, светла или темна тема",
   "settings.general.row.theme.title": "Тема",
-  "settings.general.row.theme.description": "Приспособете како OpenCode е тематизирана.",
+  "settings.general.row.theme.description": "Приспособете како Aerless Code е тематизирана.",
   "settings.general.row.font.title": "Фонт на код",
   "settings.general.row.font.description": "Приспособете го фонтот што се користи во блоковите со кодови",
   "settings.general.row.terminalFont.title": "Терминален фонт",
@@ -608,7 +608,7 @@ export const dict = {
   "command.project.copyID": "Копирај ID на проектот",
   "command.session.copyID": "Копирај ID на сесијата",
   "server.row.incompatible":
-    "Овој сервер користи OpenCode {{version}}, кој не е компатибилен со апликацијава. Надградете го на OpenCode V2 за да продолжите.",
+    "Овој сервер користи Aerless Code {{version}}, кој не е компатибилен со апликацијава. Надградете го на Aerless Code V2 за да продолжите.",
   "toast.session.copyID.failed.title": "Копирањето на ID на сесијата не успеа",
   "toast.session.copyID.failed.description": "Настана грешка при копирањето на ID на сесијата",
   "toast.project.copyID.failed.title": "Копирањето на ID на проектот не успеа",
@@ -618,7 +618,7 @@ export const dict = {
   "error.page.action.reload": "Превчитај",
   "session.error.incompatible": "Оваа верзија на серверот не е поддржана",
   "session.error.incompatible.description":
-    "{{server}} користи OpenCode {{version}}, кој не е компатибилен со апликацијава. Надградете го серверот на OpenCode V2 за да продолжите.",
+    "{{server}} користи Aerless Code {{version}}, кој не е компатибилен со апликацијава. Надградете го серверот на Aerless Code V2 за да продолжите.",
   "session.background.moveInline": "Притиснете {{keybind}} за да ја преместите тековната работа во заднина",
   "dialog.server.menu.hide": "Скриј од списокот на проекти",
   "dialog.server.menu.show": "Прикажи во списокот на проекти",
@@ -668,16 +668,9 @@ export const dict = {
   "settings.about.version": "верзија {{version}}",
   "settings.about.devVersion": "Развој на",
   "settings.about.license": "Објавен под MIT License",
-  "settings.about.otherContributor.one": "{{count}} друг",
-  "settings.about.otherContributor.other": "{{count}} други",
-  "settings.about.firstPublished": "Прво објавено во Мисури, САД",
-  "settings.about.firstIllustrated": "Прво илустрирано во Лондон, Англија",
-  "settings.about.website": "www.opencode.ai",
-  "settings.about.description": "OpenCode, агент за кодирање со отворен код",
+  "settings.about.description": "Aerless Code, агент за кодирање со отворен код",
   "settings.about.trademark": "OpenCode е регистрирана трговска марка на Anomaly Innovations, Inc.",
   "settings.about.typeset": "Типови во Inter и IBM Plex Mono",
-  "settings.about.tagline": "AI не може да изгради одличен софтвер, без вас",
-  "settings.about.copyright": "© Anomaly Innovations, Inc.",
   "project.settings.title": "Уреди проект",
   "settings.timeline.title": "Времеплов",
   "settings.timeline.detail": "Детали за временската линија",
@@ -704,8 +697,6 @@ export const dict = {
   "settings.timeline.category.subagents": "Субагенси",
   "settings.timeline.category.notices": "Известувања",
   "settings.timeline.category.tools": "Други алатки",
-  "settings.about.writtenByNames": "Напишано од {{names}}",
-  "settings.about.illustratedByNames": "Илустрирано од {{names}}",
   "server.action.authenticate": "Автентицирај се",
   "server.status.connecting": "Се поврзува преку SSH…",
   "server.status.authentication": "Потребна е автентикација",
@@ -726,8 +717,8 @@ export const dict = {
   "server.connect.failed":
     "Не можеше да се поврзе. Проверете ја адресата на серверот и лозинката, потоа обидете се повторно.",
   "server.connect.scan": "Скенирај QR код",
-  "server.connect.scan.description": "Насочете ја вашата камера кон QR кодот прикажан од opencode pair.",
-  "server.connect.scan.invalid": "Ова не е OpenCode паринг код. Скенирајте го кодот прикажан од opencode pair.",
+  "server.connect.scan.description": "Насочете ја вашата камера кон QR кодот прикажан од aerless-code pair.",
+  "server.connect.scan.invalid": "Ова не е Aerless Code паринг код. Скенирајте го кодот прикажан од aerless-code pair.",
   "server.connect.camera": "Парирање со камера",
   "server.connect.camera.starting": "Отворање на камерата…",
   "server.connect.mixedContent":
@@ -768,18 +759,18 @@ export const dict = {
     "Изберете го провајдерот за пребарување кој агентите ќе го користат за пребарување на Интернет",
   "settings.projects.search.placeholder": "Проекти за пребарување",
   "project.settings.name.title": "Име на проектот",
-  "project.settings.name.description": "Името што се прикажува за овој проект низ OpenCode",
+  "project.settings.name.description": "Името што се прикажува за овој проект низ Aerless Code",
   "project.settings.icon.description": "Препорачано: 128×128px. Кликнете или влечете за да отпочнете слика.",
   "project.settings.color.description": "Се користи за иконата на проектот кога не е поставена сопствена слика",
   "project.settings.worktree.startup.description": "Се извршува еднаш по создавањето на нов worktree",
   "project.settings.worktree.startup.hint.base": "Користете $OPENCODE_WORKTREE_BASE за базниот worktree.",
   "project.settings.worktree.startup.hint.new": "Користете $OPENCODE_WORKTREE_PATH за новиот worktree.",
   "project.settings.extensions.empty.mcps.title": "Сè уште нема MCPs",
-  "project.settings.extensions.empty.mcps.description": "MCPs достапни за OpenCode ќе се појават тука",
+  "project.settings.extensions.empty.mcps.description": "MCPs достапни за Aerless Code ќе се појават тука",
   "project.settings.extensions.empty.plugins.title": "Сè уште нема приклучоци",
-  "project.settings.extensions.empty.plugins.description": "Приклучоци достапни за OpenCode ќе се појават тука",
+  "project.settings.extensions.empty.plugins.description": "Приклучоци достапни за Aerless Code ќе се појават тука",
   "project.settings.extensions.empty.skills.title": "Сè уште нема вештини",
-  "project.settings.extensions.empty.skills.description": "Вештини достапни за OpenCode ќе се појават тука",
+  "project.settings.extensions.empty.skills.description": "Вештини достапни за Aerless Code ќе се појават тука",
   "project.settings.extensions.lsp.configured": "Конфигурирани сервери за јазик",
   "project.settings.extensions.lsp.status.enabled": "Овозможено во конфигурацијата",
   "project.settings.extensions.lsp.status.disabled": "Оневозможено во конфигурацијата",
@@ -800,7 +791,7 @@ export const dict = {
   "settings.timeline.collapsed.label": "{{activity}} склопено",
   "session.new.workspace.search.empty": "Нема соодветни worktrees",
   "settings.workspaces.description": "Прегледај worktrees и управувај со употребата на дискот",
-  "settings.workspaces.empty.description": "Worktrees креирани во OpenCode ќе се прикажат тука",
+  "settings.workspaces.empty.description": "Worktrees креирани во Aerless Code ќе се прикажат тука",
   "settings.workspaces.sessions.filtered.one": "{{count}} сесија",
   "settings.workspaces.sessions.filtered.other": "{{count}} сесии",
   "settings.workspaces.deleteAll.confirm.one": "Ова трајно ќе го избрише {{count}} избрано работно стебло.",
@@ -837,22 +828,22 @@ export const dict = {
   "voice.captions.hide": "Скриј титлови",
   "voice.connecting": "Се поврзува…",
   "voice.you": "Вие:",
-  "voice.assistant": "OpenCode:",
+  "voice.assistant": "Aerless Code:",
   "voice.failure.unavailable": "За гласовни повици потребен е OpenAI API клуч на овој сервер.",
   "voice.failure.microphone": "За повикување потребен е пристап до микрофонот.",
   "voice.failure.dropped": "Повикот се прекина.",
   "voice.failure.connection": "Повикот не можеше да се поврзе.",
-  "desktop.microphoneUsage": "OpenCode го користи вашиот микрофон за гласовни повици.",
+  "desktop.microphoneUsage": "Aerless Code го користи вашиот микрофон за гласовни повици.",
   "desktop.documentsFolderUsage":
-    "OpenCode користи датотеки во папката Documents за проектите што ги отворате и командите што ги извршувате таму.",
+    "Aerless Code користи датотеки во папката Documents за проектите што ги отворате и командите што ги извршувате таму.",
   "desktop.desktopFolderUsage":
-    "OpenCode користи датотеки на работната површина за проектите што ги отворате и командите што ги извршувате таму.",
+    "Aerless Code користи датотеки на работната површина за проектите што ги отворате и командите што ги извршувате таму.",
   "desktop.downloadsFolderUsage":
-    "OpenCode користи датотеки во папката Downloads за проектите што ги отворате и командите што ги извршувате таму.",
+    "Aerless Code користи датотеки во папката Downloads за проектите што ги отворате и командите што ги извршувате таму.",
   "desktop.networkVolumesUsage":
-    "OpenCode користи датотеки на мрежни волумени за проектите што ги отворате и командите што ги извршувате таму.",
+    "Aerless Code користи датотеки на мрежни волумени за проектите што ги отворате и командите што ги извршувате таму.",
   "desktop.removableVolumesUsage":
-    "OpenCode користи датотеки на преносливи волумени за проектите што ги отворате и командите што ги извршувате таму.",
+    "Aerless Code користи датотеки на преносливи волумени за проектите што ги отворате и командите што ги извршувате таму.",
   "desktop.contextMenu.spellcheck": "Проверка на правопис",
   "desktop.contextMenu.spellcheckLanguages": "Јазици за проверка на правопис",
   "session.location.unavailable": "Локацијата на сесијата е недостапна",
@@ -894,7 +885,7 @@ export const dict = {
   "palette.group.settings": "Поставки",
   "palette.session.location": "{{project}} · {{server}}",
   "dialog.provider.title": "Интеграции",
-  "dialog.provider.description": "Поврзете услуги за OpenCode да може да ги користи.",
+  "dialog.provider.description": "Поврзете услуги за Aerless Code да може да ги користи.",
   "dialog.provider.group.services": "Услуги",
   "dialog.provider.environmentOnly": "Само од околината",
   "dialog.provider.signInRequired": "Потребна е најава →",
@@ -949,7 +940,7 @@ export const dict = {
   "provider.connect.models.available": "Достапни модели",
   "provider.connect.chatgptWelcome.title": "ChatGPT е поврзан",
   "provider.connect.chatgptWelcome.description":
-    "Соодветните барања во OpenCode можат да го користат вашиот ChatGPT план.",
+    "Соодветните барања во Aerless Code можат да го користат вашиот ChatGPT план.",
   "provider.connect.chatgptWelcome.usage": "Управувајте со потрошувачката во поставките на ChatGPT",
   "provider.connect.chatgptWelcome.confirm": "Разбрав",
   "provider.connect.models.list": "Модели достапни од {{provider}}",
@@ -959,7 +950,7 @@ export const dict = {
   "provider.connect.chatgptUsageLimit.close": "Затвори",
   "provider.connect.console.refreshFailed":
     "Сметката е поврзана, но не можевме да ги вчитаме моделите. Обидете се повторно за да ги освежите.",
-  "provider.connect.console.connected": "OpenCode е поврзан",
+  "provider.connect.console.connected": "Aerless Code е поврзан",
   "provider.connect.console.noModels":
     "Сметката е поврзана, но овој Console работен простор нема достапни модели. Проверете ги неговите поставки во Console, а потоа освежете.",
   "provider.connect.console.modelsLoading": "Моделите сè уште се вчитуваат. Освежете за да проверите повторно.",
@@ -967,7 +958,7 @@ export const dict = {
   "provider.connect.console.openingBrowser": "Се отвора прелистувачот",
   "provider.connect.remote.label": "на {{server}}",
   "provider.connect.remote.description":
-    "Вашите OpenCode акредитиви ќе се зачуваат на овој сервер. Моделите ќе бидат достапни преку овој сервер.",
+    "Вашите Aerless Code акредитиви ќе се зачуваат на овој сервер. Моделите ќе бидат достапни преку овој сервер.",
   "provider.connect.claudeAgent.description":
     "Користете го вашиот Claude план или друга Claude Code најава. Прво инсталирајте го Claude Code и најавете се.",
   "provider.connect.claudeAgent.install": "Инсталирај Claude Code",
@@ -1001,7 +992,7 @@ export const dict = {
     "Не можевме да го отвориме прелистувачот. Изберете Отвори прелистувач за да се обидете повторно.",
   "provider.connect.oauth.paste.toggle": "Се најавувате од друг уред?",
   "provider.connect.oauth.paste.description":
-    "Ако прелистувачот не може да ја достигне машината на која работи OpenCode, залепете ја адресата на која беше пренасочен.",
+    "Ако прелистувачот не може да ја достигне машината на која работи Aerless Code, залепете ја адресата на која беше пренасочен.",
   "provider.connect.oauth.expired": "Овластувањето истече",
   "model.details.input.text": "Текст",
   "model.details.input.image": "Слика",
@@ -1038,7 +1029,7 @@ export const dict = {
   "dialog.mcp.signIn": "Најави се",
   "dialog.mcp.signIn.open": "Најави се на {{name}}",
   "dialog.mcp.signIn.description":
-    "Ќе се отвори прелистувачот за да се најавите на {{name}}. Ако не може да ја достигне машината на која работи OpenCode, залепете ја подолу адресата на која беше пренасочен.",
+    "Ќе се отвори прелистувачот за да се најавите на {{name}}. Ако не може да ја достигне машината на која работи Aerless Code, залепете ја подолу адресата на која беше пренасочен.",
   "dialog.mcp.signIn.syncFailed": "Најавени сте, но {{name}} не можеше да се освежи: {{error}}",
   "dialog.mcp.error.details":
     "MCP сервер: {{name}}\nСтатус: неуспешно\nКонфигурација: mcp.servers.{{name}}\nГрешка: {{error}}",
@@ -1067,10 +1058,10 @@ export const dict = {
   "server.connect.link": "Врска за спарување",
   "server.connect.link.placeholder": "http://192.168.1.2:4096/auth/connect/…",
   "server.connect.link.invalid":
-    "Залепете ја целата врска за спарување од opencode pair или од Поставки → Спарување на компјутерот на серверот.",
+    "Залепете ја целата врска за спарување од aerless-code pair или од Поставки → Спарување на компјутерот на серверот.",
   "server.connect.password.prompt": "Немате врска за спарување?",
   "server.connect.password.use": "Користи лозинка",
-  "server.connect.password.hint": "За да ја видите, извршете opencode service get password на компјутерот на серверот.",
+  "server.connect.password.hint": "За да ја видите, извршете aerless-code service get password на компјутерот на серверот.",
   "server.connect.link.prompt": "Имате врска за спарување?",
   "server.connect.link.use": "Користи врска за спарување",
   "server.connect.pair.link":
@@ -1078,11 +1069,11 @@ export const dict = {
   "server.connect.scan.failed":
     "Овој прелистувач не можеше да го прочита QR кодот. Внесете ги деталите за поврзување рачно.",
   "server.connect.link.expired":
-    "Оваа врска за спарување истече или е веќе искористена. Извршете opencode pair за да добиете нова.",
+    "Оваа врска за спарување истече или е веќе искористена. Извршете aerless-code pair за да добиете нова.",
   "server.connect.link.unreachable":
     "{{url}} не е достапен. Проверете дали овој уред може да го достигне серверот, а потоа обидете се повторно.",
   "server.connect.link.legacy":
-    "Овој код за спарување е од постара верзија на OpenCode. Ажурирајте го OpenCode на серверот, а потоа повторно извршете opencode pair.",
+    "Овој код за спарување е од постара верзија на Aerless Code. Ажурирајте го Aerless Code на серверот, а потоа повторно извршете aerless-code pair.",
   "server.connect.camera.native":
     "Оваа страница не може да ја користи камерата преку HTTP. Залепете ја врската за спарување погоре.",
   "dialog.server.signedOut":
@@ -1104,7 +1095,7 @@ export const dict = {
   "home.sessions.load.timeout": "Серверот одговара предолго",
   "tips.browse.title": "Управувајте со прелистувачот",
   "tips.browse.description":
-    "Дозволете OpenCode да работи во вашиот прелистувач со вашите картички, најави и екстензии.",
+    "Дозволете Aerless Code да работи во вашиот прелистувач со вашите картички, најави и екстензии.",
   "tips.browse.install": "Инсталирај",
   "tips.hex.title": "Користете го гласот",
   "tips.hex.description":
@@ -1296,7 +1287,7 @@ export const dict = {
     'Прекинувачите го исклучуваат само десктоп интерфејсот на приклучокот. Додајте "-<id>" во plugins во глобалниот opencode.json за да го исклучите серверскиот дел, или "-" и ID на неговиот TUI приклучок во plugins во cli.json за да го исклучите TUI делот.',
   "settings.about.copyVersionFailed": "Верзијата не можеше да се копира",
   "settings.about.notices.title": "Известувања за трети страни",
-  "settings.about.notices.description": "OpenCode го вклучува следниов софтвер со отворен код.",
+  "settings.about.notices.description": "Aerless Code го вклучува следниов софтвер со отворен код.",
   "settings.about.notices.license": "Текст на лиценцата",
   "settings.about.notices.fonts.title": "Фонтови во прегледите на Office",
   "settings.about.notices.fonts.description":

@@ -1,16 +1,16 @@
 import { expect, test } from "bun:test"
-import { fetch } from "bun"
-import { build, createServer } from "vite"
+import { build } from "vite"
 import { icons } from "./vite.icons"
 import manifest from "./manifest.json" with { type: "json" }
 
-test.each(["dev", "beta", "prod", "local"])("bundles %s app icons", async (channel) => {
+test.each(["/", "/opencode/"])("bundles the web manifest under base %s", async (base) => {
   const result = await build({
     root: import.meta.dirname,
     configFile: false,
     logLevel: "silent",
+    base,
     plugins: [
-      icons(channel),
+      icons(),
       {
         name: "icons-only-fixture",
         transformIndexHtml: {
@@ -23,111 +23,19 @@ test.each(["dev", "beta", "prod", "local"])("bundles %s app icons", async (chann
   })
 
   if (!("output" in result)) throw new Error("Expected a single build output")
-
-  await check(channel === "local" ? "dev" : channel, async (path) => {
-    const file = result.output.find((file) => `/${file.fileName}` === path)
-
-    if (file?.type !== "asset") throw new Error(`Missing asset: ${path}`)
-
-    return new Uint8Array(Buffer.from(file.source))
-  })
-})
-
-test("bundles app icons under a base path", async () => {
-  const result = await build({
-    root: import.meta.dirname,
-    configFile: false,
-    logLevel: "silent",
-    base: "/opencode/",
-    plugins: [
-      icons("prod"),
-      {
-        name: "icons-only-fixture",
-        transformIndexHtml: {
-          order: "pre",
-          handler: (html) => html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, ""),
-        },
-      },
-    ],
-    build: { write: false, copyPublicDir: false },
-  })
-
-  if (!("output" in result)) throw new Error("Expected a single build output")
-
-  await check(
-    "prod",
-    async (path) => {
-      const file = result.output.find((file) => `/${file.fileName}` === path)
-
-      if (file?.type !== "asset") throw new Error(`Missing asset: ${path}`)
-
-      return new Uint8Array(Buffer.from(file.source))
-    },
-    "/opencode/",
-  )
-})
-
-test.each(["dev", "beta", "prod"])("serves %s app icons", async (channel) => {
-  const server = await createServer({
-    root: import.meta.dirname,
-    configFile: false,
-    logLevel: "silent",
-    plugins: [icons(channel)],
-    optimizeDeps: { noDiscovery: true, include: [] },
-    server: { host: "127.0.0.1", port: 0, hmr: false, preTransformRequests: false, watch: null },
-  })
-
-  try {
-    await server.listen()
-    const url = server.resolvedUrls?.local[0]
-
-    if (!url) throw new Error("Expected a local URL")
-
-    await check(channel, async (path) => {
-      const response = await fetch(new URL(path, url))
-      expect(response.status).toBe(200)
-
-      if (path.endsWith(".webmanifest")) expect(response.headers.get("content-type")).toBe("application/manifest+json")
-
-      if (path.endsWith(".png")) expect(response.headers.get("content-type")).toBe("image/png")
-
-      return new Uint8Array(await response.arrayBuffer())
-    })
-  } finally {
-    await server.close()
+  const read = (name: string) => {
+    const file = result.output.find((file) => file.fileName === name)
+    if (file?.type !== "asset") throw new Error(`Missing asset: ${name}`)
+    return new TextDecoder().decode(new Uint8Array(Buffer.from(file.source)))
   }
-})
 
-async function check(channel: string, read: (path: string) => Promise<Uint8Array>, base = "/") {
-  const html = new TextDecoder().decode(await read("/index.html"))
-  const actual: typeof manifest = JSON.parse(new TextDecoder().decode(await read("/site.webmanifest")))
-  expect(actual.icons.some((icon) => icon.purpose === "maskable")).toBe(true)
-  expect(actual).toEqual({
+  expect(JSON.parse(read("site.webmanifest"))).toEqual({
     ...manifest,
     id: base,
     start_url: base,
     scope: base,
-    icons: manifest.icons.map((icon) => ({ ...icon, src: `${base}icons/${channel}${icon.src}` })),
+    icons: [{ ...manifest.icons[0], src: `${base}favicon.svg` }],
   })
-  expect(html).toContain(`href="${base}icons/${channel}/favicon.ico"`)
-  expect(html).toContain(`href="${base}icons/${channel}/apple-touch-icon.png"`)
-  expect(html).toContain(`href="${base}site.webmanifest"`)
-  expect(html).not.toContain("%OPENCODE_")
-
-  await Promise.all(
-    Object.entries({
-      "favicon.ico": "icon.ico",
-      "apple-touch-icon.png": "ios/AppIcon-60x60@3x.png",
-      "web-app-manifest-192x192.png": "android/mipmap-xxxhdpi/ic_launcher.png",
-      "web-app-manifest-512x512.png": "icon.png",
-    }).map(async ([name, source]) => {
-      const bytes = await read(`/icons/${channel}/${name}`)
-      expect(bytes).toEqual(await Bun.file(new URL(`../desktop/icons/${channel}/${source}`, import.meta.url)).bytes())
-
-      if (!name.endsWith(".png")) return
-      const size = name === "apple-touch-icon.png" ? 180 : Number(name.match(/(192|512)/)?.[0])
-      expect(new DataView(bytes.buffer, bytes.byteOffset).getUint32(16)).toBe(size)
-      expect(new DataView(bytes.buffer, bytes.byteOffset).getUint32(20)).toBe(size)
-    }),
-  )
-}
+  expect(read("index.html")).toContain(`href="${base}favicon.svg"`)
+  expect(read("index.html")).toContain(`href="${base}site.webmanifest"`)
+})

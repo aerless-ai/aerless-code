@@ -37,13 +37,13 @@ export default {
   timedOut: "Palvelin ei vastannut ajoissa",
   "setup.mcp": "Lisää palvelin OpenCoden avulla",
   "setup.mcp.prompt":
-    "Auta minua lisäämään MCP-palvelin globaaleihin OpenCode-määrityksiini. Kysy, minkä palvelun haluan yhdistää, määritä se ja tarkista, että yhteys toimii.",
+    "Auta minua lisäämään MCP-palvelin globaaleihin Aerless Code-määrityksiini. Kysy, minkä palvelun haluan yhdistää, määritä se ja tarkista, että yhteys toimii.",
   "setup.plugins": "Lisää laajennus OpenCoden avulla",
   "setup.plugins.prompt":
-    "Auta minua lisäämään laajennus globaaleihin OpenCode-määrityksiini. Kysy, mitä haluan sen tekevän, ehdota laajennusta ja lisää se.",
+    "Auta minua lisäämään laajennus globaaleihin Aerless Code-määrityksiini. Kysy, mitä haluan sen tekevän, ehdota laajennusta ja lisää se.",
   "setup.skills": "Uusi taito OpenCoden avulla",
   "setup.skills.prompt":
-    "Auta minua kirjoittamaan uusi OpenCode-taito globaaleihin määrityksiini. Kysy, mitä sen pitäisi opettaa sinulle, ja kirjoita sitten sen SKILL.md.",
+    "Auta minua kirjoittamaan uusi Aerless Code-taito globaaleihin määrityksiini. Kysy, mitä sen pitäisi opettaa sinulle, ja kirjoita sitten sen SKILL.md.",
   changesFailed: "Muutoksia ei voitu ladata",
   changesOffline: "Tähän palvelimeen ei saada yhteyttä",
   "mcp.signIn": "Kirjaudu",
@@ -55,7 +55,7 @@ export default {
   "mcp.error.actionLabel": "Palvelimen {{name}} tiedot",
   "mcp.signIn.open": "Kirjaudu palveluun {{name}}",
   "mcp.signIn.description":
-    "Selain avautuu, jotta voit kirjautua palveluun {{name}}. Jos se ei tavoita konetta, jolla OpenCode on käynnissä, liitä alle URL-osoite, johon se ohjattiin.",
+    "Selain avautuu, jotta voit kirjautua palveluun {{name}}. Jos se ei tavoita konetta, jolla Aerless Code on käynnissä, liitä alle URL-osoite, johon se ohjattiin.",
   "mcp.signIn.waiting": "Odotetaan valtuutusta…",
   "mcp.signIn.failed": "Valtuutus epäonnistui: {{error}}",
   "mcp.signIn.expired": "Valtuutus vanhentui",

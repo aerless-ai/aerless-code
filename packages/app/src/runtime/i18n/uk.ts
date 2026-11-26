@@ -25,7 +25,7 @@ export const dict = {
   "session.background.subagent.many": "{{count}} підагентів",
   "settings.about.otherContributor.few": "{{count}} інші",
   "settings.about.otherContributor.many": "{{count}} інших",
-  "desktop.menu.app": "OpenCode",
+  "desktop.menu.app": "Aerless Code",
   "desktop.menu.file": "Файл",
   "desktop.menu.edit": "Редагування",
   "desktop.menu.view": "Вигляд",
@@ -64,19 +64,19 @@ export const dict = {
   "desktop.menu.nextProject": "Наступний проєкт",
   "desktop.menu.minimize": "Згорнути",
   "desktop.menu.maximize": "Розгорнути",
-  "desktop.menu.documentation": "Документація OpenCode",
+  "desktop.menu.documentation": "Документація Aerless Code",
   "desktop.menu.supportForum": "Форум підтримки",
   "desktop.menu.shareFeedback": "Надіслати відгук",
   "desktop.menu.reportBug": "Повідомити про помилку",
-  "desktop.menu.ariaLabel": "Меню OpenCode",
+  "desktop.menu.ariaLabel": "Меню Aerless Code",
 
   "desktop.recovery.action.relaunch": "Запустити повторно",
   "desktop.recovery.action.exportLogs": "Експортувати журнали",
   "desktop.recovery.action.keepWaiting": "Продовжити очікування",
   "desktop.recovery.action.quit": "Завершити роботу",
-  "desktop.recovery.loadFailed": "Не вдалося завантажити OpenCode",
-  "desktop.recovery.terminated": "Роботу вікна OpenCode несподівано завершено",
-  "desktop.recovery.unresponsive": "OpenCode не відповідає",
+  "desktop.recovery.loadFailed": "Не вдалося завантажити Aerless Code",
+  "desktop.recovery.terminated": "Роботу вікна Aerless Code несподівано завершено",
+  "desktop.recovery.unresponsive": "Aerless Code не відповідає",
   "desktop.recovery.unresponsive.detail":
     "Ви можете повторно запустити програму, відкрити журнали або продовжити очікування.",
   "desktop.recovery.loadFailed.detail": "Вікно: {{window}}\nURL: {{url}}\nПомилка: {{code}} {{description}}",
@@ -193,7 +193,7 @@ export const dict = {
   "provider.connect.status.waiting": "Очікування авторизації",
   "provider.connect.status.failed": "Авторизація не вдалася: {{error}}",
   "provider.connect.apiKey.description":
-    "Введіть ключ API {{provider}}, щоб підключити обліковий запис і використовувати моделі {{provider}} у OpenCode.",
+    "Введіть ключ API {{provider}}, щоб підключити обліковий запис і використовувати моделі {{provider}} у Aerless Code.",
   "provider.connect.apiKey.label": "Ключ API {{provider}}",
   "provider.connect.apiKey.placeholder": "Ключ API",
   "provider.connect.apiKey.required": "Ключ API обов'язковий",
@@ -327,7 +327,7 @@ export const dict = {
   "error.page.action.checkUpdates": "Перевірити оновлення",
   "error.page.action.updateTo": "Оновити до {{version}}",
   "error.page.circular": "[Циклічне]",
-  "error.page.report.prefix": "Будь ласка, повідомте про цю помилку команді OpenCode",
+  "error.page.report.prefix": "Будь ласка, повідомте про цю помилку команді Aerless Code",
   "error.page.report.discord": "у Discord",
   "error.page.version": "Версія: {{version}}",
 
@@ -352,7 +352,7 @@ export const dict = {
   "error.chain.modelNotFound": "Модель не знайдено: {{provider}}/{{model}}",
   "error.chain.checkConfig": "Перевірте назви провайдерів/моделей у конфігурації (opencode.json)",
   "error.chain.mcpFailed":
-    'Сервер MCP "{{name}}" не працює. Зверніть увагу, OpenCode ще не підтримує автентифікацію MCP.',
+    'Сервер MCP "{{name}}" не працює. Зверніть увагу, Aerless Code ще не підтримує автентифікацію MCP.',
   "error.chain.providerAuthFailed": "Автентифікація провайдера не вдалася ({{provider}}): {{message}}",
   "error.chain.providerInitFailed":
     'Не вдалося ініціалізувати провайдера "{{provider}}". Перевірте облікові дані та конфігурацію.',
@@ -472,16 +472,16 @@ export const dict = {
   "settings.general.section.sounds": "Звукові ефекти",
 
   "settings.general.row.language.title": "Мова",
-  "settings.general.row.language.description": "Змінити мову інтерфейсу OpenCode",
+  "settings.general.row.language.description": "Змінити мову інтерфейсу Aerless Code",
   "settings.general.row.shell.title": "Командна оболонка термінала",
   "settings.general.row.shell.description":
     "Виберіть оболонку для термінала. Сумісні оболонки також використовуються для викликів інструментів агента.",
   "settings.general.row.shell.autoDefault": "Автоматично (за замовчуванням)",
   "settings.general.row.shell.terminalOnly": "тільки термінал",
   "settings.general.row.colorScheme.title": "Кольорова схема",
-  "settings.general.row.colorScheme.description": "Виберіть, чи OpenCode використовує системну, світлу або темну тему",
+  "settings.general.row.colorScheme.description": "Виберіть, чи Aerless Code використовує системну, світлу або темну тему",
   "settings.general.row.theme.title": "Тема",
-  "settings.general.row.theme.description": "Налаштуйте тему OpenCode.",
+  "settings.general.row.theme.description": "Налаштуйте тему Aerless Code.",
   "settings.general.row.font.title": "Шрифт коду",
   "settings.general.row.font.description": "Налаштуйте шрифт, який використовується в блоках коду",
   "settings.general.row.terminalFont.title": "Шрифт термінала",
@@ -698,7 +698,7 @@ export const dict = {
   "command.project.copyID": "Копіювати ідентифікатор проєкту",
   "command.session.copyID": "Копіювати ідентифікатор сеансу",
   "server.row.incompatible":
-    "На цьому сервері працює OpenCode {{version}}, несумісний із застосунком. Щоб продовжити, оновіть його до OpenCode V2.",
+    "На цьому сервері працює Aerless Code {{version}}, несумісний із застосунком. Щоб продовжити, оновіть його до Aerless Code V2.",
   "toast.session.copyID.failed.title": "Не вдалося скопіювати ідентифікатор сеансу",
   "toast.session.copyID.failed.description": "Під час копіювання ідентифікатора сеансу сталася помилка",
   "toast.project.copyID.failed.title": "Не вдалося скопіювати ідентифікатор проєкту",
@@ -708,7 +708,7 @@ export const dict = {
   "error.page.action.reload": "Перезавантажити",
   "session.error.incompatible": "Ця версія сервера не підтримується",
   "session.error.incompatible.description":
-    "На сервері {{server}} працює OpenCode {{version}}, несумісний із застосунком. Щоб продовжити, оновіть сервер до OpenCode V2.",
+    "На сервері {{server}} працює Aerless Code {{version}}, несумісний із застосунком. Щоб продовжити, оновіть сервер до Aerless Code V2.",
   "session.background.moveInline": "Натисніть {{keybind}}, щоб перемістити поточну роботу у фоновий режим",
   "dialog.server.menu.hide": "Сховати зі списку проєктів",
   "dialog.server.menu.show": "Показати у списку проєктів",
@@ -757,16 +757,9 @@ export const dict = {
   "settings.about.version": "Версія {{version}}",
   "settings.about.devVersion": "Розробка",
   "settings.about.license": "Випущено під номером MIT License",
-  "settings.about.otherContributor.one": "{{count}} інший",
-  "settings.about.otherContributor.other": "{{count}} іншого",
-  "settings.about.firstPublished": "Вперше опубліковано в Міссурі, США",
-  "settings.about.firstIllustrated": "Вперше проілюстровано в Лондоні, Англія",
-  "settings.about.website": "www.opencode.ai",
-  "settings.about.description": "OpenCode, агент кодування з відкритим кодом",
+  "settings.about.description": "Aerless Code, агент кодування з відкритим кодом",
   "settings.about.trademark": "OpenCode є зареєстрованою торговою маркою Anomaly Innovations, Inc.",
   "settings.about.typeset": "Набір на Inter та IBM Plex Mono",
-  "settings.about.tagline": "AI не може створити чудове програмне забезпечення без вас",
-  "settings.about.copyright": "© Anomaly Innovations, Inc.",
   "project.settings.title": "Редагувати проект",
   "settings.timeline.title": "Хронологія",
   "settings.timeline.detail": "Деталі часової шкали",
@@ -793,8 +786,6 @@ export const dict = {
   "settings.timeline.category.subagents": "Субагенти",
   "settings.timeline.category.notices": "Повідомлення",
   "settings.timeline.category.tools": "Інші інструменти",
-  "settings.about.writtenByNames": "Автор: {{names}}",
-  "settings.about.illustratedByNames": "Ілюстрації: {{names}}",
   "server.action.authenticate": "Автентифікуватися",
   "server.status.connecting": "Підключення через SSH…",
   "server.status.authentication": "Потрібна автентифікація",
@@ -814,8 +805,8 @@ export const dict = {
   "server.connect.address.invalid": "Введіть дійсну адресу сервера HTTP або HTTPS.",
   "server.connect.failed": "Не вдалося підключитися. Перевірте адресу сервера та пароль, потім повторіть спробу.",
   "server.connect.scan": "Сканувати QR-код",
-  "server.connect.scan.description": "Наведіть камеру на QR-код, показаний opencode pair.",
-  "server.connect.scan.invalid": "Це не код підключення OpenCode. Відскануйте код, показаний opencode pair.",
+  "server.connect.scan.description": "Наведіть камеру на QR-код, показаний aerless-code pair.",
+  "server.connect.scan.invalid": "Це не код підключення Aerless Code. Відскануйте код, показаний aerless-code pair.",
   "server.connect.camera": "Камера для сполучення",
   "server.connect.camera.starting": "Відкриваємо камеру…",
   "server.connect.mixedContent":
@@ -855,7 +846,7 @@ export const dict = {
     "Виберіть провайдера пошуку, якого агенти використовуватимуть для пошуку в інтернеті.",
   "settings.projects.search.placeholder": "Шукати проєкти",
   "project.settings.name.title": "Назва проєкту",
-  "project.settings.name.description": "Назва, що відображається для цього проєкту у всьому OpenCode",
+  "project.settings.name.description": "Назва, що відображається для цього проєкту у всьому Aerless Code",
   "project.settings.icon.description":
     "Рекомендовано: 128×128px. Клацніть або перетягніть для завантаження зображення.",
   "project.settings.color.description": "Використовується для іконки проєкту, коли не встановлено власне зображення",
@@ -863,11 +854,11 @@ export const dict = {
   "project.settings.worktree.startup.hint.base": "Використовуйте $OPENCODE_WORKTREE_BASE для базового робочого дерева.",
   "project.settings.worktree.startup.hint.new": "Використовуйте $OPENCODE_WORKTREE_PATH для нового робочого дерева.",
   "project.settings.extensions.empty.mcps.title": "Поки немає MCP",
-  "project.settings.extensions.empty.mcps.description": "MCP, доступні для OpenCode, з’являться тут",
+  "project.settings.extensions.empty.mcps.description": "MCP, доступні для Aerless Code, з’являться тут",
   "project.settings.extensions.empty.plugins.title": "Поки немає плагінів",
-  "project.settings.extensions.empty.plugins.description": "Плагіни, доступні для OpenCode, з’являться тут",
+  "project.settings.extensions.empty.plugins.description": "Плагіни, доступні для Aerless Code, з’являться тут",
   "project.settings.extensions.empty.skills.title": "Поки немає навичок",
-  "project.settings.extensions.empty.skills.description": "Навички, доступні для OpenCode, з’являться тут",
+  "project.settings.extensions.empty.skills.description": "Навички, доступні для Aerless Code, з’являться тут",
   "project.settings.extensions.lsp.configured": "Налаштовані мовні сервери",
   "project.settings.extensions.lsp.status.enabled": "Увімкнено в конфігурації",
   "project.settings.extensions.lsp.status.disabled": "Вимкнено в конфігурації",
@@ -887,7 +878,7 @@ export const dict = {
   "settings.timeline.collapsed.label": "{{activity}} згорнуте",
   "session.new.workspace.search.empty": "Немає підходящих робочих дерев",
   "settings.workspaces.description": "Перегляньте робочі дерева та керуйте використанням диска",
-  "settings.workspaces.empty.description": "Робочі дерева, створені в OpenCode, з’являться тут",
+  "settings.workspaces.empty.description": "Робочі дерева, створені в Aerless Code, з’являться тут",
   "settings.workspaces.sessions.filtered.one": "{{count}} сесія",
   "settings.workspaces.sessions.filtered.other": "{{count}} сесії",
   "settings.workspaces.deleteAll.confirm.one": "Це назавжди видалить {{count}} вибране робоче дерево.",
@@ -923,22 +914,22 @@ export const dict = {
   "voice.captions.hide": "Приховати субтитри",
   "voice.connecting": "Підключення…",
   "voice.you": "Ви:",
-  "voice.assistant": "OpenCode:",
+  "voice.assistant": "Aerless Code:",
   "voice.failure.unavailable": "Для голосових викликів на цьому сервері потрібен ключ API OpenAI.",
   "voice.failure.microphone": "Для виклику потрібен доступ до мікрофона.",
   "voice.failure.dropped": "Виклик перервано.",
   "voice.failure.connection": "Не вдалося встановити виклик.",
-  "desktop.microphoneUsage": "OpenCode використовує ваш мікрофон для голосових викликів.",
+  "desktop.microphoneUsage": "Aerless Code використовує ваш мікрофон для голосових викликів.",
   "desktop.documentsFolderUsage":
-    "OpenCode використовує файли з папки «Документи» для проєктів, які ви відкриваєте, і команд, які ви там запускаєте.",
+    "Aerless Code використовує файли з папки «Документи» для проєктів, які ви відкриваєте, і команд, які ви там запускаєте.",
   "desktop.desktopFolderUsage":
-    "OpenCode використовує файли на робочому столі для проєктів, які ви відкриваєте, і команд, які ви там запускаєте.",
+    "Aerless Code використовує файли на робочому столі для проєктів, які ви відкриваєте, і команд, які ви там запускаєте.",
   "desktop.downloadsFolderUsage":
-    "OpenCode використовує файли з папки «Завантаження» для проєктів, які ви відкриваєте, і команд, які ви там запускаєте.",
+    "Aerless Code використовує файли з папки «Завантаження» для проєктів, які ви відкриваєте, і команд, які ви там запускаєте.",
   "desktop.networkVolumesUsage":
-    "OpenCode використовує файли на мережевих томах для проєктів, які ви відкриваєте, і команд, які ви там запускаєте.",
+    "Aerless Code використовує файли на мережевих томах для проєктів, які ви відкриваєте, і команд, які ви там запускаєте.",
   "desktop.removableVolumesUsage":
-    "OpenCode використовує файли на знімних томах для проєктів, які ви відкриваєте, і команд, які ви там запускаєте.",
+    "Aerless Code використовує файли на знімних томах для проєктів, які ви відкриваєте, і команд, які ви там запускаєте.",
   "desktop.contextMenu.spellcheck": "Перевірка правопису",
   "desktop.contextMenu.spellcheckLanguages": "Мови перевірки правопису",
   "session.location.unavailable": "Розташування сесії недоступне",
@@ -980,7 +971,7 @@ export const dict = {
   "palette.group.settings": "Налаштування",
   "palette.session.location": "{{project}} · {{server}}",
   "dialog.provider.title": "Інтеграції",
-  "dialog.provider.description": "Підключіть сервіси, щоб OpenCode міг їх використовувати.",
+  "dialog.provider.description": "Підключіть сервіси, щоб Aerless Code міг їх використовувати.",
   "dialog.provider.group.services": "Сервіси",
   "dialog.provider.environmentOnly": "Лише середовище",
   "dialog.provider.signInRequired": "Потрібно увійти →",
@@ -1038,7 +1029,7 @@ export const dict = {
   "provider.connect.models.available": "Доступні моделі",
   "provider.connect.chatgptWelcome.title": "ChatGPT підключено",
   "provider.connect.chatgptWelcome.description":
-    "Відповідні запити в OpenCode можуть використовувати ваш план ChatGPT.",
+    "Відповідні запити в Aerless Code можуть використовувати ваш план ChatGPT.",
   "provider.connect.chatgptWelcome.usage": "Керуйте використанням у налаштуваннях ChatGPT",
   "provider.connect.chatgptWelcome.confirm": "Зрозуміло",
   "provider.connect.models.list": "Моделі, доступні від {{provider}}",
@@ -1048,7 +1039,7 @@ export const dict = {
   "provider.connect.chatgptUsageLimit.close": "Закрити",
   "provider.connect.console.refreshFailed":
     "Обліковий запис підключено, але не вдалося завантажити ваші моделі. Спробуйте оновити їх ще раз.",
-  "provider.connect.console.connected": "OpenCode підключено",
+  "provider.connect.console.connected": "Aerless Code підключено",
   "provider.connect.console.noModels":
     "Обліковий запис підключено, але в цьому робочому просторі Console немає доступних моделей. Перевірте його налаштування в Console, потім оновіть.",
   "provider.connect.console.modelsLoading": "Ваші моделі ще завантажуються. Оновіть, щоб перевірити знову.",
@@ -1056,7 +1047,7 @@ export const dict = {
   "provider.connect.console.openingBrowser": "Відкриття браузера",
   "provider.connect.remote.label": "на {{server}}",
   "provider.connect.remote.description":
-    "Ваші облікові дані OpenCode зберігатимуться на цьому сервері. Моделі будуть доступні через цей сервер.",
+    "Ваші облікові дані Aerless Code зберігатимуться на цьому сервері. Моделі будуть доступні через цей сервер.",
   "provider.connect.claudeAgent.description":
     "Використовуйте свій план Claude або інший вхід у Claude Code. Спершу встановіть Claude Code і увійдіть.",
   "provider.connect.claudeAgent.install": "Встановити Claude Code",
@@ -1090,7 +1081,7 @@ export const dict = {
     "Не вдалося відкрити браузер. Виберіть «Відкрити браузер», щоб спробувати ще раз.",
   "provider.connect.oauth.paste.toggle": "Входите з іншого пристрою?",
   "provider.connect.oauth.paste.description":
-    "Якщо браузер не може зв’язатися з машиною, на якій працює OpenCode, вставте URL, на який вас перенаправило.",
+    "Якщо браузер не може зв’язатися з машиною, на якій працює Aerless Code, вставте URL, на який вас перенаправило.",
   "provider.connect.oauth.expired": "Термін дії авторизації минув",
   "model.details.input.text": "Текст",
   "model.details.input.image": "Зображення",
@@ -1127,7 +1118,7 @@ export const dict = {
   "dialog.mcp.signIn": "Увійти",
   "dialog.mcp.signIn.open": "Увійти в {{name}}",
   "dialog.mcp.signIn.description":
-    "Відкриється браузер, щоб ви могли увійти в {{name}}. Якщо він не може зв’язатися з машиною, на якій працює OpenCode, вставте нижче URL, на який вас перенаправило.",
+    "Відкриється браузер, щоб ви могли увійти в {{name}}. Якщо він не може зв’язатися з машиною, на якій працює Aerless Code, вставте нижче URL, на який вас перенаправило.",
   "dialog.mcp.signIn.syncFailed": "Вхід виконано, але не вдалося оновити {{name}}: {{error}}",
   "dialog.mcp.error.details":
     "Сервер MCP: {{name}}\nСтатус: помилка\nКонфігурація: mcp.servers.{{name}}\nПомилка: {{error}}",
@@ -1155,21 +1146,21 @@ export const dict = {
   "server.connect.link": "Посилання для сполучення",
   "server.connect.link.placeholder": "http://192.168.1.2:4096/auth/connect/…",
   "server.connect.link.invalid":
-    "Вставте повне посилання для сполучення з opencode pair або з «Налаштування → Сполучення» на комп’ютері сервера.",
+    "Вставте повне посилання для сполучення з aerless-code pair або з «Налаштування → Сполучення» на комп’ютері сервера.",
   "server.connect.password.prompt": "Немає посилання для сполучення?",
   "server.connect.password.use": "Використати пароль",
-  "server.connect.password.hint": "Щоб побачити його, виконайте opencode service get password на комп’ютері сервера.",
+  "server.connect.password.hint": "Щоб побачити його, виконайте aerless-code service get password на комп’ютері сервера.",
   "server.connect.link.prompt": "Маєте посилання для сполучення?",
   "server.connect.link.use": "Використати посилання для сполучення",
   "server.connect.pair.link":
     "Виконайте цю команду на комп’ютері сервера, щоб отримати посилання для сполучення та QR-код.",
   "server.connect.scan.failed": "Цей браузер не зміг прочитати QR-код. Введіть дані підключення вручну.",
   "server.connect.link.expired":
-    "Термін дії цього посилання для сполучення минув або його вже використано. Виконайте opencode pair, щоб отримати нове.",
+    "Термін дії цього посилання для сполучення минув або його вже використано. Виконайте aerless-code pair, щоб отримати нове.",
   "server.connect.link.unreachable":
     "Не вдалося зв’язатися з {{url}}. Переконайтеся, що цей пристрій має доступ до сервера, і спробуйте ще раз.",
   "server.connect.link.legacy":
-    "Цей код сполучення зі старішої версії OpenCode. Оновіть OpenCode на сервері, потім знову виконайте opencode pair.",
+    "Цей код сполучення зі старішої версії Aerless Code. Оновіть Aerless Code на сервері, потім знову виконайте aerless-code pair.",
   "server.connect.camera.native":
     "Ця сторінка не може використовувати камеру через HTTP. Вставте посилання для сполучення вище.",
   "dialog.server.signedOut":
@@ -1191,7 +1182,7 @@ export const dict = {
   "home.sessions.load.timeout": "Сервер не відповідав занадто довго",
   "tips.browse.title": "Керуйте своїм браузером",
   "tips.browse.description":
-    "Дозвольте OpenCode працювати у вашому браузері з вашими вкладками, входами та розширеннями.",
+    "Дозвольте Aerless Code працювати у вашому браузері з вашими вкладками, входами та розширеннями.",
   "tips.browse.install": "Встановити",
   "tips.hex.title": "Використовуйте голос",
   "tips.hex.description":
@@ -1400,7 +1391,7 @@ export const dict = {
     'Перемикачі вимикають лише інтерфейс плагіна в настільному застосунку. Щоб вимкнути його серверну частину, додайте "-<id>" до plugins у глобальному opencode.json, а щоб вимкнути частину TUI — додайте "-" та ID його TUI-плагіна до plugins у cli.json.',
   "settings.about.copyVersionFailed": "Не вдалося скопіювати версію",
   "settings.about.notices.title": "Повідомлення третіх сторін",
-  "settings.about.notices.description": "OpenCode містить таке програмне забезпечення з відкритим кодом.",
+  "settings.about.notices.description": "Aerless Code містить таке програмне забезпечення з відкритим кодом.",
   "settings.about.notices.license": "Текст ліцензії",
   "settings.about.notices.fonts.title": "Шрифти в попередньому перегляді Office",
   "settings.about.notices.fonts.description":
