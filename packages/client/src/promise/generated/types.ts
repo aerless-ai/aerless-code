@@ -13,6 +13,8 @@ export type PairingCode = { code: string; expires_in: number }
 
 export type PairingSession = { token: string }
 
+export type ImageModel = { id: string; name: string; price: number | null; edits: boolean; default: boolean }
+
 export type AbsolutePath = string
 
 export type ProjectID = string
@@ -3101,14 +3103,6 @@ export type UnauthorizedError = { readonly _tag: "UnauthorizedError"; readonly m
 export const isUnauthorizedError = (value: unknown): value is UnauthorizedError =>
   typeof value === "object" && value !== null && "_tag" in value && value["_tag"] === "UnauthorizedError"
 
-export type LocationNotFoundError = {
-  readonly _tag: "LocationNotFoundError"
-  readonly location: { readonly directory: string }
-  readonly message: string
-}
-export const isLocationNotFoundError = (value: unknown): value is LocationNotFoundError =>
-  typeof value === "object" && value !== null && "_tag" in value && value["_tag"] === "LocationNotFoundError"
-
 export type ServiceUnavailableError = {
   readonly _tag: "ServiceUnavailableError"
   readonly message: string
@@ -3116,6 +3110,14 @@ export type ServiceUnavailableError = {
 }
 export const isServiceUnavailableError = (value: unknown): value is ServiceUnavailableError =>
   typeof value === "object" && value !== null && "_tag" in value && value["_tag"] === "ServiceUnavailableError"
+
+export type LocationNotFoundError = {
+  readonly _tag: "LocationNotFoundError"
+  readonly location: { readonly directory: string }
+  readonly message: string
+}
+export const isLocationNotFoundError = (value: unknown): value is LocationNotFoundError =>
+  typeof value === "object" && value !== null && "_tag" in value && value["_tag"] === "LocationNotFoundError"
 
 export type AgentNotFoundError = {
   readonly _tag: "AgentNotFoundError"
@@ -3435,6 +3437,12 @@ export type ServerPairOutput = PairingCode
 export type ServerConnectInput = { readonly code: string }
 
 export type ServerConnectOutput = PairingSession
+
+export type ServerImageModelsListOutput = Array<ImageModel>
+
+export type ServerImageModelsUseInput = { readonly id: string }
+
+export type ServerImageModelsUseOutput = void
 
 export type LocationGetInput = { readonly location?: { readonly directory?: string | undefined } | undefined }
 

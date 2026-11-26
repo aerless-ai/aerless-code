@@ -1,6 +1,6 @@
 import { Schema } from "effect"
-import { HttpApiEndpoint, HttpApiGroup, OpenApi } from "effect/http-api"
-import { UnauthorizedError } from "../errors.js"
+import { HttpApiEndpoint, HttpApiGroup, HttpApiSchema, OpenApi } from "effect/http-api"
+import { ServiceUnavailableError, UnauthorizedError } from "../errors.js"
 
 export const ServerInfo = Schema.Struct({
   version: Schema.String,
@@ -31,6 +31,16 @@ export const PairingSession = Schema.Struct({
   token: Schema.String,
 }).annotate({ identifier: "PairingSession" })
 export type PairingSession = typeof PairingSession.Type
+
+// One picture model from `aerless models --json`; price is null when the provider sets it.
+export const ImageModel = Schema.Struct({
+  id: Schema.String,
+  name: Schema.String,
+  price: Schema.NullOr(Schema.Number),
+  edits: Schema.Boolean,
+  default: Schema.Boolean,
+}).annotate({ identifier: "ImageModel" })
+export type ImageModel = typeof ImageModel.Type
 
 export const PAIRING_CONNECT_PATH = "/auth/connect/:code"
 
@@ -74,6 +84,31 @@ export const ServerGroup = HttpApiGroup.make("server.server")
         summary: "Redeem pairing code",
         description:
           "Redeem a pairing code. Browsers receive a session cookie and a redirect to the web app; requests that accept JSON receive a session token to use as the password.",
+      }),
+    ),
+  )
+  .add(
+    HttpApiEndpoint.get("server.imageModels", "/api/image-models", {
+      success: Schema.Array(ImageModel),
+      error: ServiceUnavailableError,
+    }).annotateMerge(
+      OpenApi.annotations({
+        identifier: "server.imageModels.list",
+        summary: "List picture models",
+        description: "The Aerless picture models (`aerless models --json`), the default one marked. Experimental.",
+      }),
+    ),
+  )
+  .add(
+    HttpApiEndpoint.post("server.imageModelUse", "/api/image-models", {
+      payload: Schema.Struct({ id: Schema.String }),
+      success: HttpApiSchema.NoContent,
+      error: ServiceUnavailableError,
+    }).annotateMerge(
+      OpenApi.annotations({
+        identifier: "server.imageModels.use",
+        summary: "Set default picture model",
+        description: "Save a picture model as the default (`aerless models --use <id>`). Experimental.",
       }),
     ),
   )

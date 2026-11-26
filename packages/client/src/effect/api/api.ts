@@ -64,10 +64,29 @@ export type ServerConnectInput = { readonly code: string }
 export type ServerConnectOutput = { readonly token: string }
 export type ServerConnectOperation<E = never> = (input: ServerConnectInput) => Effect.Effect<ServerConnectOutput, E>
 
+export type ServerImageModelsListOutput = ReadonlyArray<{
+  readonly id: string
+  readonly name: string
+  readonly price: number | null
+  readonly edits: boolean
+  readonly default: boolean
+}>
+export type ServerImageModelsListOperation<E = never> = () => Effect.Effect<ServerImageModelsListOutput, E>
+
+export type ServerImageModelsUseInput = { readonly id: string }
+export type ServerImageModelsUseOutput = void
+export type ServerImageModelsUseOperation<E = never> = (
+  input: ServerImageModelsUseInput,
+) => Effect.Effect<ServerImageModelsUseOutput, E>
+
 export interface ServerApi<E = never> {
   readonly info: ServerInfoOperation<E>
   readonly pair: ServerPairOperation<E>
   readonly connect: ServerConnectOperation<E>
+  readonly imageModels: {
+    readonly list: ServerImageModelsListOperation<E>
+    readonly use: ServerImageModelsUseOperation<E>
+  }
 }
 
 export type LocationGetInput = { readonly location?: { readonly directory?: string | undefined } | undefined }

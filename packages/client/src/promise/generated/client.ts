@@ -3,6 +3,9 @@ import type {
   ServerPairOutput,
   ServerConnectInput,
   ServerConnectOutput,
+  ServerImageModelsListOutput,
+  ServerImageModelsUseInput,
+  ServerImageModelsUseOutput,
   LocationGetInput,
   LocationGetOutput,
   LocationReloadOutput,
@@ -510,6 +513,31 @@ export function make(options: ClientOptions) {
           },
           requestOptions,
         ),
+      imageModels: {
+        list: (requestOptions?: RequestOptions) =>
+          request<ServerImageModelsListOutput>(
+            {
+              method: "GET",
+              path: `/api/image-models`,
+              successStatus: 200,
+              declaredStatuses: [400, 401, 503],
+              empty: false,
+            },
+            requestOptions,
+          ),
+        use: (input: ServerImageModelsUseInput, requestOptions?: RequestOptions) =>
+          request<ServerImageModelsUseOutput>(
+            {
+              method: "POST",
+              path: `/api/image-models`,
+              body: { id: input["id"] },
+              successStatus: 204,
+              declaredStatuses: [400, 401, 503],
+              empty: true,
+            },
+            requestOptions,
+          ),
+      },
     },
     location: {
       get: (input?: LocationGetInput, requestOptions?: RequestOptions) =>
