@@ -12,6 +12,9 @@ import type {
   ServerImageModelsListOutput,
   ServerImageModelsUseInput,
   ServerImageModelsUseOutput,
+  ServerImageAspectGetOutput,
+  ServerImageAspectUseInput,
+  ServerImageAspectUseOutput,
   ServerStudioOpenOutput,
   LocationGetInput,
   LocationGetOutput,
@@ -383,6 +386,14 @@ const EndpointServerImageModelsUse = (raw: RawClient["server.server"]) => (input
     raw["server.imageModelUse"]({ payload: { id: input["id"] } }).pipe(Effect.mapError(mapClientError)),
   )
 
+const EndpointServerImageAspectGet = (raw: RawClient["server.server"]) => () =>
+  preserveEffect<ServerImageAspectGetOutput>()(raw["server.imageAspect"]({}).pipe(Effect.mapError(mapClientError)))
+
+const EndpointServerImageAspectUse = (raw: RawClient["server.server"]) => (input: ServerImageAspectUseInput) =>
+  preserveEffect<ServerImageAspectUseOutput>()(
+    raw["server.imageAspectUse"]({ payload: { id: input["id"] } }).pipe(Effect.mapError(mapClientError)),
+  )
+
 const EndpointServerStudioOpen = (raw: RawClient["server.server"]) => () =>
   preserveEffect<ServerStudioOpenOutput>()(raw["server.studio"]({}).pipe(Effect.mapError(mapClientError)))
 
@@ -391,6 +402,7 @@ const adaptGroupServer = (raw: RawClient["server.server"]) => ({
   pair: EndpointServerPair(raw),
   connect: EndpointServerConnect(raw),
   imageModels: { list: EndpointServerImageModelsList(raw), use: EndpointServerImageModelsUse(raw) },
+  imageAspect: { get: EndpointServerImageAspectGet(raw), use: EndpointServerImageAspectUse(raw) },
   studio: { open: EndpointServerStudioOpen(raw) },
 })
 

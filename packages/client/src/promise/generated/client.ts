@@ -6,6 +6,9 @@ import type {
   ServerImageModelsListOutput,
   ServerImageModelsUseInput,
   ServerImageModelsUseOutput,
+  ServerImageAspectGetOutput,
+  ServerImageAspectUseInput,
+  ServerImageAspectUseOutput,
   ServerStudioOpenOutput,
   LocationGetInput,
   LocationGetOutput,
@@ -531,6 +534,31 @@ export function make(options: ClientOptions) {
             {
               method: "POST",
               path: `/api/image-models`,
+              body: { id: input["id"] },
+              successStatus: 204,
+              declaredStatuses: [400, 401, 503],
+              empty: true,
+            },
+            requestOptions,
+          ),
+      },
+      imageAspect: {
+        get: (requestOptions?: RequestOptions) =>
+          request<ServerImageAspectGetOutput>(
+            {
+              method: "GET",
+              path: `/api/image-aspect`,
+              successStatus: 200,
+              declaredStatuses: [400, 401, 503],
+              empty: false,
+            },
+            requestOptions,
+          ),
+        use: (input: ServerImageAspectUseInput, requestOptions?: RequestOptions) =>
+          request<ServerImageAspectUseOutput>(
+            {
+              method: "POST",
+              path: `/api/image-aspect`,
               body: { id: input["id"] },
               successStatus: 204,
               declaredStatuses: [400, 401, 503],

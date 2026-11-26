@@ -44,6 +44,21 @@ export const ServerHandler = HttpApiBuilder.group(Api, "server.server", (handler
           Effect.mapError((error) => new ServiceUnavailableError({ message: error.message, service: "aerless" })),
         ),
       )
+      .handle("server.imageAspect", () =>
+        aerless(["models", "--aspect"]).pipe(
+          Effect.map((out) => ({ id: out.trim() })),
+          Effect.mapError((error) => new ServiceUnavailableError({ message: error.message, service: "aerless" })),
+        ),
+      )
+      .handle("server.imageAspectUse", (ctx) =>
+        (ASPECTS.includes(ctx.payload.id)
+          ? aerless(["models", "--aspect", ctx.payload.id])
+          : Effect.fail(new Error(`Unknown picture shape: ${ctx.payload.id}`))
+        ).pipe(
+          Effect.asVoid,
+          Effect.mapError((error) => new ServiceUnavailableError({ message: error.message, service: "aerless" })),
+        ),
+      )
       .handle("server.studio", () =>
         aerless(["studio", "--from", "aerless-code"]).pipe(
           Effect.flatMap((out) => {
@@ -94,6 +109,8 @@ function aerlessBin() {
     undefined
   )
 }
+
+const ASPECTS = ["auto", "square", "wide", "tall", "4:3", "3:4"]
 
 function aerless(args: string[]) {
   return Effect.tryPromise({

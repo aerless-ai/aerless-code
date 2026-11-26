@@ -79,6 +79,15 @@ export type ServerImageModelsUseOperation<E = never> = (
   input: ServerImageModelsUseInput,
 ) => Effect.Effect<ServerImageModelsUseOutput, E>
 
+export type ServerImageAspectGetOutput = { readonly id: string }
+export type ServerImageAspectGetOperation<E = never> = () => Effect.Effect<ServerImageAspectGetOutput, E>
+
+export type ServerImageAspectUseInput = { readonly id: string }
+export type ServerImageAspectUseOutput = void
+export type ServerImageAspectUseOperation<E = never> = (
+  input: ServerImageAspectUseInput,
+) => Effect.Effect<ServerImageAspectUseOutput, E>
+
 export type ServerStudioOpenOutput = { readonly url: string }
 export type ServerStudioOpenOperation<E = never> = () => Effect.Effect<ServerStudioOpenOutput, E>
 
@@ -89,6 +98,10 @@ export interface ServerApi<E = never> {
   readonly imageModels: {
     readonly list: ServerImageModelsListOperation<E>
     readonly use: ServerImageModelsUseOperation<E>
+  }
+  readonly imageAspect: {
+    readonly get: ServerImageAspectGetOperation<E>
+    readonly use: ServerImageAspectUseOperation<E>
   }
   readonly studio: { readonly open: ServerStudioOpenOperation<E> }
 }

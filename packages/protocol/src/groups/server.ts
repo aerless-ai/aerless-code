@@ -113,6 +113,31 @@ export const ServerGroup = HttpApiGroup.make("server.server")
     ),
   )
   .add(
+    HttpApiEndpoint.get("server.imageAspect", "/api/image-aspect", {
+      success: Schema.Struct({ id: Schema.String }),
+      error: ServiceUnavailableError,
+    }).annotateMerge(
+      OpenApi.annotations({
+        identifier: "server.imageAspect.get",
+        summary: "Get picture shape",
+        description: "The saved picture shape id (`aerless models --aspect`). Experimental.",
+      }),
+    ),
+  )
+  .add(
+    HttpApiEndpoint.post("server.imageAspectUse", "/api/image-aspect", {
+      payload: Schema.Struct({ id: Schema.String }),
+      success: HttpApiSchema.NoContent,
+      error: ServiceUnavailableError,
+    }).annotateMerge(
+      OpenApi.annotations({
+        identifier: "server.imageAspect.use",
+        summary: "Set picture shape",
+        description: "Save the picture shape (`aerless models --aspect <id>`). Experimental.",
+      }),
+    ),
+  )
+  .add(
     HttpApiEndpoint.post("server.studio", "/api/studio", {
       success: Schema.Struct({ url: Schema.String }),
       error: ServiceUnavailableError,
