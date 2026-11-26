@@ -18,7 +18,7 @@ const content = await format(
 
 if (process.argv.includes("--check")) {
   if ((await Bun.file(target).text()) !== content) {
-    console.error("Generated CLI config schema is stale. Run `bun run generate` from services/site.")
+    console.error("Generated CLI config schema is stale. Run this script without --check to regenerate it.")
     process.exit(1)
   }
   process.exit(0)
