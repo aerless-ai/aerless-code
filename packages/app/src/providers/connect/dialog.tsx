@@ -16,6 +16,7 @@ import { useParams } from "@solidjs/router"
 import { useLanguage } from "@/runtime/i18n/language"
 import { usePlatform } from "@/runtime/platform/platform"
 import { useServerSDK } from "@/runtime/server/client"
+import { popularProviders as POPULAR } from "@/providers/catalog/order"
 import { consoleProviderName } from "@/providers/catalog/console"
 import { useIntegrations } from "@/providers/catalog/integrations"
 import { ProviderModelGroup, ProviderModelIcon } from "@/providers/models/provider-group"
@@ -291,7 +292,7 @@ const METHOD_ICON = {
 
 // The TUI's integration groups, with connected integrations pulled up into their own group first. Unlike the TUI,
 // Go comes before Console here.
-const POPULAR = ["opencode-go", "opencode", "openai", "github-copilot", "anthropic", "google"]
+
 
 const providerNote = (id: string) => {
   if (id === "opencode-go") return "dialog.provider.opencodeGo.tagline" as const
