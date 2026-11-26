@@ -8,18 +8,23 @@ import { useTheme } from "../context/theme"
 import { DialogHeader, DialogLayout, useDialog } from "../ui/dialog"
 import { Link } from "../ui/link"
 import { errorMessage } from "../util/error"
+import { run } from "../util/aerless"
+import { Keymap } from "../context/keymap"
+import { useToast } from "../ui/toast"
 
 export function DialogPair(props: { open?: boolean }) {
   const client = useClient()
   const dialog = useDialog()
   const dimensions = useTerminalDimensions()
   const theme = useTheme().surface("dialog")
+  const toast = useToast()
+  const [enabling, setEnabling] = createSignal(false)
   const [loadError, setLoadError] = createSignal<unknown>()
 
   dialog.setSize("large")
   dialog.setCentered(true)
 
-  const [info] = createResource(() =>
+  const [info, { refetch }] = createResource(() =>
     Promise.all([client.api.server.info(), client.api.server.pair()])
       .then(([server, pairing]) => {
         const link = (url: string) => new URL(`/auth/connect/${pairing.code}`, url).href
@@ -28,10 +33,12 @@ export function DialogPair(props: { open?: boolean }) {
         const localhost = local ? link(local.href) : undefined
         if (props.open && localhost) openUrl(localhost).catch(() => {})
         return {
-          links: server.urls.map(link),
+          // The QR carries the LAN IPv4 address: a loopback address is useless to a phone.
+          lan: server.urls.map((url) => new URL(url)).find((url) => /^\d+\.\d+\.\d+\.\d+$/.test(url.hostname) && !url.hostname.startsWith("127.")),
+          links: server.urls.map((url) => new URL(url)).filter((url) => !url.hostname.startsWith("127.") && url.hostname !== "[::1]").map((url) => link(url.href)),
           localhost,
+          code: pairing.code,
           minutes: Math.round(pairing.expires_in / 60),
-          loopback: server.urls.some((url) => ["localhost", "127.0.0.1", "[::1]"].includes(new URL(url).hostname)),
         }
       })
       .catch((error) => {
@@ -39,6 +46,27 @@ export function DialogPair(props: { open?: boolean }) {
         return undefined
       }),
   )
+  // Same as `aerless-code service set hostname 0.0.0.0`, which stops the service; restart it and re-read the addresses.
+  Keymap.createLayer(() => ({
+    mode: "modal",
+    commands: [
+      {
+        bind: "n",
+        title: "Turn on network access",
+        group: "Dialog",
+        run: () => {
+          const value = info()
+          if (!value || value.lan || enabling()) return
+          setEnabling(true)
+          void run("aerless-code", ["service", "set", "hostname", "0.0.0.0"])
+            .then(() => run("aerless-code", ["service", "restart"]))
+            .then(() => refetch())
+            .catch(toast.error)
+            .finally(() => setEnabling(false))
+        },
+      },
+    ],
+  }))
   const horizontal = createMemo(() => dimensions().width >= 96)
   const content = () => {
     const value = info()
@@ -59,20 +87,26 @@ export function DialogPair(props: { open?: boolean }) {
               </box>
             )}
           </Show>
-          <box>
-            <text fg={theme.text.muted}>Links</text>
-            <For each={value.links}>
-              {(url) => (
-                <Link href={url} fg={theme.text.base}>
-                  {url}
-                </Link>
-              )}
-            </For>
-          </box>
-          <Show when={value.loopback}>
-            <text fg={theme.text.muted} wrapMode="word">
-              Run `aerless-code service set hostname 0.0.0.0` to access the service remotely.
-            </text>
+          <Show
+            when={value.lan}
+            fallback={
+              <text fg={theme.text.muted} wrapMode="word">
+                {enabling()
+                  ? "Turning on network access…"
+                  : "The service only listens on this computer, so a phone cannot reach it. Press n to turn on network access (aerless-code service set hostname 0.0.0.0)."}
+              </text>
+            }
+          >
+            <box>
+              <text fg={theme.text.muted}>Network</text>
+              <For each={value.links}>
+                {(url) => (
+                  <Link href={url} fg={theme.text.base}>
+                    {url}
+                  </Link>
+                )}
+              </For>
+            </box>
           </Show>
         </box>
         <box
@@ -81,8 +115,12 @@ export function DialogPair(props: { open?: boolean }) {
           flexShrink={0}
           alignItems={horizontal() ? "flex-end" : "center"}
         >
-          <Show when={value.links[0]}>
-            {(url) => <text fg={theme.text.base}>{renderUnicodeCompact(url(), { border: 1 })}</text>}
+          <Show when={value.lan}>
+            {(url) => (
+              <text fg={theme.text.base}>
+                {renderUnicodeCompact(new URL(`/auth/connect/${value.code}`, url()).href, { border: 1 })}
+              </text>
+            )}
           </Show>
         </box>
       </box>
