@@ -1,0 +1,63 @@
+# Builds aerless-code for all 12 platforms on GitHub's servers and uploads them to an existing (draft) release.
+# Run release.yml first to create the draft, then this with the same tag.
+name: build
+on:
+  workflow_dispatch:
+    inputs:
+      version: { description: "Version, e.g. 0.2.0", required: true }
+      tag: { description: "Release tag, e.g. v0.2.0", required: true }
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read the Bun version from packageManager
+        id: bun
+        run: echo "version=$(jq -r '.packageManager | sub("^bun@"; "")' package.json)" >> "$GITHUB_OUTPUT"
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: ${{ steps.bun.outputs.version }}
+      - run: bun install
+      - name: Build all platforms
+        working-directory: packages/cli
+        env:
+          OPENCODE_VERSION: ${{ inputs.version }}
+          OPENCODE_CHANNEL: latest
+          GH_TOKEN: ${{ github.token }}
+        run: bun run script/build.ts
+      - name: Rename to release names
+        working-directory: packages/cli/dist
+        run: |
+          mkdir -p ../release
+          missing=0
+          for target in darwin-arm64 darwin-x64 darwin-x64-baseline linux-arm64 linux-arm64-musl linux-x64 \
+            linux-x64-baseline linux-x64-baseline-musl linux-x64-musl windows-arm64 windows-x64-baseline windows-x64; do
+            ext=""
+            case "$target" in windows-*) ext=".exe" ;; esac
+            src="cli-$target/bin/aerless-code$ext"
+            if [ -f "$src" ]; then cp "$src" "../release/aerless-code-$target$ext"; else echo "missing: $src"; missing=1; fi
+          done
+          [ "$missing" = 0 ]
+          ls -la ../release
+          [ "$(ls ../release | wc -l)" = 12 ]
+      - name: Check the embedded version
+        working-directory: packages/cli/release
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          chmod +x aerless-code-*
+          out="$(./aerless-code-linux-x64 --version)"
+          echo "$out"
+          echo "$out" | grep -qF "$VERSION"
+          for file in aerless-code-*; do
+            grep -qaF "$VERSION" "$file" || { echo "version $VERSION not found in $file"; exit 1; }
+          done
+      - name: Upload to the release
+        working-directory: packages/cli/release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag }}
+        run: gh release upload "$TAG" aerless-code-* --clobber --repo "$GITHUB_REPOSITORY"
