@@ -28,6 +28,9 @@ jobs:
           OPENCODE_CHANNEL: latest
           GH_TOKEN: ${{ github.token }}
         run: bun run script/build.ts
+      # Since Bun 1.4 each x64 platform has one runtime (Nehalem/SSE4.2, AVX2 picked at run time); Bun's -baseline
+      # runtimes are aliases of it, so every *-x64-baseline file is byte-identical to its sibling and runs without AVX2.
+      # The baseline names stay for installers that ask for them.
       - name: Rename to release names
         working-directory: packages/cli/dist
         run: |
@@ -43,18 +46,15 @@ jobs:
           [ "$missing" = 0 ]
           ls -la ../release
           [ "$(ls ../release | wc -l)" = 12 ]
-      - name: Check the embedded version
+      - name: Check the version
         working-directory: packages/cli/release
         env:
           VERSION: ${{ inputs.version }}
         run: |
-          chmod +x aerless-code-*
+          chmod +x aerless-code-linux-x64
           out="$(./aerless-code-linux-x64 --version)"
           echo "$out"
-          echo "$out" | grep -qF "$VERSION"
-          for file in aerless-code-*; do
-            grep -qaF "$VERSION" "$file" || { echo "version $VERSION not found in $file"; exit 1; }
-          done
+          [ "$out" = "aerless-code v$VERSION" ] || { echo "expected aerless-code v$VERSION, got: $out"; exit 1; }
       - name: Upload to the release
         working-directory: packages/cli/release
         env:
