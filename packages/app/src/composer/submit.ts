@@ -13,6 +13,7 @@ import type {
   ComposerSubmissionHandle,
 } from "./adapter"
 import { buildPromptRequest, commentMentions, noteComment, quoteComment } from "./request"
+import { formatAttachmentReference } from "./comment-note"
 import { getDirectory, getFilename } from "@opencode/util/path"
 import { setCursorPosition } from "./editor/dom"
 import { blobDataUrl, resolveBlobUrl } from "@/runtime/persistence/drafts"
@@ -1022,7 +1023,7 @@ async function buildSubmissionRequest(session: ComposerSession, value: ComposerS
 
   const mentions = commentMentions(value.context)
 
-  return buildPromptRequest({
+  const request = buildPromptRequest({
     prompt: value.prompt,
     context: value.context,
     images,
@@ -1030,6 +1031,37 @@ async function buildSubmissionRequest(session: ComposerSession, value: ComposerS
     sessionDirectory: session.directory,
     existingMentions: mentions.length > 0 ? await existingMentions(session, mentions) : undefined,
   })
+  const saved = await savePictures(session, images)
+
+  return saved.length
+    ? { ...request, text: [request.text, ...saved.map(formatAttachmentReference)].join("\n") }
+    : request
+}
+
+// A pasted or desktop-dropped picture has no path in the workspace, and the picture tool only takes workspace paths:
+// save a copy under .aerless/uploads so "paste a photo, say what to change" works. The image still goes inline too.
+// shortcut: a path that merely starts with the session folder counts as inside; normalize separators if Windows misses.
+async function savePictures(
+  session: ComposerSession,
+  images: { mime: string; sourcePath?: string; dataUrl: string }[],
+) {
+  const write = session.file.write
+  if (!write) return []
+  const stamp = Date.now()
+  const saved = await Promise.all(
+    images.map(async (image, index) => {
+      if (image.sourcePath?.startsWith(session.directory))
+        return { name: getFilename(image.sourcePath), mime: image.mime, path: image.sourcePath }
+      const ext = (image.mime.split("/")[1] ?? "png").replace("jpeg", "jpg")
+      const written = await write({
+        location: { directory: session.directory },
+        path: `.aerless/uploads/${stamp}-${index + 1}.${ext}`,
+        payload: await (await fetch(image.dataUrl)).blob(),
+      }).catch(() => undefined)
+      return written && { name: getFilename(written.data.path), mime: image.mime, path: written.data.path }
+    }),
+  )
+  return saved.filter((item) => item !== undefined)
 }
 
 // A comment's `@word` may be plain text such as `@here`, and the server rejects a prompt that attaches a missing

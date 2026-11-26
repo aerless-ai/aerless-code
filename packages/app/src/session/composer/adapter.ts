@@ -47,7 +47,7 @@ export function createActiveComposerAdapter(input: {
       directory: location().directory,
       handoff,
       api: server.api.session,
-      file: server.api.file,
+      file: { list: server.api.file.list, write: server.api.experimental.file.write },
       data,
       current: () => data.session.get(id),
       admitted: (messageID) => data.session.input.has(id, messageID) || !!data.session.message.get(id, messageID),

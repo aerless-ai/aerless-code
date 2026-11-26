@@ -91,6 +91,8 @@ export type ComposerSession = {
     list: (
       input: Parameters<ServerSDK["api"]["file"]["list"]>[0],
     ) => Promise<{ data: readonly { path: string }[] }>
+    /** Saves pasted pictures into the workspace so the picture tool can edit them. Without it they go inline only. */
+    write?: ServerSDK["api"]["experimental"]["file"]["write"]
   }
   data: {
     location: { command: Pick<Data["location"]["command"], "list"> }
