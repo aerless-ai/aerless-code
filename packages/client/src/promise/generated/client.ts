@@ -6,6 +6,7 @@ import type {
   ServerImageModelsListOutput,
   ServerImageModelsUseInput,
   ServerImageModelsUseOutput,
+  ServerStudioOpenOutput,
   LocationGetInput,
   LocationGetOutput,
   LocationReloadOutput,
@@ -534,6 +535,19 @@ export function make(options: ClientOptions) {
               successStatus: 204,
               declaredStatuses: [400, 401, 503],
               empty: true,
+            },
+            requestOptions,
+          ),
+      },
+      studio: {
+        open: (requestOptions?: RequestOptions) =>
+          request<ServerStudioOpenOutput>(
+            {
+              method: "POST",
+              path: `/api/studio`,
+              successStatus: 200,
+              declaredStatuses: [400, 401, 503],
+              empty: false,
             },
             requestOptions,
           ),

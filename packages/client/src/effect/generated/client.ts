@@ -12,6 +12,7 @@ import type {
   ServerImageModelsListOutput,
   ServerImageModelsUseInput,
   ServerImageModelsUseOutput,
+  ServerStudioOpenOutput,
   LocationGetInput,
   LocationGetOutput,
   LocationReloadOutput,
@@ -382,11 +383,15 @@ const EndpointServerImageModelsUse = (raw: RawClient["server.server"]) => (input
     raw["server.imageModelUse"]({ payload: { id: input["id"] } }).pipe(Effect.mapError(mapClientError)),
   )
 
+const EndpointServerStudioOpen = (raw: RawClient["server.server"]) => () =>
+  preserveEffect<ServerStudioOpenOutput>()(raw["server.studio"]({}).pipe(Effect.mapError(mapClientError)))
+
 const adaptGroupServer = (raw: RawClient["server.server"]) => ({
   info: EndpointServerInfo(raw),
   pair: EndpointServerPair(raw),
   connect: EndpointServerConnect(raw),
   imageModels: { list: EndpointServerImageModelsList(raw), use: EndpointServerImageModelsUse(raw) },
+  studio: { open: EndpointServerStudioOpen(raw) },
 })
 
 const EndpointLocationGet = (raw: RawClient["server.location"]) => (input?: LocationGetInput) =>

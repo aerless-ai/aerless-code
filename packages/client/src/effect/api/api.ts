@@ -79,6 +79,9 @@ export type ServerImageModelsUseOperation<E = never> = (
   input: ServerImageModelsUseInput,
 ) => Effect.Effect<ServerImageModelsUseOutput, E>
 
+export type ServerStudioOpenOutput = { readonly url: string }
+export type ServerStudioOpenOperation<E = never> = () => Effect.Effect<ServerStudioOpenOutput, E>
+
 export interface ServerApi<E = never> {
   readonly info: ServerInfoOperation<E>
   readonly pair: ServerPairOperation<E>
@@ -87,6 +90,7 @@ export interface ServerApi<E = never> {
     readonly list: ServerImageModelsListOperation<E>
     readonly use: ServerImageModelsUseOperation<E>
   }
+  readonly studio: { readonly open: ServerStudioOpenOperation<E> }
 }
 
 export type LocationGetInput = { readonly location?: { readonly directory?: string | undefined } | undefined }

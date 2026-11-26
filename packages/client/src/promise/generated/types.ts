@@ -3444,6 +3444,8 @@ export type ServerImageModelsUseInput = { readonly id: string }
 
 export type ServerImageModelsUseOutput = void
 
+export type ServerStudioOpenOutput = { url: string }
+
 export type LocationGetInput = { readonly location?: { readonly directory?: string | undefined } | undefined }
 
 export type LocationGetOutput = LocationPublicInfo

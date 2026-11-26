@@ -44,6 +44,15 @@ export const ServerHandler = HttpApiBuilder.group(Api, "server.server", (handler
           Effect.mapError((error) => new ServiceUnavailableError({ message: error.message, service: "aerless" })),
         ),
       )
+      .handle("server.studio", () =>
+        aerless(["studio", "--from", "aerless-code"]).pipe(
+          Effect.flatMap((out) => {
+            const url = out.match(/https?:\/\/\S+/)?.[0]
+            return url ? Effect.succeed({ url: url.replace("127.0.0.1", "localhost") }) : Effect.fail(new Error("The picture studio did not print an address."))
+          }),
+          Effect.mapError((error) => new ServiceUnavailableError({ message: error.message, service: "aerless" })),
+        ),
+      )
       .handle(
         "server.connect",
         Effect.fn(function* (ctx) {

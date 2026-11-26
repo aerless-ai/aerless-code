@@ -1,4 +1,3 @@
-import { useNavigate } from "@solidjs/router"
 import { useCommand, type CommandOption } from "@/shell/commands/command"
 import { useLanguage } from "@/runtime/i18n/language"
 import { DialogSelectModel } from "@/providers/models/select-dialog"
@@ -9,8 +8,6 @@ import { useWorkspaceLocation } from "@/workspaces/location"
 import { useData } from "@/runtime/server/current"
 import { useServerSDK } from "@/runtime/server/client"
 import { formatServerError } from "@/runtime/server/errors"
-import { ServerConnection } from "@/runtime/server/registry"
-import { sessionHref } from "@/shell/routes/session"
 import { showToast } from "@/shell/notifications/toast"
 import { toaster } from "@opencode/ui/toast"
 import { createConfigReloadState, transitionConfigReload, type ConfigReloadEvent } from "@/composer/reload-machine"
@@ -31,7 +28,6 @@ export const useComposerCommands = (input: { model?: ModelSelection } = {}) => {
   const { params } = useSessionLayout()
   const data = useData()
   const sdk = useServerSDK()
-  const navigate = useNavigate()
   const model = input.model ?? local.model
   const modelCommand = withCategory(language.t("command.category.model"))
   const agentCommand = withCategory(language.t("command.category.agent"))
@@ -87,14 +83,16 @@ export const useComposerCommands = (input: { model?: ModelSelection } = {}) => {
     })
   }
 
-  // Runs the Aerless `/imgengine` command, as typing it does, in this session or a new one in this location.
+  // Starts the Aerless picture studio (`aerless studio`), no chat turn; the link opens in a new tab and stays in the toast.
   const openPictures = async () => {
-    const session = params.id ? { id: params.id } : data.session.create({ location: workspace().ref })
-    if ("request" in session) {
-      await session.request
-      navigate(sessionHref(ServerConnection.key(sdk.server), session.id))
-    }
-    await sdk.api.session.command({ sessionID: session.id, name: "imgengine", text: "" })
+    const { url } = await sdk.api.server.studio.open()
+    window.open(url, "_blank", "noopener")
+    showToast({
+      variant: "success",
+      title: language.t("command.studio.open.done"),
+      description: url,
+      actions: [{ label: language.t("command.studio.open.link"), onClick: () => void window.open(url, "_blank", "noopener") }],
+    })
   }
 
   const chooseModel = () => {

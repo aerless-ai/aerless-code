@@ -112,4 +112,16 @@ export const ServerGroup = HttpApiGroup.make("server.server")
       }),
     ),
   )
+  .add(
+    HttpApiEndpoint.post("server.studio", "/api/studio", {
+      success: Schema.Struct({ url: Schema.String }),
+      error: ServiceUnavailableError,
+    }).annotateMerge(
+      OpenApi.annotations({
+        identifier: "server.studio.open",
+        summary: "Open the picture studio",
+        description: "Run `aerless studio --from aerless-code` and return the studio URL it prints. Experimental.",
+      }),
+    ),
+  )
   .annotateMerge(OpenApi.annotations({ title: "server" }))

@@ -22,7 +22,7 @@ export function connectionURLs(value: string, requestedHostname?: string) {
   if (family === undefined) return [value]
 
   const loopback = new URL(value)
-  loopback.hostname = family === "IPv6" ? "[::1]" : "127.0.0.1"
+  loopback.hostname = "localhost"
   return [
     ...new Set([
       loopback.toString().replace(/\/$/, ""),
