@@ -15,7 +15,7 @@ import {
 } from "@opentui/core"
 import { Locale } from "../util/locale"
 import { stringWidth } from "../util/string-width"
-import { go } from "../logo"
+import { logoMark } from "../logo"
 import { monoTruncate } from "./mono"
 import type { RunSplashTheme } from "./theme"
 
@@ -176,12 +176,12 @@ function buildExit(input: SplashWriterInput, ctx: ScrollbackRenderContext): Scro
   const left = input.theme.left
   const right = input.theme.right
   const leftShadow = input.theme.leftShadow
-  const mark = input.mono ? ["[O]"] : go.right.slice(1)
+  const mark = input.mono ? ["[A]"] : logoMark.slice(1)
   const top = 1
   const body_left = (mark[0]?.length ?? 0) + 2
   const session = "Session  "
   const label = "Continue "
-  const command = `opencode mini -s ${meta.session_id}`
+  const command = `aerless-code mini -s ${meta.session_id}`
   const wide = body_left + stringWidth(label + command) <= width
   const commandHeight = wide ? 1 : Math.ceil(stringWidth(command) / width)
 

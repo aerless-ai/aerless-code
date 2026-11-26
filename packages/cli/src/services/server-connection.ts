@@ -28,9 +28,9 @@ export const resolve = Effect.fn("cli.server-connection.resolve")(function* (arg
   const serverFlag = yield* Effect.serviceOption(ServerFlag).pipe(Effect.map(Option.flatten))
   const standaloneFlag = yield* Effect.serviceOption(StandaloneFlag)
   const server = args.server ?? Option.getOrUndefined(serverFlag)
-  const standalone = args.standalone ?? Option.getOrElse(standaloneFlag, () => false)
-  if (server !== undefined && standalone)
-    return yield* Effect.fail(new Error("--server and --standalone cannot be combined"))
+  // Aerless: a private server is the default, so the background service runs only when asked for and never
+  // shares a port with an opencode on the same computer; an explicit --server wins over it.
+  const standalone = args.standalone ?? Option.getOrElse(standaloneFlag, () => true)
   if (server !== undefined) {
     const password = yield* Env.password
     const endpoint = {
@@ -49,14 +49,14 @@ export const resolve = Effect.fn("cli.server-connection.resolve")(function* (arg
     return { endpoint } satisfies Resolved
   }
   if (standalone || (yield* ServiceConfig.read()).disabled === true) {
-    return { endpoint: yield* Standalone.start(), standalone: true } satisfies Resolved
+    return { endpoint: yield* Standalone.startPrivate(), standalone: true } satisfies Resolved
   }
 
   const mismatch = args.mismatch ?? "ignore"
   const options = yield* ServiceConfig.options({ checkVersion: mismatch !== "ignore" })
   if (args.autostart === false) {
     const endpoint = yield* Service.discover({ ...options, version: undefined })
-    if (!endpoint) return { endpoint: yield* Standalone.start(), standalone: true } satisfies Resolved
+    if (!endpoint) return { endpoint: yield* Standalone.startPrivate(), standalone: true } satisfies Resolved
     return { endpoint, service: managedService(options) } satisfies Resolved
   }
   return {

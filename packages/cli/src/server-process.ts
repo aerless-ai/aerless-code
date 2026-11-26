@@ -20,13 +20,15 @@ import { RemoteTunnel } from "./services/remote-tunnel"
 import { WebUi } from "./services/web-ui"
 import { databasePath } from "./database-path"
 
-export type Mode = "default" | "service" | "stdio"
+export type Mode = "default" | "service" | "stdio" | "embedded"
 
 export type Options = {
   readonly mode: Mode
   readonly hostname?: string
   readonly port?: number
   readonly cors?: readonly string[]
+  /** embedded mode: the server runs inside the CLI process and reports its address here instead of on stdout. */
+  readonly onReady?: (url: string, password: string) => void
 }
 
 // The process effect lives until server shutdown; tracing it would parent every request to one process-lifetime trace.
@@ -114,10 +116,16 @@ const processEffect = Effect.fnUntraced(function* (options: Options) {
           database: {
             path: databasePath(global.data),
           },
+          // Aerless: the provider catalog bundled with this release (for /connect). It is not refreshed from
+          // models.opencode.ai unless AERLESS_MODELS_FETCH=1; AERLESS_MODELS_CATALOG=0 drops it.
           models: {
             url: process.env.OPENCODE_MODELS_URL,
             file: process.env.OPENCODE_MODELS_PATH,
-            fetch: !truthy(process.env.OPENCODE_DISABLE_MODELS_FETCH),
+            fetch:
+              catalog() &&
+              truthy(process.env.AERLESS_MODELS_FETCH) &&
+              !truthy(process.env.OPENCODE_DISABLE_MODELS_FETCH),
+            snapshot: catalog(),
           },
           config: {
             directory: process.env.OPENCODE_CONFIG_DIR,
@@ -185,7 +193,7 @@ const processEffect = Effect.fnUntraced(function* (options: Options) {
             return yield* Effect.fail(
               new Error(
                 `Managed service port ${port} on ${hostname} is already in use by ${owner ?? "another process"}. ` +
-                  "Configure another port with `opencode service set port <port>` and start the service again.",
+                  "Configure another port with `aerless-code service set port <port>` and start the service again.",
                 { cause: error },
               ),
             )
@@ -211,7 +219,9 @@ const processEffect = Effect.fnUntraced(function* (options: Options) {
         )
       }
       const url = HttpServer.formatAddress(server.address)
-      console.log(options.mode === "stdio" ? JSON.stringify({ url }) : `server listening on ${url}`)
+      options.onReady?.(url, password)
+      if (!options.onReady)
+        console.log(options.mode === "stdio" ? JSON.stringify({ url }) : `server listening on ${url}`)
       if (foreground && !environmentPassword) console.log(`server password ${password}`)
       return yield* options.mode === "service"
         ? server.shutdown
@@ -224,6 +234,15 @@ const processEffect = Effect.fnUntraced(function* (options: Options) {
 
 function serviceURL(hostname: string, port: number) {
   return `http://${hostname.includes(":") ? `[${hostname}]` : hostname}:${port}`
+}
+
+function catalog() {
+  // On by default so /connect offers every provider; AERLESS_MODELS_CATALOG=0 saves its memory.
+  return (
+    process.env.AERLESS_MODELS_CATALOG !== "0" ||
+    !!process.env.OPENCODE_MODELS_URL ||
+    !!process.env.OPENCODE_MODELS_PATH
+  )
 }
 
 function truthy(value?: string) {

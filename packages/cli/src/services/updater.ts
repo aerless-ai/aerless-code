@@ -49,7 +49,7 @@ const decodeManifestVersion = Schema.decodeUnknownOption(
 )
 
 const installNames: Record<Method, string> = {
-  curl: "The OpenCode installer",
+  curl: "The Aerless Code installer",
   npm: "npm",
   pnpm: "pnpm",
   bun: "Bun",
@@ -123,6 +123,17 @@ export interface Interface {
 }
 
 export class Service extends Context.Service<Service, Interface>()("@opencode/cli/Updater") {}
+
+// Aerless Code updates come from the Aerless installer, which replaces aerless and aerless-code together. opencode's
+// update service and installers would install opencode, so they stay off unless AERLESS_ALLOW_OPENCODE_UPGRADE=1.
+export const installerCommand =
+  process.platform === "win32"
+    ? "irm https://github.com/aerless-ai/aerless-code/releases/latest/download/install.ps1 | iex"
+    : "curl -fsSL https://github.com/aerless-ai/aerless-code/releases/latest/download/install.sh | sh"
+
+export function opencodeUpdates() {
+  return process.env.AERLESS_ALLOW_OPENCODE_UPGRADE === "1"
+}
 
 export function decodePolicy(text: string): Policy | undefined {
   // The CLI only projects this host-level preference instead of initializing
@@ -244,9 +255,9 @@ const make = Effect.gen(function* () {
     if (bash && (yield* fs.exists(bash).pipe(Effect.orElseSucceed(() => false)))) return bash
     return yield* Effect.fail(
       new UpgradeError({
-        title: "Git Bash is required to update OpenCode",
-        detail: "The OpenCode installer runs with Git Bash on Windows, and it was not found.",
-        retry: "Install Git for Windows or set OPENCODE_GIT_BASH_PATH, then run opencode upgrade again.",
+        title: "Git Bash is required to update Aerless Code",
+        detail: "The Aerless Code installer runs with Git Bash on Windows, and it was not found.",
+        retry: "Install Git for Windows or set OPENCODE_GIT_BASH_PATH, then run aerless-code upgrade again.",
       }),
     )
   })
@@ -329,9 +340,9 @@ const make = Effect.gen(function* () {
       catch: (cause) =>
         new UpgradeError(
           {
-            title: "Could not check for OpenCode updates",
+            title: "Could not check for Aerless Code updates",
             detail: errorDetail(cause),
-            retry: "Check your network, then run opencode upgrade again.",
+            retry: "Check your network, then run aerless-code upgrade again.",
           },
           { cause },
         ),
@@ -339,7 +350,7 @@ const make = Effect.gen(function* () {
     if (!response.ok)
       return yield* Effect.fail(
         new UpgradeError({
-          title: "Could not check for OpenCode updates",
+          title: "Could not check for Aerless Code updates",
           detail: `The update service returned HTTP ${response.status}.`,
           retry: "Try again in a few minutes.",
         }),
@@ -350,7 +361,7 @@ const make = Effect.gen(function* () {
         catch: (cause) =>
           new UpgradeError(
             {
-              title: "Could not read the OpenCode update information",
+              title: "Could not read the Aerless Code update information",
               detail: errorDetail(cause),
               retry: "Try again in a few minutes.",
             },
@@ -362,7 +373,7 @@ const make = Effect.gen(function* () {
     if (!version || !packageName)
       return yield* Effect.fail(
         new UpgradeError({
-          title: "Could not read the OpenCode update information",
+          title: "Could not read the Aerless Code update information",
           detail: "The update service returned incomplete release information.",
           retry: "Try again in a few minutes.",
         }),
@@ -375,10 +386,10 @@ const make = Effect.gen(function* () {
     const failure = (detail: string, cause?: unknown) =>
       new UpgradeError(
         {
-          title: "Could not check for OpenCode updates",
+          title: "Could not check for Aerless Code updates",
           detail,
           command: ["winget", "search", ...wingetArgs].join(" "),
-          retry: "Fix the issue above, then run opencode upgrade again.",
+          retry: "Fix the issue above, then run aerless-code upgrade again.",
         },
         cause === undefined ? undefined : { cause },
       )
@@ -407,10 +418,10 @@ const make = Effect.gen(function* () {
 
   const managedError = (owner: { name: string; command: string }, target: string) =>
     new UpgradeError({
-      title: `OpenCode is managed by ${owner.name}`,
-      detail: `This copy was installed with ${owner.name}, which keeps its own record of the installed version, so OpenCode won't update it directly.`,
+      title: `Aerless Code is managed by ${owner.name}`,
+      detail: `This copy was installed with ${owner.name}, which keeps its own record of the installed version, so Aerless Code won't update it directly.`,
       command: `${owner.command}${target}`,
-      retry: "Run the command above, then restart OpenCode.",
+      retry: "Run the command above, then restart Aerless Code.",
     })
 
   const managedMessage = (error: UpgradeError) => `${error.title}. Update it with ${error.command}`
@@ -456,10 +467,10 @@ const make = Effect.gen(function* () {
     const failure = (detail: string, cause?: unknown) =>
       new UpgradeError(
         {
-          title: input.title ?? `${installNames[input.method]} could not install OpenCode`,
+          title: input.title ?? `${installNames[input.method]} could not install Aerless Code`,
           detail,
           command: (input.displayCommand ?? input.command).join(" "),
-          retry: input.retry ?? "Fix the issue above, then run opencode upgrade again.",
+          retry: input.retry ?? "Fix the issue above, then run aerless-code upgrade again.",
         },
         cause === undefined ? undefined : { cause },
       )
@@ -541,8 +552,8 @@ const make = Effect.gen(function* () {
             method,
             command: ["curl", "-fsSL", "-o", installer, "https://opencode.ai/v2/install"],
             displayCommand: ["curl", "-fsSL", "https://opencode.ai/v2/install"],
-            title: "Could not download the OpenCode installer",
-            retry: "Check your network, then run opencode upgrade again.",
+            title: "Could not download the Aerless Code installer",
+            retry: "Check your network, then run aerless-code upgrade again.",
           })
           return yield* retaining(
             method,
@@ -550,7 +561,7 @@ const make = Effect.gen(function* () {
               method,
               command: [bash, installer, "--version", version, "--no-modify-path"],
               displayCommand: ["opencode", "upgrade", version, "--method", "curl"],
-              title: "The OpenCode installer failed",
+              title: "The Aerless Code installer failed",
             }),
           )
         }
@@ -579,9 +590,9 @@ const make = Effect.gen(function* () {
           ? cause
           : new UpgradeError(
               {
-                title: "Could not prepare the OpenCode upgrade",
+                title: "Could not prepare the Aerless Code upgrade",
                 detail: errorDetail(cause),
-                retry: "Fix the issue above, then run opencode upgrade again.",
+                retry: "Fix the issue above, then run aerless-code upgrade again.",
               },
               { cause },
             ),
@@ -597,14 +608,18 @@ const make = Effect.gen(function* () {
     if (installed !== version)
       return yield* Effect.fail(
         new UpgradeError({
-          title: `${installNames[method]} did not update this copy of OpenCode`,
+          title: `${installNames[method]} did not update this copy of Aerless Code`,
           detail: `${installNames[method]} reported success, but ${executable} is still version ${installed ?? "unknown"}.`,
-          retry: `Update the copy at ${executable} with the package manager that installed it, then run opencode upgrade again.`,
+          retry: `Update the copy at ${executable} with the package manager that installed it, then run aerless-code upgrade again.`,
         }),
       )
   })
 
   const inspect = Effect.fnUntraced(function* () {
+    if (!opencodeUpdates()) {
+      yield* Effect.logInfo("update check skipped", { reason: "aerless-installer", version: OPENCODE_VERSION })
+      return undefined
+    }
     if (OPENCODE_LOCAL || ["1", "true"].includes(process.env.OPENCODE_DISABLE_AUTOUPDATE?.toLowerCase() ?? "")) {
       yield* Effect.logInfo("update check skipped", {
         reason: OPENCODE_LOCAL ? "local-install" : "disabled",
@@ -630,7 +645,7 @@ const make = Effect.gen(function* () {
       yield* Effect.logInfo("update check done", { action: "up-to-date" })
       return undefined
     }
-    yield* Effect.logInfo("OpenCode update available", { current, latest: version, action: next })
+    yield* Effect.logInfo("Aerless Code update available", { current, latest: version, action: next })
     return { policy, version }
   })
 
@@ -643,7 +658,7 @@ const make = Effect.gen(function* () {
     const current = yield* Ref.get(installedVersion)
     yield* upgrade(detected, version)
     yield* Ref.set(installedVersion, version)
-    yield* Effect.logInfo("updated OpenCode", { from: current, to: version, method: detected })
+    yield* Effect.logInfo("updated Aerless Code", { from: current, to: version, method: detected })
     return true
   })
 
@@ -660,10 +675,12 @@ const make = Effect.gen(function* () {
   })
 
   const check = Effect.fn("cli.updater.check")(function* () {
+    if (!opencodeUpdates())
+      return { type: "unavailable" as const, message: `To update Aerless Code, run: ${installerCommand}` }
     if (OPENCODE_LOCAL)
       return {
         type: "unavailable" as const,
-        message: "This build runs from a source checkout. Use an installed OpenCode release to check for updates.",
+        message: "This build runs from a source checkout. Use an installed Aerless Code release to check for updates.",
       }
     const detected = yield* method()
     if (!detected && installedOwner) {

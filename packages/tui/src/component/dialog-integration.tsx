@@ -46,13 +46,19 @@ import {
   type FormAnswerField,
 } from "../util/form"
 
+// Aerless first (the default), then the ten most used; every other provider is in search.
 const INTEGRATION_PRIORITY: Record<string, number> = {
-  opencode: 0,
-  "opencode-go": 1,
+  aerless: 0,
+  anthropic: 1,
   openai: 2,
-  "github-copilot": 3,
-  anthropic: 4,
-  google: 5,
+  google: 3,
+  openrouter: 4,
+  "github-copilot": 5,
+  deepseek: 6,
+  xai: 7,
+  minimax: 8,
+  zai: 9,
+  venice: 10,
 }
 
 type ConnectMethod = Exclude<IntegrationInfo["methods"][number], { type: "env" }>

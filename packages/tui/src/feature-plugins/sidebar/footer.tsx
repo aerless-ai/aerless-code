@@ -54,20 +54,12 @@ export function SidebarOnboarding(props: { context: Plugin.Context; sessionID: s
               ✕
             </text>
           </box>
-          <text fg={props.context.theme.text.muted}>OpenCode includes free models so you can start immediately.</text>
           <text fg={props.context.theme.text.muted}>
-            Connect from 75+ providers to use other models, including Claude, GPT, Gemini etc
+            Ready to code on the free model. Type /imgengine for pictures.
           </text>
-          <box
-            id="sidebar.footer.getting-started.connect"
-            flexDirection="row"
-            gap={1}
-            justifyContent="space-between"
-            onMouseUp={() => props.context.keymap.dispatch("provider.connect")}
-          >
-            <text fg={props.context.theme.text.base}>Connect provider</text>
-            <text fg={props.context.theme.text.muted}>/connect</text>
-          </box>
+          <text fg={props.context.theme.text.muted}>
+            Every Aerless model, or your own Anthropic, OpenAI, OpenRouter or other key: type /connect
+          </text>
         </box>
       </box>
     </Show>

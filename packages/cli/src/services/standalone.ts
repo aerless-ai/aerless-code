@@ -58,8 +58,35 @@ const makeEndpoint = Effect.fn("cli.standalone.endpoint")(
   Effect.provide(LayerNode.compile(CrossSpawnSpawner.node)),
 )
 
+// Aerless: the private server runs inside this process; a second process loaded the whole app a second time
+// (about 100 MB idle). AERLESS_SPLIT_SERVER=1 restores the separate server process.
+const embedded = Effect.fn("cli.standalone.embedded")(function* () {
+  const { ServerProcess } = yield* Effect.promise(() => import("../server-process"))
+  const ready = yield* Deferred.make<{ url: string; password: string }, Error>()
+  // Scoped to the command: quitting interrupts the server, whose finalizers stop the shell commands it started
+  // (a dev server the assistant ran must not keep its port after Aerless Code closes).
+  yield* Effect.forkScoped(
+    ServerProcess.run({
+      mode: "embedded",
+      port: 0,
+      onReady: (url, password) => Deferred.doneUnsafe(ready, Effect.succeed({ url, password })),
+    }).pipe(Effect.ensuring(Deferred.fail(ready, new Error("Embedded server stopped before it was ready")))),
+  )
+  const server = yield* Deferred.await(ready)
+  return {
+    url: server.url,
+    auth: { type: "basic" as const, username: "opencode", password: server.password },
+    pid: process.pid,
+  }
+})
+
 export function start(options: Options = {}) {
   return makeEndpoint(options)
+}
+
+/** The private server of a CLI command or the TUI: in this process unless AERLESS_SPLIT_SERVER=1. */
+export function startPrivate() {
+  return process.env.AERLESS_SPLIT_SERVER === "1" ? makeEndpoint({}) : embedded()
 }
 
 export * as Standalone from "./standalone"

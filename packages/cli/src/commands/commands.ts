@@ -14,8 +14,8 @@ export const PrintLogs = GlobalFlag.Setting("print-logs")({
 
 export const Standalone = GlobalFlag.Setting("standalone")({
   flag: Flag.Boolean("standalone").pipe(
-    Flag.withDescription("Run with a private server instead of the background service"),
-    Flag.withDefault(false),
+    Flag.withDescription("Always on in Aerless Code (kept for compatibility)"),
+    Flag.withDefault(true),
   ),
 })
 
@@ -69,13 +69,13 @@ const LoginParams = {
   ),
 }
 
-const Root = Spec.make(typeof OPENCODE_CLI_NAME === "string" ? OPENCODE_CLI_NAME : "opencode", {
-  description: "OpenCode command line interface",
+const Root = Spec.make(typeof OPENCODE_CLI_NAME === "string" ? OPENCODE_CLI_NAME : "aerless-code", {
+  description: "Aerless Code: the coding assistant with pictures built in",
   params: {
     ...ServerParams,
     ...PermissionParams,
     directory: Argument.String("directory").pipe(
-      Argument.withDescription("Directory to start OpenCode in"),
+      Argument.withDescription("Directory to start Aerless Code in"),
       Argument.optional,
     ),
     continue: Flag.Boolean("continue").pipe(
@@ -92,7 +92,7 @@ const Root = Spec.make(typeof OPENCODE_CLI_NAME === "string" ? OPENCODE_CLI_NAME
   },
   commands: [
     Spec.make("upgrade", {
-      description: "Upgrade OpenCode to the latest or a specific version",
+      description: "Upgrade Aerless Code: run the Aerless installer again",
       aliases: ["update"],
       params: {
         target: Argument.String("target").pipe(
@@ -107,7 +107,7 @@ const Root = Spec.make(typeof OPENCODE_CLI_NAME === "string" ? OPENCODE_CLI_NAME
       },
     }),
     Spec.make("uninstall", {
-      description: "Uninstall OpenCode, keeping session data, configuration, and state",
+      description: "Uninstall Aerless Code: run aerless uninstall",
       params: {
         dryRun: Flag.Boolean("dry-run").pipe(
           Flag.withDescription("Show what would be removed without removing"),
@@ -417,7 +417,7 @@ const Root = Spec.make(typeof OPENCODE_CLI_NAME === "string" ? OPENCODE_CLI_NAME
       },
     }),
     Spec.make("run", {
-      description: "Run OpenCode with a message",
+      description: "Run Aerless Code with a message",
       globalFlags: ServerFlags,
       params: {
         message: Argument.String("message").pipe(
