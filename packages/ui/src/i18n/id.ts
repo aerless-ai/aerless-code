@@ -355,7 +355,7 @@ export const dict = {
   "ui.promptInput.history.search": "Cari riwayat prompt…",
   "ui.promptInput.history.contextOnly": "Prompt dengan konteks",
   "ui.redirectPaste.label": "URL pengalihan",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Tempel URL dari bilah alamat peramban",
   "ui.imagePreview.zoomIn": "Perbesar",
   "ui.imagePreview.zoomOut": "Perkecil",

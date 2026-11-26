@@ -357,7 +357,7 @@ export const dict: Record<Keys, string> = {
   "ui.promptInput.history.search": "Søk i prompthistorikken …",
   "ui.promptInput.history.contextOnly": "Prompt med kontekst",
   "ui.redirectPaste.label": "Omdirigerings-URL",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Lim inn URL-en fra nettleserens adresselinje",
   "ui.imagePreview.zoomIn": "Zoom inn",
   "ui.imagePreview.zoomOut": "Zoom ut",

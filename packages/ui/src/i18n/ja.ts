@@ -350,7 +350,7 @@ export const dict = {
   "ui.promptInput.history.search": "プロンプト履歴を検索…",
   "ui.promptInput.history.contextOnly": "コンテキスト付きプロンプト",
   "ui.redirectPaste.label": "リダイレクトURL",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "ブラウザーのアドレスバーのURLを貼り付けてください",
   "ui.imagePreview.zoomIn": "拡大",
   "ui.imagePreview.zoomOut": "縮小",

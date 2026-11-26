@@ -413,7 +413,7 @@ export const dict = {
   "ui.promptInput.history.search": "Поиск в истории запросов…",
   "ui.promptInput.history.contextOnly": "Запрос с контекстом",
   "ui.redirectPaste.label": "URL перенаправления",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Вставьте URL из адресной строки браузера",
   "ui.imagePreview.zoomIn": "Увеличить",
   "ui.imagePreview.zoomOut": "Уменьшить",

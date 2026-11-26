@@ -334,7 +334,7 @@ export const dict = {
   "ui.promptInput.history.search": "ප්‍රොම්ප්ට් ඉතිහාසය සොයන්න…",
   "ui.promptInput.history.contextOnly": "සන්දර්භය සහිත ප්‍රොම්ප්ට්",
   "ui.redirectPaste.label": "යළි-යොමු URL",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "බ්‍රවුසරයේ ලිපින තීරුවෙන් URL එක අලවන්න",
   "ui.imagePreview.zoomIn": "විශාලනය කරන්න",
   "ui.imagePreview.zoomOut": "කුඩා කරන්න",

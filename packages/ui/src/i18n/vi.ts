@@ -331,7 +331,7 @@ export const dict = {
   "ui.promptInput.history.search": "Tìm kiếm lịch sử lời nhắc…",
   "ui.promptInput.history.contextOnly": "Lời nhắc kèm ngữ cảnh",
   "ui.redirectPaste.label": "URL chuyển hướng",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Dán URL từ thanh địa chỉ của trình duyệt",
   "ui.imagePreview.zoomIn": "Phóng to",
   "ui.imagePreview.zoomOut": "Thu nhỏ",

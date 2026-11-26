@@ -364,7 +364,7 @@ export const dict = {
   "ui.promptInput.history.search": "Caută în istoricul prompturilor…",
   "ui.promptInput.history.contextOnly": "Prompt cu context",
   "ui.redirectPaste.label": "URL de redirecționare",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Lipește URL-ul din bara de adrese a browserului",
   "ui.imagePreview.zoomIn": "Mărește",
   "ui.imagePreview.zoomOut": "Micșorează",

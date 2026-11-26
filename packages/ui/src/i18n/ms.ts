@@ -333,7 +333,7 @@ export const dict = {
   "ui.promptInput.history.search": "Cari sejarah prompt…",
   "ui.promptInput.history.contextOnly": "Prompt dengan konteks",
   "ui.redirectPaste.label": "URL ubah hala",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Tampal URL daripada bar alamat pelayar",
   "ui.imagePreview.zoomIn": "Zum masuk",
   "ui.imagePreview.zoomOut": "Zum keluar",

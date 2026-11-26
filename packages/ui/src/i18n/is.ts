@@ -332,7 +332,7 @@ export const dict = {
   "ui.promptInput.history.search": "Leita í kvaðningasögu…",
   "ui.promptInput.history.contextOnly": "Kvaðning með samhengi",
   "ui.redirectPaste.label": "Tilvísunarslóð",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Límdu slóðina úr veffangastiku vafrans",
   "ui.imagePreview.zoomIn": "Auka aðdrátt",
   "ui.imagePreview.zoomOut": "Minnka aðdrátt",

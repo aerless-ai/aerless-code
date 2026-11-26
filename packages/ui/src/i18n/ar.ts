@@ -479,7 +479,7 @@ export const dict = {
   "ui.promptInput.history.search": "البحث في سجل الموجّهات…",
   "ui.promptInput.history.contextOnly": "موجّه مع سياق",
   "ui.redirectPaste.label": "عنوان URL لإعادة التوجيه",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "الصق عنوان URL من شريط عناوين المتصفح",
   "ui.imagePreview.zoomIn": "تكبير",
   "ui.imagePreview.zoomOut": "تصغير",

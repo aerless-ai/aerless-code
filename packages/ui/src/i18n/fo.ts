@@ -332,7 +332,7 @@ export const dict = {
   "ui.promptInput.history.search": "Leita í promptsøgu…",
   "ui.promptInput.history.contextOnly": "Prompt við samanhangi",
   "ui.redirectPaste.label": "Víðarisendingar-URL",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Set URL-in inn úr adressulinjuni í kaganum",
   "ui.imagePreview.zoomIn": "Zooma inn",
   "ui.imagePreview.zoomOut": "Zooma út",

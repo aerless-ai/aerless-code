@@ -332,7 +332,7 @@ export const dict = {
   "ui.promptInput.history.search": "Promptgeschiedenis doorzoeken…",
   "ui.promptInput.history.contextOnly": "Prompt met context",
   "ui.redirectPaste.label": "Doorstuur-URL",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Plak de URL uit de adresbalk van de browser",
   "ui.imagePreview.zoomIn": "Inzoomen",
   "ui.imagePreview.zoomOut": "Uitzoomen",

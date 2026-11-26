@@ -418,7 +418,7 @@ export const dict = {
   "ui.promptInput.history.search": "Пошук в історії запитів…",
   "ui.promptInput.history.contextOnly": "Запит із контекстом",
   "ui.redirectPaste.label": "URL перенаправлення",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Вставте URL з адресного рядка браузера",
   "ui.imagePreview.zoomIn": "Збільшити",
   "ui.imagePreview.zoomOut": "Зменшити",

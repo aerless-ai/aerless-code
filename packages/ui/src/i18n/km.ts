@@ -333,7 +333,7 @@ export const dict = {
   "ui.promptInput.history.search": "ស្វែងរកប្រវត្តិប្រអប់បញ្ចូល…",
   "ui.promptInput.history.contextOnly": "ប្រអប់បញ្ចូលជាមួយបរិបទ",
   "ui.redirectPaste.label": "URL បញ្ជូនបន្ត",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "បិទភ្ជាប់ URL ពីរបារអាសយដ្ឋានរបស់កម្មវិធីរុករក",
   "ui.imagePreview.zoomIn": "ពង្រីក",
   "ui.imagePreview.zoomOut": "បង្រួម",

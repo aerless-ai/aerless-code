@@ -352,7 +352,7 @@ export const dict = {
   "ui.promptInput.history.search": "프롬프트 기록 검색…",
   "ui.promptInput.history.contextOnly": "컨텍스트가 포함된 프롬프트",
   "ui.redirectPaste.label": "리디렉션 URL",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "브라우저 주소 표시줄의 URL을 붙여넣으세요",
   "ui.imagePreview.zoomIn": "확대",
   "ui.imagePreview.zoomOut": "축소",

@@ -337,7 +337,7 @@ export const dict = {
   "ui.promptInput.history.search": "བརྡ་སྟོན་ལོ་རྒྱུས་འཚོལ…",
   "ui.promptInput.history.contextOnly": "སྐབས་དོན་དང་གཅིག་ཁར་ བརྡ་སྟོན།",
   "ui.redirectPaste.label": "ཁ་ཕྱོགས་སྒྱུར་ URL",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "བརའུ་ཟར་གྱི་ཁ་བྱང་ཕྲ་རིང་ནང་ལས་ URL འདི་སྦྱར།",
   "ui.imagePreview.zoomIn": "ཕྱིར་རྒྱས།",
   "ui.imagePreview.zoomOut": "ནང་ན་ཟུམ།",

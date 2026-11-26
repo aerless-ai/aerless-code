@@ -339,7 +339,7 @@ export const dict = {
   "ui.promptInput.history.search": "ޕްރޮމްޕްޓް ހިސްޓްރީ ހޯދާ…",
   "ui.promptInput.history.contextOnly": "ކޮންޓެކްސްޓާއެކު ޕްރޮމްޕްޓް",
   "ui.redirectPaste.label": "ރީޑައިރެކްޓް URL",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "ބްރައުޒަރގެ އެޑްރެސް ބާރުން URL ޕޭސްޓް ކުރާށެވެ",
   "ui.imagePreview.zoomIn": "ޒޫމް އިން",
   "ui.imagePreview.zoomOut": "ޒޫމް އައުޓް",

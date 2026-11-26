@@ -338,7 +338,7 @@ export const dict = {
   "ui.promptInput.history.search": "پرامپٹ دی تاریخ لبھو…",
   "ui.promptInput.history.contextOnly": "تناظر نال پرامپٹ",
   "ui.redirectPaste.label": "ری ڈائریکٹ URL",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "براؤزر دی ایڈریس بار توں URL چپکاؤ",
   "ui.imagePreview.zoomIn": "وڈا کرو",
   "ui.imagePreview.zoomOut": "چھوٹا کرو",

@@ -330,7 +330,7 @@ export const dict = {
   "ui.promptInput.history.search": "Търсене в историята на подканите…",
   "ui.promptInput.history.contextOnly": "Подкана с контекст",
   "ui.redirectPaste.label": "URL адрес за пренасочване",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Поставете URL адреса от адресната лента на браузъра",
   "ui.imagePreview.zoomIn": "Увеличаване",
   "ui.imagePreview.zoomOut": "Намаляване",

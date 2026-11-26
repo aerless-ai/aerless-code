@@ -363,7 +363,7 @@ export const dict = {
   "ui.promptInput.history.search": "Претражи историју упита…",
   "ui.promptInput.history.contextOnly": "Упит са контекстом",
   "ui.redirectPaste.label": "URL преусмерења",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Налепите URL из адресне траке прегледача",
   "ui.imagePreview.zoomIn": "Увећај",
   "ui.imagePreview.zoomOut": "Умањи",

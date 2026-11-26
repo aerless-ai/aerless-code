@@ -331,7 +331,7 @@ export const dict = {
   "ui.promptInput.history.search": "Пребарај ја историјата на барања…",
   "ui.promptInput.history.contextOnly": "Барање со контекст",
   "ui.redirectPaste.label": "Адреса за пренасочување",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Залепете ја адресата од адресната лента на прелистувачот",
   "ui.imagePreview.zoomIn": "Зголеми",
   "ui.imagePreview.zoomOut": "Намали",

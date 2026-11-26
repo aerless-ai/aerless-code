@@ -328,7 +328,7 @@ export const dict = {
   "ui.promptInput.history.search": "የፕሮምፕት ታሪክ ፈልግ…",
   "ui.promptInput.history.contextOnly": "ፕሮምፕት ከአውድ ጋር",
   "ui.redirectPaste.label": "የማዛወሪያ URL",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "URLን ከአሳሹ የአድራሻ አሞሌ ይለጥፉ",
   "ui.imagePreview.zoomIn": "አጉላ",
   "ui.imagePreview.zoomOut": "አሳንስ",

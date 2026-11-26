@@ -330,7 +330,7 @@ export const dict = {
   "ui.promptInput.history.search": "Prompt tarixçəsində axtar…",
   "ui.promptInput.history.contextOnly": "Kontekstli prompt",
   "ui.redirectPaste.label": "Yönləndirmə URL-i",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "URL-i brauzerin ünvan sətrindən yapışdırın",
   "ui.imagePreview.zoomIn": "Böyüt",
   "ui.imagePreview.zoomOut": "Kiçilt",

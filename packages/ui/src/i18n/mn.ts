@@ -330,7 +330,7 @@ export const dict = {
   "ui.promptInput.history.search": "Промптын түүхээс хайх…",
   "ui.promptInput.history.contextOnly": "Контексттэй промпт",
   "ui.redirectPaste.label": "Дахин чиглүүлсэн URL",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Хөтчийн хаягийн мөрөөс URL-ыг буулгана уу",
   "ui.imagePreview.zoomIn": "Томруулах",
   "ui.imagePreview.zoomOut": "Жижигрүүлэх",

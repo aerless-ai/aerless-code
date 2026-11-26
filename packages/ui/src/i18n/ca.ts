@@ -346,7 +346,7 @@ export const dict = {
   "ui.promptInput.history.search": "Cerca a l'historial d'indicacions…",
   "ui.promptInput.history.contextOnly": "Indicació amb context",
   "ui.redirectPaste.label": "URL de redirecció",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Enganxeu l'URL de la barra d'adreces del navegador",
   "ui.imagePreview.zoomIn": "Amplia",
   "ui.imagePreview.zoomOut": "Redueix",

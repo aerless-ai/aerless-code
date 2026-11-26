@@ -356,7 +356,7 @@ export const dict = {
   "ui.promptInput.history.search": "İstem geçmişinde ara…",
   "ui.promptInput.history.contextOnly": "Bağlamlı istem",
   "ui.redirectPaste.label": "Yönlendirme URL'si",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Tarayıcının adres çubuğundaki URL'yi yapıştırın",
   "ui.imagePreview.zoomIn": "Yakınlaştır",
   "ui.imagePreview.zoomOut": "Uzaklaştır",

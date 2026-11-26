@@ -332,7 +332,7 @@ export const dict = {
   "ui.promptInput.history.search": "جست‌وجو در تاریخچه پرامپت…",
   "ui.promptInput.history.contextOnly": "پرامپت با زمینه",
   "ui.redirectPaste.label": "نشانی هدایت",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "نشانی را از نوار نشانی مرورگر بچسبانید",
   "ui.imagePreview.zoomIn": "بزرگ‌نمایی",
   "ui.imagePreview.zoomOut": "کوچک‌نمایی",

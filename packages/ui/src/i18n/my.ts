@@ -333,7 +333,7 @@ export const dict = {
   "ui.promptInput.history.search": "Prompt မှတ်တမ်းကို ရှာရန်…",
   "ui.promptInput.history.contextOnly": "ဆက်စပ်အကြောင်းအရာပါသော prompt",
   "ui.redirectPaste.label": "လမ်းလွှဲ URL",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "ဘရောက်ဇာ၏ လိပ်စာဘားမှ URL ကို ကူးထည့်ပါ",
   "ui.imagePreview.zoomIn": "ဇူးမ်ချဲ့ရန်",
   "ui.imagePreview.zoomOut": "ဇူးမ်ချုံ့ရန်",

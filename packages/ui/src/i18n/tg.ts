@@ -334,7 +334,7 @@ export const dict = {
   "ui.promptInput.history.search": "Ҷустуҷӯи таърихи промптҳо…",
   "ui.promptInput.history.contextOnly": "Промпт бо контекст",
   "ui.redirectPaste.label": "URL-и равонакунӣ",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "URL-ро аз сатри суроғаи браузер гузоред",
   "ui.imagePreview.zoomIn": "Калон кардан",
   "ui.imagePreview.zoomOut": "Хурд кардан",

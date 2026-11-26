@@ -255,7 +255,7 @@ const source = {
   "ui.tabs.close": "Close tab",
 
   "ui.redirectPaste.label": "Redirect URL",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Paste the URL from the browser's address bar",
 
   "ui.textField.copyToClipboard": "Copy to clipboard",

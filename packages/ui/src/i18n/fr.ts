@@ -388,7 +388,7 @@ export const dict = {
   "ui.promptInput.history.search": "Rechercher dans l’historique des invites…",
   "ui.promptInput.history.contextOnly": "Invite avec contexte",
   "ui.redirectPaste.label": "URL de redirection",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Collez l’URL depuis la barre d’adresse du navigateur",
   "ui.imagePreview.zoomIn": "Zoom avant",
   "ui.imagePreview.zoomOut": "Zoom arrière",

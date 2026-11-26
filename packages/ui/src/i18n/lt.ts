@@ -395,7 +395,7 @@ export const dict = {
   "ui.promptInput.history.search": "Ieškoti raginimų istorijoje…",
   "ui.promptInput.history.contextOnly": "Raginimas su kontekstu",
   "ui.redirectPaste.label": "Peradresavimo URL",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Įklijuokite URL iš naršyklės adreso juostos",
   "ui.imagePreview.zoomIn": "Priartinti",
   "ui.imagePreview.zoomOut": "Nutolinti",

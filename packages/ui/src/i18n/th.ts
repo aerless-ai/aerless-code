@@ -351,7 +351,7 @@ export const dict = {
   "ui.promptInput.history.search": "ค้นหาประวัติพรอมต์…",
   "ui.promptInput.history.contextOnly": "พรอมต์พร้อมบริบท",
   "ui.redirectPaste.label": "URL ที่ถูกเปลี่ยนเส้นทาง",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "วาง URL จากแถบที่อยู่ของเบราว์เซอร์",
   "ui.imagePreview.zoomIn": "ขยาย",
   "ui.imagePreview.zoomOut": "ย่อ",

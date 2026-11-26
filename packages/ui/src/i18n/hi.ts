@@ -336,7 +336,7 @@ export const dict = {
   "ui.promptInput.history.search": "प्रॉम्प्ट इतिहास खोजें…",
   "ui.promptInput.history.contextOnly": "कॉन्टेक्स्ट सहित प्रॉम्प्ट",
   "ui.redirectPaste.label": "रीडायरेक्ट URL",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "ब्राउज़र के एड्रेस बार से URL चिपकाएँ",
   "ui.imagePreview.zoomIn": "ज़ूम इन करें",
   "ui.imagePreview.zoomOut": "ज़ूम आउट करें",

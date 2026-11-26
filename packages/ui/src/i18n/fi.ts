@@ -332,7 +332,7 @@ export const dict = {
   "ui.promptInput.history.search": "Hae kehotehistoriasta…",
   "ui.promptInput.history.contextOnly": "Kehote kontekstin kanssa",
   "ui.redirectPaste.label": "Uudelleenohjauksen URL",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Liitä URL-osoite selaimen osoiteriviltä",
   "ui.imagePreview.zoomIn": "Lähennä",
   "ui.imagePreview.zoomOut": "Loitonna",

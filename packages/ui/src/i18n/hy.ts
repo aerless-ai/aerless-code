@@ -333,7 +333,7 @@ export const dict = {
   "ui.promptInput.history.search": "Որոնել հուշումների պատմության մեջ…",
   "ui.promptInput.history.contextOnly": "Հուշում համատեքստով",
   "ui.redirectPaste.label": "Վերահղման URL",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Տեղադրեք URL-ը դիտարկչի հասցեի տողից",
   "ui.imagePreview.zoomIn": "Խոշորացնել",
   "ui.imagePreview.zoomOut": "Փոքրացնել",

@@ -337,7 +337,7 @@ export const dict = {
   "ui.promptInput.history.search": "প্রম্পটের ইতিহাস অনুসন্ধান করুন…",
   "ui.promptInput.history.contextOnly": "প্রসঙ্গসহ প্রম্পট",
   "ui.redirectPaste.label": "রিডাইরেক্ট URL",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "ব্রাউজারের ঠিকানা বার থেকে URL পেস্ট করুন",
   "ui.imagePreview.zoomIn": "জুম ইন করুন",
   "ui.imagePreview.zoomOut": "জুম আউট করুন",

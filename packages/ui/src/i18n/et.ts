@@ -330,7 +330,7 @@ export const dict = {
   "ui.promptInput.history.search": "Otsi viipade ajaloost…",
   "ui.promptInput.history.contextOnly": "Viip kontekstiga",
   "ui.redirectPaste.label": "Ümbersuunamise URL",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Kleebi URL brauseri aadressiribalt",
   "ui.imagePreview.zoomIn": "Suumi sisse",
   "ui.imagePreview.zoomOut": "Suumi välja",

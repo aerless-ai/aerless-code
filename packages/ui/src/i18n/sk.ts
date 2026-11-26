@@ -395,7 +395,7 @@ export const dict = {
   "ui.promptInput.history.search": "Hľadať v histórii výziev…",
   "ui.promptInput.history.contextOnly": "Výzva s kontextom",
   "ui.redirectPaste.label": "URL presmerovania",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Vložte URL z panela s adresou prehliadača",
   "ui.imagePreview.zoomIn": "Priblížiť",
   "ui.imagePreview.zoomOut": "Oddialiť",

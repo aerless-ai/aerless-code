@@ -414,7 +414,7 @@ export const dict = {
   "ui.promptInput.history.search": "Szukaj w historii promptów…",
   "ui.promptInput.history.contextOnly": "Prompt z kontekstem",
   "ui.redirectPaste.label": "Adres URL przekierowania",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Wklej adres URL z paska adresu przeglądarki",
   "ui.imagePreview.zoomIn": "Powiększ",
   "ui.imagePreview.zoomOut": "Pomniejsz",

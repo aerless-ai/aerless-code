@@ -362,7 +362,7 @@ export const dict = {
   "ui.promptInput.history.search": "Meklēt uzvedņu vēsturē…",
   "ui.promptInput.history.contextOnly": "Uzvedne ar kontekstu",
   "ui.redirectPaste.label": "Novirzīšanas URL",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Ielīmējiet URL no pārlūkprogrammas adreses joslas",
   "ui.imagePreview.zoomIn": "Tuvināt",
   "ui.imagePreview.zoomOut": "Tālināt",

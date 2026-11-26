@@ -363,7 +363,7 @@ export const dict = {
   "ui.promptInput.history.search": "חיפוש בהיסטוריית הפרומפטים…",
   "ui.promptInput.history.contextOnly": "פרומפט עם הקשר",
   "ui.redirectPaste.label": "כתובת ההפניה",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "הדבק את הכתובת משורת הכתובת של הדפדפן",
   "ui.imagePreview.zoomIn": "הגדלה",
   "ui.imagePreview.zoomOut": "הקטנה",

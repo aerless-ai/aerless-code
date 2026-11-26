@@ -331,7 +331,7 @@ export const dict = {
   "ui.promptInput.history.search": "ຄົ້ນຫາປະຫວັດ prompt…",
   "ui.promptInput.history.contextOnly": "Prompt ພ້ອມບໍລິບົດ",
   "ui.redirectPaste.label": "URL ປ່ຽນເສັ້ນທາງ",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "ວາງ URL ຈາກແຖບທີ່ຢູ່ຂອງເບຣາວເຊີ",
   "ui.imagePreview.zoomIn": "ຊູມເຂົ້າ",
   "ui.imagePreview.zoomOut": "ຊູມອອກ",

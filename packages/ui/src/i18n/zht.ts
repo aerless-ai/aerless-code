@@ -352,7 +352,7 @@ export const dict = {
   "ui.promptInput.history.search": "搜尋提示詞記錄…",
   "ui.promptInput.history.contextOnly": "含上下文的提示詞",
   "ui.redirectPaste.label": "重新導向 URL",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "請貼上瀏覽器網址列中的 URL",
   "ui.imagePreview.zoomIn": "放大",
   "ui.imagePreview.zoomOut": "縮小",

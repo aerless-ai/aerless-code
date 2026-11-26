@@ -366,7 +366,7 @@ export const dict = {
   "ui.promptInput.history.search": "Buscar en el historial de prompts…",
   "ui.promptInput.history.contextOnly": "Prompt con contexto",
   "ui.redirectPaste.label": "URL de redirección",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Pega la URL de la barra de direcciones del navegador",
   "ui.imagePreview.zoomIn": "Ampliar",
   "ui.imagePreview.zoomOut": "Reducir",

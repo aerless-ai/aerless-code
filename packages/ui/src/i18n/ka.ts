@@ -332,7 +332,7 @@ export const dict = {
   "ui.promptInput.history.search": "მოთხოვნების ისტორიაში ძიება…",
   "ui.promptInput.history.contextOnly": "მოთხოვნა კონტექსტით",
   "ui.redirectPaste.label": "გადამისამართების URL",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "ჩასვით URL ბრაუზერის მისამართის ზოლიდან",
   "ui.imagePreview.zoomIn": "გადიდება",
   "ui.imagePreview.zoomOut": "შემცირება",

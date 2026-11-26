@@ -395,7 +395,7 @@ export const dict = {
   "ui.promptInput.history.search": "Iskanje po zgodovini pozivov …",
   "ui.promptInput.history.contextOnly": "Poziv s kontekstom",
   "ui.redirectPaste.label": "URL preusmeritve",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Prilepite URL iz naslovne vrstice brskalnika",
   "ui.imagePreview.zoomIn": "Povečaj",
   "ui.imagePreview.zoomOut": "Pomanjšaj",

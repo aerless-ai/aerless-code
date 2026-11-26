@@ -332,7 +332,7 @@ export const dict = {
   "ui.promptInput.history.search": "Αναζήτηση στο ιστορικό προτροπών…",
   "ui.promptInput.history.contextOnly": "Προτροπή με περιβάλλον",
   "ui.redirectPaste.label": "URL ανακατεύθυνσης",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Επικολλήστε το URL από τη γραμμή διευθύνσεων του προγράμματος περιήγησης",
   "ui.imagePreview.zoomIn": "Μεγέθυνση",
   "ui.imagePreview.zoomOut": "Σμίκρυνση",

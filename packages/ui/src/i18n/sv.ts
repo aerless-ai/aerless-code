@@ -332,7 +332,7 @@ export const dict = {
   "ui.promptInput.history.search": "Sök i prompthistoriken…",
   "ui.promptInput.history.contextOnly": "Prompt med kontext",
   "ui.redirectPaste.label": "Omdirigerings-URL",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Klistra in URL:en från webbläsarens adressfält",
   "ui.imagePreview.zoomIn": "Zooma in",
   "ui.imagePreview.zoomOut": "Zooma ut",

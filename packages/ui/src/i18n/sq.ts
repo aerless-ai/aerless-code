@@ -331,7 +331,7 @@ export const dict = {
   "ui.promptInput.history.search": "Kërko në historikun e kërkesave…",
   "ui.promptInput.history.contextOnly": "Kërkesë me kontekst",
   "ui.redirectPaste.label": "URL-ja e ridrejtimit",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Ngjitni URL-në nga shiriti i adresës së shfletuesit",
   "ui.imagePreview.zoomIn": "Zmadho",
   "ui.imagePreview.zoomOut": "Zvogëlo",

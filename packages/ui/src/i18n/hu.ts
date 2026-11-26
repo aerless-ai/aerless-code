@@ -332,7 +332,7 @@ export const dict = {
   "ui.promptInput.history.search": "Keresés a prompt előzményekben…",
   "ui.promptInput.history.contextOnly": "Prompt kontextussal",
   "ui.redirectPaste.label": "Átirányítási URL",
-  "ui.redirectPaste.placeholder": "http://127.0.0.1:…/callback?code=…",
+  "ui.redirectPaste.placeholder": "http://localhost:…/callback?code=…",
   "ui.redirectPaste.required": "Illessze be az URL-t a böngésző címsorából",
   "ui.imagePreview.zoomIn": "Nagyítás",
   "ui.imagePreview.zoomOut": "Kicsinyítés",
