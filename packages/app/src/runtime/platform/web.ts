@@ -1,5 +1,5 @@
 import { createBrowserDraftStore } from "@/runtime/persistence/drafts"
-import { basePath } from "./base-path"
+import { basePath, withBasePath } from "./base-path"
 import type { Platform } from "./platform"
 
 export function createWebPlatform(version: string) {
@@ -15,6 +15,21 @@ export function createWebPlatform(version: string) {
       window.open(url.href, "_blank", "noopener,noreferrer")
     },
     restart: async () => window.location.reload(),
+    openAttachmentPickerDialog(opts, onFile) {
+      const input = document.createElement("input")
+      input.type = "file"
+      input.multiple = !!opts.multiple
+      input.accept = [...(opts.accept ?? []), ...(opts.extensions ?? []).map((extension) => `.${extension}`)].join(",")
+
+      return new Promise<void>((resolve, reject) => {
+        input.oncancel = () => resolve()
+        input.onchange = () =>
+          Array.from(input.files ?? [])
+            .reduce<Promise<unknown>>((done, file) => done.then(() => onFile(file)), Promise.resolve())
+            .then(() => resolve(), reject)
+        input.click()
+      })
+    },
     async notify(title, description, onClick) {
       if (!("Notification" in window)) return
 
@@ -29,7 +44,7 @@ export function createWebPlatform(version: string) {
 
       const notification = new Notification(title, {
         body: description ?? "",
-        icon: "https://opencode.ai/favicon-96x96-v3.png",
+        icon: withBasePath("/favicon.svg"),
       })
 
       notification.onclick = () => {
