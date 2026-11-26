@@ -3,10 +3,10 @@
 The coding assistant for your terminal, with pictures built in. Made by [Aerless](https://aerless.io).
 
 ```bash
-curl -fsSL https://github.com/havecreator/aerless-code/releases/latest/download/install.sh | sh          # macOS, Linux, WSL
+curl -fsSL https://github.com/aerless-ai/aerless-code/releases/latest/download/install.sh | sh          # macOS, Linux, WSL
 ```
 ```powershell
-irm https://github.com/havecreator/aerless-code/releases/latest/download/install.ps1 | iex            # Windows
+irm https://github.com/aerless-ai/aerless-code/releases/latest/download/install.ps1 | iex            # Windows
 ```
 
 Then open a new terminal and type `aerless` in any project folder. The first time it signs you in.

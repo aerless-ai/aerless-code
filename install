@@ -1,5 +1,5 @@
 #!/bin/sh
-# Aerless installer: curl -fsSL https://github.com/havecreator/aerless-code/releases/latest/download/install.sh | sh [-s -- flags]
+# Aerless installer: curl -fsSL https://github.com/aerless-ai/aerless-code/releases/latest/download/install.sh | sh [-s -- flags]
 # Puts aerless and aerless-code in ~/.aerless/bin, adds that folder to PATH in your shell's startup file
 # (skip with --no-modify-path), then runs aerless with the other flags. No sudo.
 # AERLESS_VERSION picks a release (default: latest).
@@ -9,8 +9,8 @@ fail() { echo "Aerless install failed: $1" >&2; exit 1; }
 
 # Downloads come from GitHub Releases; AERLESS_BASE_URL points at another folder layout (<base>/<version>/<file>).
 if [ -n "${AERLESS_BASE_URL:-}" ]; then BASE="$AERLESS_BASE_URL/${AERLESS_VERSION:-latest}"
-elif [ -n "${AERLESS_VERSION:-}" ]; then BASE="https://github.com/havecreator/aerless-code/releases/download/v$AERLESS_VERSION"
-else BASE="https://github.com/havecreator/aerless-code/releases/latest/download"; fi
+elif [ -n "${AERLESS_VERSION:-}" ]; then BASE="https://github.com/aerless-ai/aerless-code/releases/download/v$AERLESS_VERSION"
+else BASE="https://github.com/aerless-ai/aerless-code/releases/latest/download"; fi
 
 case "$(uname -s)" in
   Darwin) os=darwin ;;

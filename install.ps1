@@ -1,5 +1,5 @@
-# Aerless installer: irm https://github.com/havecreator/aerless-code/releases/latest/download/install.ps1 | iex
-# With flags: & ([scriptblock]::Create((irm https://github.com/havecreator/aerless-code/releases/latest/download/install.ps1))) --show-files
+# Aerless installer: irm https://github.com/aerless-ai/aerless-code/releases/latest/download/install.ps1 | iex
+# With flags: & ([scriptblock]::Create((irm https://github.com/aerless-ai/aerless-code/releases/latest/download/install.ps1))) --show-files
 # Puts aerless.exe and aerless-code.exe in %USERPROFILE%\.aerless\bin, adds that folder to your user PATH
 # (skip with $env:AERLESS_NO_MODIFY_PATH=1), then runs aerless. No admin.
 # $env:AERLESS_VERSION picks a release (default: latest).
@@ -16,7 +16,7 @@ try {
     [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
 
     # Downloads come from GitHub Releases; AERLESS_BASE_URL points at another folder layout (<base>/<version>/<file>).
-    $gh = 'https://github.com/havecreator/aerless-code/releases'
+    $gh = 'https://github.com/aerless-ai/aerless-code/releases'
     $base = if ($env:AERLESS_BASE_URL) { "$env:AERLESS_BASE_URL/$(if ($env:AERLESS_VERSION) { $env:AERLESS_VERSION } else { 'latest' })" }
             elseif ($env:AERLESS_VERSION) { "$gh/download/v$env:AERLESS_VERSION" } else { "$gh/latest/download" }
     $name = 'aerless-windows-x64.exe'  # also runs on Windows on Arm (x64 emulation)
