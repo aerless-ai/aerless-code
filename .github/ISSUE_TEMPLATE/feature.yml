@@ -1,0 +1,14 @@
+name: Feature request
+description: Suggest something Aerless Code should do
+labels: [enhancement]
+body:
+  - type: textarea
+    attributes:
+      label: The problem
+      description: What are you trying to do, and what gets in the way?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Your idea
+      description: How you'd like it to work, if you have one in mind.

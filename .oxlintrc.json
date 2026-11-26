@@ -197,12 +197,9 @@
     ".continue/**",
     ".cursor/**",
     ".gemini/**",
-    ".opencode/**",
     ".pi/**",
     ".roo/**",
     ".windsurf/**",
-    "script/oxlint/anti-slop/**",
-    "services/site/public/arcade3d/basis/**",
-    "services/site/public/arcade3d/draco/**"
+    "script/oxlint/anti-slop/**"
   ]
 }
