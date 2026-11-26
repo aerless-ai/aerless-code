@@ -16,8 +16,8 @@ export default Runtime.handler(
       if (process.env.AERLESS_ALLOW_OPENCODE_UPGRADE !== "1") {
         console.log(
           process.platform === "win32"
-            ? "To update Aerless Code, run: irm https://aerless.io/install.ps1 | iex"
-            : "To update Aerless Code, run: curl -fsSL https://aerless.io/install | sh",
+            ? "To update Aerless Code, run: irm https://github.com/havecreator/aerless-code/releases/latest/download/install.ps1 | iex"
+            : "To update Aerless Code, run: curl -fsSL https://github.com/havecreator/aerless-code/releases/latest/download/install.sh | sh",
         )
         return
       }
