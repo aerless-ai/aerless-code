@@ -1,8 +1,18 @@
+# Aerless Code
+
+This is Aerless Code, the Aerless fork of opencode (binary `aerless-code`, folders `~/.config/aerless-code`, `~/.local/share/aerless-code`). The `aerless` CLI and picture studio that launch it live in `havecreator/haveapi` under `apps/cli`; the full handoff (what we changed vs opencode, Bun 1.4.2, builds for 12 platforms, releases, Homebrew/Scoop) is `docs/aerless-handoff.md` there.
+
+- Bun **1.4.2** exactly. `bun install`, then `bun run dev` to run from source.
+- Commits here are authored `Aerless <code@aerless.io>`; anything public says Aerless, never havecreator.
+- Releases: `.github/workflows/release.yml` makes the draft as github-actions, then upload the builds and publish (see the handoff).
+
+---
+
 - After changing the public Protocol or Server `HttpApi`, run `bun run generate` from `packages/client`. Do not edit generated client files directly.
 - Keep runtime dependencies directed from Schema to Core and Protocol, then from Core and Protocol to Server. Client runtime code may depend on Schema and Protocol but never Core or Server; `sdk` composes Client, Core, and Server.
 - Current implementation changes belong in `packages/core`, `packages/cli`, `packages/server`, `packages/protocol`, `packages/schema`, and related generated client surfaces when required.
 - This repository does not use Changesets. Do not add `.changeset` files; follow the existing release workflow instead.
-- The default branch in this repo is `v2`.
+- The default branch in this repo is `main` (upstream opencode uses `v2`; the remote `upstream` is sst/opencode).
 - Default new branches and worktrees to `v2`, or `origin/v2` when the local `v2` ref is unavailable, and default pull requests to target `v2`. Use another base or target branch when the requester explicitly instructs it.
 - Local `main` ref may not exist; use `v2` or `origin/v2` for diffs.
 
