@@ -170,6 +170,7 @@ const appBindingCommands = [
   "opencode.status",
   "opencode.update",
   "server.pair",
+  "server.webui",
   "service.restart",
   "location.reload",
   "opencode.debug",
@@ -1118,6 +1119,15 @@ function App() {
         slash: { name: "pair", aliases: ["web"] },
         run: () => {
           dialog.replace(() => <DialogPair />)
+        },
+        category: "System",
+      },
+      {
+        name: "server.webui",
+        title: "Open the web interface",
+        slash: { name: "webui" },
+        run: () => {
+          dialog.replace(() => <DialogPair open />)
         },
         category: "System",
       },

@@ -59,6 +59,7 @@ export const Definitions = {
   "docs.open": keybind("none", "Open documentation"),
   "opencode.settings": keybind("none", "Open settings"),
   "server.pair": keybind("none", "Pair device"),
+  "server.webui": keybind("none", "Open the web interface"),
   "service.restart": keybind("none", "Restart service"),
   "location.reload": keybind("none", "Reload configuration"),
   "diff.open": keybind("none", "Open diff viewer"),

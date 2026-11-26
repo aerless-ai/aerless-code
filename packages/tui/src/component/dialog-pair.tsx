@@ -1,6 +1,7 @@
 import { TextAttributes } from "@opentui/core"
 import { useTerminalDimensions } from "@opentui/solid"
 import { createMemo, createResource, createSignal, For, Show } from "solid-js"
+import { openUrl } from "@opencode/util/open"
 import { renderUnicodeCompact } from "@opencode/util/qr"
 import { useClient } from "../context/client"
 import { useTheme } from "../context/theme"
@@ -8,7 +9,7 @@ import { DialogHeader, DialogLayout, useDialog } from "../ui/dialog"
 import { Link } from "../ui/link"
 import { errorMessage } from "../util/error"
 
-export function DialogPair() {
+export function DialogPair(props: { open?: boolean }) {
   const client = useClient()
   const dialog = useDialog()
   const dimensions = useTerminalDimensions()
@@ -24,9 +25,11 @@ export function DialogPair() {
         const link = (url: string) => new URL(`/auth/connect/${pairing.code}`, url).href
         const local = server.urls[0] ? new URL(server.urls[0]) : undefined
         if (local) local.hostname = "localhost"
+        const localhost = local ? link(local.href) : undefined
+        if (props.open && localhost) openUrl(localhost).catch(() => {})
         return {
           links: server.urls.map(link),
-          localhost: local ? link(local.href) : undefined,
+          localhost,
           minutes: Math.round(pairing.expires_in / 60),
           loopback: server.urls.some((url) => ["localhost", "127.0.0.1", "[::1]"].includes(new URL(url).hostname)),
         }
