@@ -9,7 +9,7 @@ curl -fsSL https://github.com/havecreator/aerless-code/releases/latest/download/
 irm https://github.com/havecreator/aerless-code/releases/latest/download/install.ps1 | iex            # Windows
 ```
 
-Then run `aerless` once to sign in, and `aerless-code` (or `aerless code`) in any project folder.
+Then open a new terminal and type `aerless` in any project folder. The first time it signs you in.
 
 ## What is different from opencode
 

@@ -73,5 +73,9 @@ try {
     return
 }
 
-& (Join-Path $env:USERPROFILE '.aerless\bin\aerless.exe') @args
+$exe = Join-Path $env:USERPROFILE '.aerless\bin\aerless.exe'
+if ($args.Count -gt 0) { & $exe @args; return }
+& $exe setup
+Write-Host ''
+Write-Host 'Start Aerless Code: type  aerless   (this window already knows it; new windows too)'
 } @args

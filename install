@@ -84,11 +84,20 @@ if [ "$modify_path" = 1 ]; then
     *) rc="$HOME/.profile"; line="export PATH=\"$dir:\$PATH\"" ;;
   esac
   if ! grep -qsF "$dir" "$rc"; then
-    mkdir -p "$(dirname "$rc")" && printf '\n# Aerless\n%s\n' "$line" >> "$rc" && echo "Added $dir to PATH in $rc. Open a new terminal to use aerless and aerless-code."
+    mkdir -p "$(dirname "$rc")" && printf '\n# Aerless\n%s\n' "$line" >> "$rc" && echo "Added $dir to PATH in $rc."
   fi
 fi
 
-# exec replaces the shell and would skip the trap, so clean up first
 rm -rf "$tmp"
 trap - EXIT INT TERM
-exec "$dir/aerless" "$@"
+# With flags (e.g. --version, --show-files) run them as given.
+[ $# -gt 0 ] && exec "$dir/aerless" "$@"
+
+# First-time setup asks questions; under `curl | sh` the script itself is stdin, so read the keyboard from the terminal.
+echo
+if (: </dev/tty) 2>/dev/null; then "$dir/aerless" setup </dev/tty || true; else "$dir/aerless" setup || true; fi
+echo
+case ":$PATH:" in
+  *":$dir:"*) echo "Start Aerless Code: type  aerless" ;;
+  *) echo "Start Aerless Code: open a new terminal and type  aerless   (or in this window: exec \$SHELL, then aerless)" ;;
+esac
