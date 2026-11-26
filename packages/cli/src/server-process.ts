@@ -108,12 +108,12 @@ const processEffect = Effect.fnUntraced(function* (options: Options) {
           database: {
             path: databasePath(global.data),
           },
-          // Aerless: the 100+ provider catalog (about 55 MB in memory) loads only when a catalog provider
-          // such as OpenRouter is in use (AERLESS_MODELS_CATALOG=1); Aerless and Venice models come from config.
+          // Aerless: the provider catalog bundled with this release (226 providers for /connect). It is
+          // not refreshed from models.opencode.ai unless AERLESS_MODELS_FETCH=1; AERLESS_MODELS_CATALOG=0 drops it.
           models: {
             url: process.env.OPENCODE_MODELS_URL,
             file: process.env.OPENCODE_MODELS_PATH,
-            fetch: catalog() && !truthy(process.env.OPENCODE_DISABLE_MODELS_FETCH),
+            fetch: catalog() && truthy(process.env.AERLESS_MODELS_FETCH) && !truthy(process.env.OPENCODE_DISABLE_MODELS_FETCH),
             snapshot: catalog(),
           },
           config: {
@@ -212,7 +212,8 @@ function serviceURL(hostname: string, port: number) {
 }
 
 function catalog() {
-  return truthy(process.env.AERLESS_MODELS_CATALOG) || !!process.env.OPENCODE_MODELS_URL || !!process.env.OPENCODE_MODELS_PATH
+  // On by default so /connect offers every provider; AERLESS_MODELS_CATALOG=0 saves its memory.
+  return process.env.AERLESS_MODELS_CATALOG !== "0" || !!process.env.OPENCODE_MODELS_URL || !!process.env.OPENCODE_MODELS_PATH
 }
 
 function truthy(value?: string) {

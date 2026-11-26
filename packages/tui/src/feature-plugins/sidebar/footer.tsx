@@ -54,9 +54,9 @@ export function SidebarOnboarding(props: { context: Plugin.Context; sessionID: s
               ✕
             </text>
           </box>
-          <text fg={props.context.theme.text.muted}>Aerless Code is signed in and ready. Ask for code, or type /imgengine for pictures.</text>
+          <text fg={props.context.theme.text.muted}>Ready to code on the free model. Type /imgengine for pictures.</text>
           <text fg={props.context.theme.text.muted}>
-            Have an OpenRouter or Venice key? Run: aerless login --provider openrouter --key KEY
+            Every Aerless model, or your own Anthropic, OpenAI, OpenRouter or other key: type /connect
           </text>
         </box>
       </box>
