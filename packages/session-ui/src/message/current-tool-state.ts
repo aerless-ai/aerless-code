@@ -31,6 +31,17 @@ export function currentToolOutput(tool: SessionMessageAssistantTool) {
   return text || undefined
 }
 
+/** The Aerless MCP picture tool under any server namespace (`aerless_generate_image`); not the built-in one. */
+export const isPictureTool = (name: string) => name.endsWith("_generate_image")
+
+export function currentToolImages(tool: SessionMessageAssistantTool) {
+  if (!("content" in tool.state) || !tool.state.content) return undefined
+
+  return tool.state.content.flatMap((item) =>
+    item.type === "file" && item.mime.startsWith("image/") ? [item.uri] : [],
+  )
+}
+
 export function currentToolError(tool: SessionMessageAssistantTool) {
   if (tool.state.status !== "error") return undefined
 

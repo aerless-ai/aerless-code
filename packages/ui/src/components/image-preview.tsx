@@ -1,7 +1,7 @@
 import { Dialog as Kobalte, useDialogContext } from "@kobalte/core/dialog"
 import { makeEventListener } from "@solid-primitives/event-listener"
 import { createResizeObserver } from "@solid-primitives/resize-observer"
-import { createEffect, createMemo, createSignal, on, onCleanup, Show, untrack } from "solid-js"
+import { createEffect, createMemo, createSignal, on, onCleanup, Show, untrack, type JSX } from "solid-js"
 import { createStore } from "solid-js/store"
 import { useDialogLayer } from "../context/dialog"
 import { useI18n } from "../context/i18n"
@@ -66,6 +66,8 @@ export interface ImagePreviewProps {
    * flies out of its place and back, and returns it once the close lands.
    */
   video?: HTMLVideoElement
+  /** Extra buttons before the zoom controls, such as Download. */
+  actions?: JSX.Element
 }
 
 const STEP = Math.SQRT2
@@ -775,6 +777,10 @@ export function ImagePreview(props: ImagePreviewProps) {
           </Show>
         </div>
         <div data-slot="image-preview-controls">
+          <Show when={props.actions}>
+            {props.actions}
+            <div data-slot="image-preview-divider" />
+          </Show>
           <IconButton
             data-slot="image-preview-zoom-out"
             icon={<Icon name="minus" />}

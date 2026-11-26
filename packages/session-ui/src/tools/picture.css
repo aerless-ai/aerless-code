@@ -1,0 +1,161 @@
+/* Aerless picture cards: shimmer while generating, blur that slides away on reveal, hover actions. */
+[data-component="picture-grid"] {
+  display: grid;
+  gap: 12px;
+  max-width: 512px;
+  margin: 4px 0;
+
+  &[data-multi] {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+[data-component="picture-note"] {
+  font-size: 13px;
+  color: var(--v2-text-text-muted);
+  white-space: pre-wrap;
+}
+
+[data-component="picture"] {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+[data-component="picture"] [data-slot="picture-label"] {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+[data-component="picture"] [data-slot="picture-title"] {
+  font-weight: 530;
+  color: var(--v2-text-text-base);
+}
+
+[data-component="picture"]:not([data-done]) [data-slot="picture-title"] {
+  background: linear-gradient(
+    90deg,
+    var(--v2-text-text-muted) 0%,
+    var(--v2-text-text-base) 50%,
+    var(--v2-text-text-muted) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: picture-shimmer 1.5s linear infinite;
+}
+
+[data-component="picture"] [data-slot="picture-status"] {
+  color: var(--v2-text-text-muted);
+}
+
+[data-component="picture"] [data-slot="picture-frame"] {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  border-radius: 16px;
+  background: #1c1c1f;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -50%;
+    background:
+      radial-gradient(circle at 30% 30%, rgb(212 31 38 / 0.18), transparent 45%),
+      radial-gradient(circle at 70% 70%, rgb(255 255 255 / 0.08), transparent 50%);
+    animation: picture-drift 8s ease-in-out infinite alternate;
+  }
+
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: zoom-in;
+  }
+}
+
+[data-component="picture"] [data-slot="picture-blur"] {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 25%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%);
+  pointer-events: none;
+}
+
+[data-component="picture"][data-done] [data-slot="picture-blur"] {
+  animation: picture-reveal 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+[data-component="picture"][data-done] [data-slot="picture-frame"]::before {
+  display: none;
+}
+
+[data-component="picture"] [data-slot="picture-actions"] {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 150ms ease;
+
+  button {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border: 0;
+    border-radius: 8px;
+    background: rgb(11 11 12 / 0.72);
+    color: #f2f2f3;
+    cursor: pointer;
+
+    &:hover {
+      background: #d41f26;
+    }
+  }
+}
+
+[data-component="picture"] [data-slot="picture-frame"]:hover [data-slot="picture-actions"],
+[data-component="picture"] [data-slot="picture-actions"]:focus-within {
+  opacity: 1;
+}
+
+@keyframes picture-shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+
+@keyframes picture-drift {
+  to {
+    transform: translate(10%, 10%) rotate(20deg);
+  }
+}
+
+@keyframes picture-reveal {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-component="picture"] * {
+    animation-duration: 1ms !important;
+  }
+}

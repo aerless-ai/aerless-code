@@ -66,6 +66,7 @@ import {
   executeToolCalls,
   executeToolErrorIndex,
   executeToolSubtitle,
+  isPictureTool,
   readImagePath,
   type ExecuteToolCall,
 } from "../message/current-tool-state"
@@ -88,6 +89,7 @@ import {
   type SubagentRunState,
 } from "./run-machine"
 import { LinkedText } from "../components/linked-text"
+import { PictureTool } from "./picture"
 
 export function ShellSubmessage(props: { text: string; animate?: boolean }) {
   let widthRef: HTMLSpanElement | undefined
@@ -1270,6 +1272,8 @@ export interface ToolProps {
   tool: string
   sessionID?: string
   output?: string
+  /** Image results as data URLs (MCP image content), for tools that draw pictures. */
+  files?: readonly string[]
   status?: string
   hideDetails?: boolean
   defaultOpen?: boolean
@@ -1303,7 +1307,7 @@ function registerTool(input: { name: string; render?: ToolComponent }) {
 }
 
 function getTool(name: string) {
-  return state[name]?.render
+  return state[name]?.render ?? (isPictureTool(name) ? PictureTool : undefined)
 }
 
 export const ToolRegistry = {

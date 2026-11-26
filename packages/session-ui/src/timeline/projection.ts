@@ -9,7 +9,7 @@ import type {
 } from "@opencode/client/promise"
 import { Effect, Option, Predicate, Schema } from "effect"
 import { createComputed, createMemo, createSignal, mapArray, untrack, type Accessor } from "solid-js"
-import { currentContentDefaultOpen, currentToolHasLoadedFiles } from "../message/current-tool-state"
+import { currentContentDefaultOpen, currentToolHasLoadedFiles, isPictureTool } from "../message/current-tool-state"
 import { turnCommentary } from "./commentary"
 import { TimelineRow, type PartGroup, type PartRef, type TimelineRowMap } from "./timeline-row"
 import { timelineNoticeRequired, type TimelineDetail } from "./detail"
@@ -1100,6 +1100,9 @@ function toolGroupType(
   hasContextGroup: boolean,
 ) {
   if (content.name === "question" || currentToolHasLoadedFiles(content)) return undefined
+
+  // Aerless pictures stand on their own row as cards, never folded into "Explored".
+  if (isPictureTool(content.name)) return undefined
 
   if (content.state.status === "error") {
     if ((content.name === "shell" || content.name === "execute") && shellExpanded) return undefined
