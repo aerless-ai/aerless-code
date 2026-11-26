@@ -24,5 +24,12 @@ export function render(prompt: string, tools: string[]) {
       "- Use the edit tool for targeted changes to existing text files. It replaces the exact text in `oldString` with `newString`, and the values must differ. By default, `oldString` must occur exactly once. If it occurs multiple times, include more surrounding context to make it unique or set `replaceAll` to true to replace every occurrence.",
     )
   }
+  // Aerless: pictures are made in the chat, where the web interface shows them as cards; the studio is only on request.
+  const picture = tools.find((tool) => tool.endsWith("_generate_image"))
+  if (picture) {
+    instructions.push(
+      `- When the user asks for a picture, image, photo, banner or icon, call \`${picture}\` directly in this chat; do not open the picture studio or load the imgengine skill unless the user asks for the studio. To change a picture, pass its path in \`reference_images\`. Do not repeat the saved path or describe the picture at length afterwards; the user sees it.`,
+    )
+  }
   return prompt.replace("${OPENCODE_TOOL_GUIDANCE}", instructions.join("\n"))
 }
