@@ -1,6 +1,7 @@
 import type { SessionMessageAssistant, SessionMessageInfo } from "@opencode/client/promise"
 import { untrack } from "solid-js"
 import { timelineNoticeRequired, type TimelineDetail, type TimelinePlacement } from "./detail"
+import { isPictureTool } from "../message/current-tool-state"
 import { placeFactOf, scriptChangePaths, scriptFilePartID, type Fact, type PlaceFact } from "./facts"
 
 /**
@@ -70,12 +71,17 @@ export function placeContent(
   return placeFact(placeableOf(content, factOf), detail, timeline, commentary)
 }
 
+const PICTURE: Place = { category: "tools", placement: "separate", group: "part", opens: true }
+
 /** Places message parts for one build of the rows, each call once however often it is asked. */
 export function placer(detail: TimelineDetail, timeline: TimelineKind, factOf: PlaceFactOf = placeFactOf) {
   const placed = new Map<Content, Place>()
 
   return (content: Content, commentary = false) => {
     if (content.type !== "tool") return placeContent(content, detail, timeline, commentary)
+    // Aerless pictures always show as open cards on their own row, never folded into "Used N tools".
+    if (isPictureTool(content.name)) return PICTURE
+
     const known = placed.get(content)
 
     if (known) return known
