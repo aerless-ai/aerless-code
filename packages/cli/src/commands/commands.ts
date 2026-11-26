@@ -609,6 +609,19 @@ const Root = Spec.make(typeof OPENCODE_CLI_NAME === "string" ? OPENCODE_CLI_NAME
         ),
       },
     }),
+    Spec.make("webui", {
+      description: "Open the Aerless web interface in your browser",
+      params: {
+        directory: Argument.String("directory").pipe(
+          Argument.withDescription("Project directory to show in the web interface"),
+          Argument.optional,
+        ),
+        open: Flag.Boolean("open").pipe(
+          Flag.withDescription("Open the browser (disable with --no-open to only print the link)"),
+          Flag.withDefault(true),
+        ),
+      },
+    }),
     Spec.make("serve", {
       description: "Start the v2 API and web server",
       params: {

@@ -92,6 +92,7 @@ const Handlers = Runtime.handlers(Commands, {
     remove: () => import("./commands/handlers/machine/remove"),
   },
   pair: () => import("./commands/handlers/pair"),
+  webui: () => import("./commands/handlers/webui"),
   reload: () => import("./commands/handlers/reload"),
   session: {
     list: () => import("./commands/handlers/session/list"),
