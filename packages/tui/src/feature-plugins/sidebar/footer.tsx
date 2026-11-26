@@ -54,20 +54,10 @@ export function SidebarOnboarding(props: { context: Plugin.Context; sessionID: s
               ✕
             </text>
           </box>
-          <text fg={props.context.theme.text.muted}>OpenCode includes free models so you can start immediately.</text>
+          <text fg={props.context.theme.text.muted}>Aerless Code is signed in and ready. Ask for code, or type /imgengine for pictures.</text>
           <text fg={props.context.theme.text.muted}>
-            Connect from 75+ providers to use other models, including Claude, GPT, Gemini etc
+            Have an OpenRouter or Venice key? Run: aerless login --provider openrouter --key KEY
           </text>
-          <box
-            id="sidebar.footer.getting-started.connect"
-            flexDirection="row"
-            gap={1}
-            justifyContent="space-between"
-            onMouseUp={() => props.context.keymap.dispatch("provider.connect")}
-          >
-            <text fg={props.context.theme.text.base}>Connect provider</text>
-            <text fg={props.context.theme.text.muted}>/connect</text>
-          </box>
         </box>
       </box>
     </Show>

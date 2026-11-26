@@ -58,8 +58,33 @@ const makeEndpoint = Effect.fn("cli.standalone.endpoint")(
   Effect.provide(LayerNode.compile(CrossSpawnSpawner.node)),
 )
 
+// Aerless: by default the server runs inside this process. A second process loaded the whole app a second
+// time (about 100 MB idle). AERLESS_SPLIT_SERVER=1 restores the separate server process.
+const embedded = Effect.fn("cli.standalone.embedded")(function* () {
+  const { ServerProcess } = yield* Effect.promise(() => import("../server-process"))
+  const ready = yield* Deferred.make<{ url: string; password: string }, Error>()
+  yield* Effect.forkDetach(
+    ServerProcess.run({
+      mode: "embedded",
+      port: 0,
+      onReady: (url, password) => Effect.runFork(Deferred.succeed(ready, { url, password })),
+    }).pipe(Effect.ensuring(Deferred.fail(ready, new Error("Embedded server stopped before it was ready")))),
+  )
+  const { url, password } = yield* Deferred.await(ready)
+  return {
+    url,
+    auth: { type: "basic" as const, username: "opencode", password },
+    pid: process.pid,
+  }
+})
+
 export function start(options: Options = {}) {
   return makeEndpoint(options)
+}
+
+/** The interactive app's server: embedded unless AERLESS_SPLIT_SERVER=1. */
+export function startForTui() {
+  return process.env.AERLESS_SPLIT_SERVER === "1" ? makeEndpoint({}) : embedded()
 }
 
 export * as Standalone from "./standalone"

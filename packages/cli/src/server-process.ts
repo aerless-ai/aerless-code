@@ -18,13 +18,15 @@ import { RemoteTunnel } from "./services/remote-tunnel"
 import { WebUi } from "./services/web-ui"
 import { databasePath } from "./database-path"
 
-export type Mode = "default" | "service" | "stdio"
+export type Mode = "default" | "service" | "stdio" | "embedded"
 
 export type Options = {
   readonly mode: Mode
   readonly hostname?: string
   readonly port?: number
   readonly cors?: readonly string[]
+  /** embedded mode: the server runs inside the TUI process and reports its address here instead of on stdout. */
+  readonly onReady?: (url: string, password: string) => void
 }
 
 // The process effect lives until server shutdown; tracing it would parent every request to one process-lifetime trace.
@@ -106,10 +108,13 @@ const processEffect = Effect.fnUntraced(function* (options: Options) {
           database: {
             path: databasePath(global.data),
           },
+          // Aerless: the 100+ provider catalog (about 55 MB in memory) loads only when a catalog provider
+          // such as OpenRouter is in use (AERLESS_MODELS_CATALOG=1); Aerless and Venice models come from config.
           models: {
             url: process.env.OPENCODE_MODELS_URL,
             file: process.env.OPENCODE_MODELS_PATH,
-            fetch: !truthy(process.env.OPENCODE_DISABLE_MODELS_FETCH),
+            fetch: catalog() && !truthy(process.env.OPENCODE_DISABLE_MODELS_FETCH),
+            snapshot: catalog(),
           },
           config: {
             directory: process.env.OPENCODE_CONFIG_DIR,
@@ -188,8 +193,11 @@ const processEffect = Effect.fnUntraced(function* (options: Options) {
         )
       }
       const url = HttpServer.formatAddress(server.address)
-      console.log(options.mode === "stdio" ? JSON.stringify({ url }) : `server listening on ${url}`)
-      if (foreground && !environmentPassword) console.log(`server password ${password}`)
+      if (options.onReady) options.onReady(url, password)
+      else {
+        console.log(options.mode === "stdio" ? JSON.stringify({ url }) : `server listening on ${url}`)
+        if (foreground && !environmentPassword) console.log(`server password ${password}`)
+      }
       return yield* options.mode === "service"
         ? server.shutdown
         : options.mode === "stdio"
@@ -201,6 +209,10 @@ const processEffect = Effect.fnUntraced(function* (options: Options) {
 
 function serviceURL(hostname: string, port: number) {
   return `http://${hostname.includes(":") ? `[${hostname}]` : hostname}:${port}`
+}
+
+function catalog() {
+  return truthy(process.env.AERLESS_MODELS_CATALOG) || !!process.env.OPENCODE_MODELS_URL || !!process.env.OPENCODE_MODELS_PATH
 }
 
 function truthy(value?: string) {

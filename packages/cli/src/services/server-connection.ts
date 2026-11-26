@@ -19,8 +19,6 @@ export type Resolved = {
 }
 
 export const resolve = Effect.fn("cli.server-connection.resolve")(function* (args: Args = {}) {
-  if (args.server !== undefined && args.standalone)
-    return yield* Effect.fail(new Error("--server and --standalone cannot be combined"))
   if (args.server !== undefined) {
     const password = yield* Env.password
     const endpoint = {
@@ -39,7 +37,7 @@ export const resolve = Effect.fn("cli.server-connection.resolve")(function* (arg
     return { endpoint } satisfies Resolved
   }
   if (args.standalone || (yield* ServiceConfig.read()).disabled === true) {
-    return { endpoint: yield* Standalone.start() } satisfies Resolved
+    return { endpoint: yield* Standalone.startForTui() } satisfies Resolved
   }
 
   const mismatch = args.mismatch ?? "ignore"

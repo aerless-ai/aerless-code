@@ -14,8 +14,8 @@ declare const OPENCODE_CLI_NAME: string | undefined
 
 const ServerParams = {
   standalone: Flag.boolean("standalone").pipe(
-    Flag.withDescription("Run with a private server instead of the background service"),
-    Flag.withDefault(false),
+    Flag.withDescription("Run with a private server instead of the background service (Aerless Code: always on)"),
+    Flag.withDefault(true),
   ),
   server: Flag.string("server").pipe(
     Flag.withDescription("Connect to a server URL instead of the background service"),
@@ -36,7 +36,7 @@ const PermissionParams = {
 }
 
 const Root = Spec.make(typeof OPENCODE_CLI_NAME === "string" ? OPENCODE_CLI_NAME : "opencode", {
-  description: "OpenCode command line interface",
+  description: "Aerless Code: the coding assistant with pictures built in",
   params: {
     ...ServerParams,
     ...PermissionParams,
