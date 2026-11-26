@@ -48,15 +48,16 @@ export function defaultPort(channel = OPENCODE_CHANNEL, platform = process.platf
   // Windows hands out 0xC000-0xFFFF for outgoing connections, Hyper-V and WinNAT reserve blocks of that range at boot,
   // and WSL mirrored networking reserves a 4096-port block that usually covers 44620-48715. A reserved port fails as in
   // use while nothing listens on it. Moving into the 0x7000 block, below 32768, avoids all of them and keeps the low
-  // 12 bits: 0xC0DE becomes 0x70DE.
+  // 12 bits: 0xAE55 becomes 0x7E55.
   if (platform === "win32" && port >= 0x8000) return 0x7000 | (port & 0xfff)
   return port
 }
 
+// Aerless: its own ports (opencode uses 0xC0DE, 0xC0DF and the bare channel hash), so both can run on one computer.
 function channelPort(channel: string) {
-  if (channel === "latest" || channel === "dev" || channel === "beta" || channel === "next") return 0xc0de
-  if (channel === "local") return 0xc0df
-  return 10_000 + (Number.parseInt(Hash.fast(channel).slice(0, 8), 16) % 50_000)
+  if (channel === "latest" || channel === "dev" || channel === "beta" || channel === "next") return 0xae55
+  if (channel === "local") return 0xae56
+  return 10_000 + (Number.parseInt(Hash.fast(`aerless-code-${channel}`).slice(0, 8), 16) % 50_000)
 }
 
 export function legacyFilename(channel = OPENCODE_CHANNEL) {
@@ -218,7 +219,7 @@ export const get = Effect.fn("cli.service-config.get")(function* (key?: string, 
     return JSON.stringify(safe.remote === undefined ? safe : { ...safe, remote: {} }, null, 2)
   }
   const selected = configKey(key)
-  if (selected !== "env" && name !== undefined) throw new Error(`Usage: opencode service get ${selected}`)
+  if (selected !== "env" && name !== undefined) throw new Error(`Usage: aerless-code service get ${selected}`)
   switch (selected) {
     case "disabled": {
       return String((yield* read()).disabled ?? false)
@@ -250,7 +251,7 @@ export const get = Effect.fn("cli.service-config.get")(function* (key?: string, 
 export const set = Effect.fn("cli.service-config.set")(function* (key: string, value: string, nestedValue?: string) {
   const selected = configKey(key)
   if (selected !== "env" && nestedValue !== undefined)
-    throw new Error(`Usage: opencode service set ${selected} <value>`)
+    throw new Error(`Usage: aerless-code service set ${selected} <value>`)
   switch (selected) {
     case "disabled": {
       if (value !== "true" && value !== "false") throw new Error("Disabled must be true or false")
@@ -288,7 +289,7 @@ export const set = Effect.fn("cli.service-config.set")(function* (key: string, v
       return
     }
     case "env": {
-      if (nestedValue === undefined) throw new Error("Usage: opencode service set env <key> <value>")
+      if (nestedValue === undefined) throw new Error("Usage: aerless-code service set env <key> <value>")
       yield* Service.stop(yield* options())
       const existing = yield* read()
       yield* write({ ...existing, env: { ...existing.env, [value]: nestedValue } })
@@ -312,7 +313,7 @@ export const set = Effect.fn("cli.service-config.set")(function* (key: string, v
 
 export const unset = Effect.fn("cli.service-config.unset")(function* (key: string, name?: string) {
   const selected = configKey(key)
-  if (selected !== "env" && name !== undefined) throw new Error(`Usage: opencode service unset ${selected}`)
+  if (selected !== "env" && name !== undefined) throw new Error(`Usage: aerless-code service unset ${selected}`)
   switch (selected) {
     case "disabled": {
       const { disabled: _disabled, ...next } = yield* read()
@@ -343,7 +344,7 @@ export const unset = Effect.fn("cli.service-config.unset")(function* (key: strin
       return
     }
     case "env": {
-      if (name === undefined) throw new Error("Usage: opencode service unset env <key>")
+      if (name === undefined) throw new Error("Usage: aerless-code service unset env <key>")
       yield* Service.stop(yield* options())
       const existing = yield* read()
       const { [name]: _removed, ...env } = existing.env ?? {}

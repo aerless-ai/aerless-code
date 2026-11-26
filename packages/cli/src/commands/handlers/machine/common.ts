@@ -11,25 +11,21 @@ import { Service } from "@opencode/client/effect/service"
 import { MACHINE_LINK_PATH, type MachineReach } from "@opencode/protocol/groups/machine"
 import { Effect, Option } from "effect"
 import { EOL } from "node:os"
-import { Server, Standalone } from "../../commands"
+import { Server } from "../../commands"
 import { ServerConnection } from "../../../services/server-connection"
 import { ServiceConfig } from "../../../services/service-config"
 import { isLoopback } from "../../../services/service-urls"
 import { errorMessage } from "../../../util/error"
 
+// Aerless: --standalone is always on, so machines ask for the background service themselves; it keeps running.
 export const ensureMachineClient = Effect.fn("cli.machine.client")(function* () {
-  const standalone = yield* Effect.serviceOption(Standalone)
-  if (Option.getOrElse(standalone, () => false))
-    return yield* Effect.fail(
-      new Error("--standalone starts a server for this command only; a machine needs one that keeps running."),
-    )
   const serverFlag = yield* Effect.serviceOption(Server).pipe(Effect.map(Option.flatten))
   const config = yield* ServiceConfig.read()
   if (Option.isNone(serverFlag) && config.disabled === true)
     return yield* Effect.fail(
-      new Error("Managing machines requires the background service; run `opencode service unset disabled` first."),
+      new Error("Managing machines requires the background service; run `aerless-code service unset disabled` first."),
     )
-  const server = yield* ServerConnection.resolve()
+  const server = yield* ServerConnection.resolve({ standalone: false })
   return OpenCode.make({ baseUrl: server.endpoint.url, headers: Service.headers(server.endpoint) })
 })
 
