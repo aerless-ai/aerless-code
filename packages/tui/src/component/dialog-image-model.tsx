@@ -3,6 +3,7 @@ import { useClient } from "../context/client"
 import { useDialog } from "../ui/dialog"
 import { DialogSelect } from "../ui/dialog-select"
 import { useToast } from "../ui/toast"
+import { errorMessage } from "../util/error"
 
 /** The Aerless picture models (`aerless models --json`, run by the server); the choice becomes the default. */
 export function DialogImageModel() {
@@ -11,7 +12,12 @@ export function DialogImageModel() {
   const toast = useToast()
   const [models] = createResource(() =>
     client.api.server.imageModels.list().catch((error: unknown) => {
-      toast.error(error)
+      toast.show({
+        variant: "error",
+        message: /key|login|auth|401|403/i.test(String(error instanceof Error ? error.message : error))
+          ? "Pictures need an Aerless key: aerless login"
+          : errorMessage(error),
+      })
       return []
     }),
   )

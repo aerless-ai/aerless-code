@@ -29,8 +29,15 @@ export default Runtime.handler(
     const client = OpenCode.make({ baseUrl: endpoint.url, headers: Service.headers(endpoint) })
     const urls = yield* pairingURLs(client, input)
     const pairing = yield* Effect.tryPromise(() => client.server.pair())
-    const links = urls.map((url) => new URL(`/auth/connect/${pairing.code}`, url).href)
-    // Loopback URLs are useless to the scanning device, so the QR code only carries reachable addresses.
+    const link = (url: string) => new URL(`/auth/connect/${pairing.code}`, url).href
+    // Show localhost, not 127.0.0.1, for this device.
+    const local = (url: string) => {
+      const u = new URL(url)
+      if (isLoopback(u.hostname)) u.hostname = "localhost"
+      return link(u.href)
+    }
+    const links = urls.map((url) => (isLoopback(new URL(url).hostname) ? local(url) : link(url)))
+    // Loopback URLs are useless to a phone, so the QR code encodes the network address (LAN IPv4 when there is one).
     const remote = urls.filter((url) => !isLoopback(new URL(url).hostname))
     process.stdout.write(
       [
@@ -42,7 +49,7 @@ export default Runtime.handler(
           ? [
               "",
               // renderUnicodeCompact separates rows with "\n" on every platform, so splitting on EOL ("\r\n" on Windows) indents only the first row.
-              renderUnicodeCompact(JSON.stringify({ code: pairing.code, urls: remote }), {
+              renderUnicodeCompact(link(remote.find((url) => /^[\d.]+$/.test(new URL(url).hostname)) ?? remote[0]!), {
                 border: 2,
               })
                 .split("\n")

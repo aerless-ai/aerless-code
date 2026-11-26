@@ -55,7 +55,7 @@ export function SidebarOnboarding(props: { context: Plugin.Context; sessionID: s
             </text>
           </box>
           <text fg={props.context.theme.text.muted}>
-            Ready to code on the free model. Type /imgengine for pictures.
+            Ready to code on the free model. Ask for a picture in the chat, or /imgengine for the studio.
           </text>
           <text fg={props.context.theme.text.muted}>
             Every Aerless model, or your own Anthropic, OpenAI, OpenRouter or other key: type /connect

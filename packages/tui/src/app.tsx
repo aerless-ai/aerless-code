@@ -95,6 +95,7 @@ import { isFallbackTitle } from "@opencode/util/session-title-fallback"
 import * as Model from "./util/model"
 import { ArgsProvider, useArgs, type Args } from "./context/args"
 import { openUrl } from "@opencode/util/open"
+import { run as aerless } from "./util/aerless"
 import { PromptRefProvider, usePromptRef } from "./context/prompt"
 import { Config, ConfigProvider, useConfig } from "./config"
 import { newSessionLocation } from "./config/new-session-location"
@@ -929,6 +930,22 @@ function App() {
         slash: { name: "models" },
         run: () => {
           dialog.replace(() => <DialogModel />)
+        },
+      },
+      {
+        name: "image_studio.open",
+        title: "Open picture studio",
+        category: "Agent",
+        slash: { name: "imgengine", arguments: true as const },
+        run: () => {
+          void aerless("aerless", ["studio", "--from", "aerless-code"])
+            .then((out) => {
+              const url = out.match(/https?:\/\/\S+/)?.[0]?.replace("127.0.0.1", "localhost")
+              if (!url) throw new Error(out.trim() || "The picture studio did not print an address")
+              openUrl(url).catch(() => {})
+              toast.show({ variant: "success", message: `Picture studio is open: ${url}` })
+            })
+            .catch(toast.error)
         },
       },
       {

@@ -491,8 +491,10 @@ export function Autocomplete(props: {
       }))
     })
     const commandNames = new Set<string>()
+    const builtin = new Set(results.map((item) => item.display.slice(1)))
 
     for (const serverCommand of data.location.command.list(location.current) ?? []) {
+      if (builtin.has(serverCommand.name)) continue // built-in commands win over same-named file commands
       commandNames.add(serverCommand.name)
       results.push({
         display: "/" + serverCommand.name,
