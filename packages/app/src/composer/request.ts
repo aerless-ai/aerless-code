@@ -1,7 +1,6 @@
 import { encodeFilePath, getFilename } from "@opencode/util/path"
 import { parseSessionMention } from "@opencode/util/session-mention"
 import { serializePrompt } from "./prompt-parts"
-import { pictureSizeNote } from "./picture-size"
 import type { FileSelection } from "@/workspaces/files/model"
 import type {
   AgentPart,
@@ -222,7 +221,6 @@ export function buildPromptRequest(input: BuildPromptRequestInput): PromptReques
     text: [
       ...(text.trim() ? [text] : []),
       ...attachments.map(formatAttachmentReference),
-      ...pictureSizeNote(),
       ...comments.map((comment) => {
         if (comment.type === "note") return formatNoteComment(comment)
 

@@ -54,7 +54,7 @@ export function readPromptPresentation(metadata: SessionMessageUser["metadata"])
 export function formatAttachmentReference(input: PromptAttachmentReference) {
   // A picture the user wants changed goes to the picture tool as a reference, not opened in the studio.
   if (input.mime.startsWith("image/"))
-    return `Attached picture: \`${input.path}\` (to change it or start from it, call generate_image with this path in reference_images)`
+    return `Attached picture: \`${input.path}\` (to change it or start from it, call generate_image with this path in reference_images). Most picture models cannot start from a picture: put the full description of the original picture plus the change in the prompt.`
 
   return `Attached file: \`${input.path}\``
 }
