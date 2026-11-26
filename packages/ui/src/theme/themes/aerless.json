@@ -26,7 +26,7 @@
   },
   "dark": {
     "palette": {
-      "neutral": "#101011",
+      "neutral": "#0b0b0c",
       "ink": "#f2f2f3",
       "primary": "#d41f26",
       "success": "#12c905",
@@ -39,27 +39,27 @@
     },
     "overrides": {
       "text-strong": "#f2f2f3",
-      "text-base": "#b0b0b5",
-      "border-weak-base": "#242426",
+      "text-base": "#9a9aa2",
+      "border-weak-base": "#2a2a2e",
       "border-weaker-base": "#18181a",
-      "surface-base": "#101011",
-      "surface-raised-base": "#18181a",
-      "surface-raised-base-hover": "#242426"
+      "surface-base": "#0b0b0c",
+      "surface-raised-base": "#141416",
+      "surface-raised-base-hover": "#1c1c1f"
     },
     "v2Overrides": {
       "v2-background-bg-deep": "#070707",
-      "v2-background-bg-base": "#101011",
-      "v2-background-bg-layer-01": "#18181a",
-      "v2-background-bg-layer-02": "#242426",
-      "v2-background-bg-layer-03": "#37373a",
+      "v2-background-bg-base": "#0b0b0c",
+      "v2-background-bg-layer-01": "#141416",
+      "v2-background-bg-layer-02": "#1c1c1f",
+      "v2-background-bg-layer-03": "#2a2a2e",
       "v2-background-bg-accent": "#d41f26",
       "v2-text-text-base": "#f2f2f3",
-      "v2-text-text-muted": "#b0b0b5",
+      "v2-text-text-muted": "#9a9aa2",
       "v2-text-text-accent": "#ff5a5f",
       "v2-text-text-accent-hover": "#d41f26",
       "v2-icon-icon-accent": "#ff5a5f",
       "v2-icon-icon-accent-hover": "#d41f26",
-      "v2-border-border-base": "#242426",
+      "v2-border-border-base": "#2a2a2e",
       "v2-border-border-strong": "#37373a",
       "v2-border-border-focus": "#d41f26",
       "v2-overlay-simple-tab-scrim": "#07070700"
