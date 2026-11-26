@@ -1,11 +1,15 @@
 import { FileSystem } from "@opencode/core/filesystem"
 import { FileWatch } from "@opencode/core/filesystem/file-watch"
 import { Location } from "@opencode/core/location"
+import { Project } from "@opencode/core/project"
+import { Session } from "@opencode/core/session"
 import { RelativePath } from "@opencode/core/schema"
-import { FileNotFoundError, ServiceUnavailableError } from "@opencode/protocol/errors"
+import { ProjectID } from "@opencode/schema/project-id"
+import { FileNotFoundError, ForbiddenError, ServiceUnavailableError } from "@opencode/protocol/errors"
 import { Effect, Option, Stream } from "effect"
-import { type HttpServerRequest, HttpServerResponse } from "effect/http"
+import { HttpServerRequest, HttpServerResponse } from "effect/http"
 import { HttpApiBuilder } from "effect/http-api"
+import { stat } from "node:fs/promises"
 import path from "path"
 import { Api } from "../api"
 import { ContentHeaders } from "../content-headers"
@@ -15,6 +19,8 @@ import { ByteRange } from "../range"
 export const FileSystemHandler = HttpApiBuilder.group(Api, "server.fs", (handlers) =>
   Effect.gen(function* () {
     const fileWatch = yield* FileWatch.Service
+    const projects = yield* Project.Service
+    const sessions = yield* Session.Service
     return handlers
       .handleRaw("fs.read", (ctx) =>
         Effect.gen(function* () {
@@ -84,6 +90,38 @@ export const FileSystemHandler = HttpApiBuilder.group(Api, "server.fs", (handler
             )
         }),
       )
+      .handle("fs.open", (ctx) =>
+        Effect.gen(function* () {
+          const request = yield* HttpServerRequest.HttpServerRequest
+          if (!fromThisMachine(request))
+            return yield* new ForbiddenError({ message: "Files open only from the server's own machine" })
+          const location = yield* Location.Service
+          const target = path.resolve(location.directory, ctx.payload.path)
+          // Only inside a project, or one of its worktrees, that has sessions: the location middleware registers any
+          // folder a request names as a project, so being one says nothing about the user having worked there.
+          const inside = (root: string) => {
+            const relative = path.relative(root, target)
+            return !relative.startsWith("..") && !path.isAbsolute(relative)
+          }
+          const candidates = (yield* projects.list()).filter(
+            (project) => project.id !== ProjectID.global && [project.canonical, ...project.sandboxes].some(inside),
+          )
+          const worked = yield* Effect.filter(candidates, (project) =>
+            sessions.list({ project: project.id, limit: 1 }).pipe(
+              Effect.map((page) => page.data.length > 0),
+              Effect.orElseSucceed(() => false),
+            ),
+          )
+          if (worked.length === 0)
+            return yield* new ForbiddenError({ message: `Not inside a project with sessions: ${ctx.payload.path}` })
+          yield* Effect.tryPromise(() => stat(target)).pipe(
+            Effect.mapError(() => new FileNotFoundError({ path: target, message: `File not found: ${target}` })),
+          )
+          Bun.spawn(systemOpen(target, ctx.payload.reveal === true, ctx.payload.app), {
+            stdio: ["ignore", "ignore", "ignore"],
+          }).unref()
+        }),
+      )
       .handle("fs.unwatch", (ctx) =>
         Effect.gen(function* () {
           const location = yield* Location.Service
@@ -95,6 +133,27 @@ export const FileSystemHandler = HttpApiBuilder.group(Api, "server.fs", (handler
       )
   }),
 )
+
+// The request's peer and the address it asked for are both this machine, and no proxy (such as the remote tunnel)
+// forwarded it: a window opening on the server's screen is only useful to someone sitting at it.
+function fromThisMachine(request: HttpServerRequest.HttpServerRequest) {
+  const host = request.headers.host
+  if (request.headers["x-forwarded-for"] !== undefined || host === undefined || !URL.canParse(`http://${host}`))
+    return false
+  return (
+    isLoopback(Option.getOrUndefined(request.remoteAddress) ?? "") && isLoopback(new URL(`http://${host}`).hostname)
+  )
+}
+
+function isLoopback(address: string) {
+  return ["localhost", "::1", "[::1]", "::ffff:127.0.0.1"].includes(address) || address.startsWith("127.")
+}
+
+function systemOpen(target: string, reveal: boolean, app: string | undefined) {
+  if (process.platform === "darwin") return ["open", ...(reveal ? ["-R"] : app ? ["-a", app] : []), target]
+  if (process.platform === "win32") return ["explorer", reveal ? `/select,${target}` : target]
+  return ["xdg-open", reveal ? path.dirname(target) : target]
+}
 
 function decodeRequestPath(url: string) {
   const raw = new URL(url, "http://localhost").pathname.slice(13)

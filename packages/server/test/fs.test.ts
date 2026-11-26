@@ -437,3 +437,39 @@ it.live("confines watch requests like read and reports a disabled watcher", () =
     expect(yield* watch("DELETE", "a.ts")).toBe(204)
   }),
 )
+
+// Only the refusals, against an empty database: a request that passes would open a window on this machine.
+it.live(
+  "opening a file refuses forwarded requests and paths outside every project with sessions",
+  () =>
+    Effect.gen(function* () {
+      const tmp = yield* tmpdirScoped()
+      const project = path.join(tmp.path, "project")
+      const plain = path.join(tmp.path, "plain")
+      yield* Effect.promise(async () => {
+        await fs.mkdir(path.join(project, ".git"), { recursive: true })
+        await fs.writeFile(path.join(project, "inside.txt"), "")
+        await fs.mkdir(plain)
+        await fs.writeFile(path.join(plain, "outside.txt"), "")
+      })
+      const server = yield* startServer(path.join(tmp.path, "config"))
+      const open = (directory: string, file: string, headers: Record<string, string> = {}) =>
+        Effect.promise(async () => {
+          const url = new URL("/api/experimental/fs/open", server.base)
+          url.searchParams.set("location[directory]", directory)
+          const response = await fetch(url, {
+            method: "POST",
+            headers: { ...server.headers, ...headers, "content-type": "application/json" },
+            body: JSON.stringify({ path: file, reveal: true }),
+          })
+          return response.status
+        })
+
+      expect(yield* open(project, "inside.txt", { "x-forwarded-for": "203.0.113.7" })).toBe(403)
+      // Naming a folder registers it as a project, but nobody has worked there.
+      expect(yield* open(plain, "outside.txt")).toBe(403)
+      expect(yield* open(project, "inside.txt")).toBe(403)
+      expect(yield* open(project, "missing.txt")).toBe(403)
+    }),
+  15_000,
+)

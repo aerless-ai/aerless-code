@@ -4508,6 +4508,15 @@ export type ExperimentalFileUnwatchInput = {
 
 export type ExperimentalFileUnwatchOutput = void
 
+export type ExperimentalFileOpenInput = {
+  readonly location?: { readonly directory?: string | undefined } | undefined
+  readonly path: string
+  readonly reveal?: boolean | undefined
+  readonly app?: string | undefined
+}
+
+export type ExperimentalFileOpenOutput = void
+
 export type CommandListInput = { readonly location?: { readonly directory?: string | undefined } | undefined }
 
 export type CommandListOutput = { location: LocationPublicRef; data: Array<CommandInfo> }

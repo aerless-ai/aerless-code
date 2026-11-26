@@ -2059,9 +2059,21 @@ export type ExperimentalFileUnwatchOperation<E = never> = (
   input: ExperimentalFileUnwatchInput,
 ) => Effect.Effect<ExperimentalFileUnwatchOutput, E>
 
+export type ExperimentalFileOpenInput = {
+  readonly location?: { readonly directory?: string | undefined } | undefined
+  readonly path: string
+  readonly reveal?: boolean | undefined
+  readonly app?: string | undefined
+}
+export type ExperimentalFileOpenOutput = void
+export type ExperimentalFileOpenOperation<E = never> = (
+  input: ExperimentalFileOpenInput,
+) => Effect.Effect<ExperimentalFileOpenOutput, E>
+
 export interface ExperimentalFileApi<E = never> {
   readonly watch: ExperimentalFileWatchOperation<E>
   readonly unwatch: ExperimentalFileUnwatchOperation<E>
+  readonly open: ExperimentalFileOpenOperation<E>
 }
 
 export type CommandListInput = { readonly location?: { readonly directory?: string | undefined } | undefined }

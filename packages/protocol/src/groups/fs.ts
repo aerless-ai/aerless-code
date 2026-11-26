@@ -3,7 +3,7 @@ import { Location } from "@opencode/schema/location"
 import { PositiveInt } from "@opencode/schema/schema"
 import { Schema } from "effect"
 import { HttpApiEndpoint, HttpApiGroup, HttpApiSchema, OpenApi } from "effect/http-api"
-import { FileNotFoundError, ServiceUnavailableError } from "../errors.js"
+import { FileNotFoundError, ForbiddenError, ServiceUnavailableError } from "../errors.js"
 import { LocationQuery, locationQueryOpenApi } from "./location.js"
 
 const ListQuery = Schema.Struct({
@@ -23,6 +23,16 @@ const WriteQuery = Schema.Struct({
 
 const WatchPayload = Schema.Struct({
   path: Schema.String.annotate({ description: "A file path relative to the requested location." }),
+})
+
+const OpenPayload = Schema.Struct({
+  path: Schema.String.annotate({ description: "An absolute path or a path relative to the requested location." }),
+  reveal: Schema.Boolean.pipe(Schema.optional).annotate({
+    description: "Show the path in the system file manager instead of opening it.",
+  }),
+  app: Schema.String.pipe(Schema.optional).annotate({
+    description: "macOS only: the name of the application to open the path with. Defaults to the system's choice.",
+  }),
 })
 
 const FindQuery = Schema.Struct({
@@ -125,6 +135,23 @@ export const FileSystemGroup = HttpApiGroup.make("server.fs")
           summary: "Unwatch file",
           description:
             "Stop watching one file relative to the requested location. Experimental: may change without compatibility guarantees.",
+        }),
+      ),
+  )
+  .add(
+    HttpApiEndpoint.post("fs.open", "/api/experimental/fs/open", {
+      query: LocationQuery,
+      payload: OpenPayload,
+      success: HttpApiSchema.NoContent,
+      error: [FileNotFoundError, ForbiddenError],
+    })
+      .annotateMerge(locationQueryOpenApi)
+      .annotateMerge(
+        OpenApi.annotations({
+          identifier: "experimental.fs.open",
+          summary: "Open or reveal path",
+          description:
+            "Open a path inside a project or worktree that has sessions with the system's default application, or reveal it in the file manager. Relative paths resolve against the requested location. Only honoured for requests from the server's own machine. Experimental: may change without compatibility guarantees.",
         }),
       ),
   )

@@ -3,6 +3,22 @@ import { basePath, withBasePath } from "./base-path"
 import type { Platform } from "./platform"
 
 export function createWebPlatform(version: string) {
+  const currentServerUrl = getCurrentServerUrl()
+  // The server that served this page opens the file on its own screen, which is this computer's when the page is on
+  // localhost; it refuses anything outside a project and any request that did not come from its own machine.
+  const openOnServer = async (target: string, body: { reveal?: boolean; app?: string }) => {
+    if (!currentServerUrl) return false
+    const response = await fetch(`${currentServerUrl}/api/experimental/fs/open`, {
+      method: "POST",
+      credentials: "include",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ path: target, ...body }),
+    })
+    if (response.status === 404) return false
+    if (!response.ok) throw new Error((await response.json().catch(() => undefined))?.message ?? response.statusText)
+    return true
+  }
+
   const platform: Platform = {
     platform: "web",
     draftStore: createBrowserDraftStore(),
@@ -14,6 +30,8 @@ export function createWebPlatform(version: string) {
       if (url.protocol !== "http:" && url.protocol !== "https:" && url.protocol !== "mailto:") return
       window.open(url.href, "_blank", "noopener,noreferrer")
     },
+    revealPath: (target) => openOnServer(target, { reveal: true }),
+    openPath: async (target, app) => void (await openOnServer(target, { app })),
     restart: async () => window.location.reload(),
     openAttachmentPickerDialog(opts, onFile) {
       const input = document.createElement("input")
@@ -57,7 +75,7 @@ export function createWebPlatform(version: string) {
 
   return {
     platform,
-    currentServerUrl: getCurrentServerUrl(),
+    currentServerUrl,
   }
 }
 

@@ -209,6 +209,8 @@ import type {
   ExperimentalFileWatchOutput,
   ExperimentalFileUnwatchInput,
   ExperimentalFileUnwatchOutput,
+  ExperimentalFileOpenInput,
+  ExperimentalFileOpenOutput,
   CommandListInput,
   CommandListOutput,
   SkillListInput,
@@ -1427,9 +1429,18 @@ const EndpointExperimentalFileUnwatch = (raw: RawClient["server.fs"]) => (input:
     ),
   )
 
+const EndpointExperimentalFileOpen = (raw: RawClient["server.fs"]) => (input: ExperimentalFileOpenInput) =>
+  preserveEffect<ExperimentalFileOpenOutput>()(
+    raw["fs.open"]({
+      query: { location: input["location"] },
+      payload: { path: input["path"], reveal: input["reveal"], app: input["app"] },
+    }).pipe(Effect.mapError(mapClientError)),
+  )
+
 const adaptGroupExperimentalFile = (raw: RawClient["server.fs"]) => ({
   watch: EndpointExperimentalFileWatch(raw),
   unwatch: EndpointExperimentalFileUnwatch(raw),
+  open: EndpointExperimentalFileOpen(raw),
 })
 
 const EndpointCommandList = (raw: RawClient["server.command"]) => (input?: CommandListInput) =>

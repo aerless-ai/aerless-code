@@ -12,7 +12,7 @@ export function useRevealProject() {
   const servers = useServers()
 
   const available = (conn: ServerConnection.Any) =>
-    platform.platform === "desktop" && !!platform.revealPath && servers.local(conn)
+    !!platform.revealPath && servers.local(conn)
 
   return {
     available,

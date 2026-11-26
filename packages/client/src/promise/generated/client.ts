@@ -207,6 +207,8 @@ import type {
   ExperimentalFileWatchOutput,
   ExperimentalFileUnwatchInput,
   ExperimentalFileUnwatchOutput,
+  ExperimentalFileOpenInput,
+  ExperimentalFileOpenOutput,
   CommandListInput,
   CommandListOutput,
   SkillListInput,
@@ -1411,6 +1413,19 @@ export function make(options: ClientOptions) {
               body: { path: input["path"] },
               successStatus: 204,
               declaredStatuses: [400, 401, 404],
+              empty: true,
+            },
+            requestOptions,
+          ),
+        open: (input: ExperimentalFileOpenInput, requestOptions?: RequestOptions) =>
+          request<ExperimentalFileOpenOutput>(
+            {
+              method: "POST",
+              path: `/api/experimental/fs/open`,
+              query: { location: input["location"] },
+              body: { path: input["path"], reveal: input["reveal"], app: input["app"] },
+              successStatus: 204,
+              declaredStatuses: [400, 401, 403, 404],
               empty: true,
             },
             requestOptions,
