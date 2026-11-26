@@ -12,7 +12,7 @@ Open source, one install, lighter than the opencode it is built on.
 
 <p align="center">
   <a href="https://github.com/aerless-ai/aerless-code/releases/latest"><img alt="release" src="https://img.shields.io/github/v/release/aerless-ai/aerless-code?label=release&color=d41f26&labelColor=1a1a1a"></a>
-  <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-MIT-d41f26?labelColor=1a1a1a"></a>
+  <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-MIT-d41f26?labelColor=1a1a1a&style=flat"></a>
   <img alt="platforms" src="https://img.shields.io/badge/macOS%20%7C%20Linux%20%7C%20Windows-supported-f2f2f2?labelColor=1a1a1a">
   <a href="https://github.com/anomalyco/opencode"><img alt="fork of opencode" src="https://img.shields.io/badge/fork%20of-opencode-f2f2f2?labelColor=1a1a1a"></a>
 </p>
