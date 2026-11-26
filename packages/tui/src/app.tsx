@@ -64,6 +64,7 @@ import { LocationProvider, useLocation } from "./context/location"
 import { LocalProvider, useLocal } from "./context/local"
 import { PermissionProvider } from "./context/permission"
 import { DialogModel } from "./component/dialog-model"
+import { DialogImageModel } from "./component/dialog-image-model"
 import { useConnected } from "./component/use-connected"
 import { DialogMcp } from "./component/dialog-mcp"
 import { DialogUsage } from "./component/usage"
@@ -928,6 +929,15 @@ function App() {
         slash: { name: "models" },
         run: () => {
           dialog.replace(() => <DialogModel />)
+        },
+      },
+      {
+        name: "image_model.list",
+        title: "Switch picture model",
+        category: "Agent",
+        slash: { name: "imagemodel" },
+        run: () => {
+          dialog.replace(() => <DialogImageModel />)
         },
       },
       {
