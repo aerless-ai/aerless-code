@@ -23,6 +23,8 @@ export const Plugin = define({
         if (server.codemode !== undefined) continue
         if (server.type === "local") {
           if (server.command[0] === "executor" && server.command[1] === "mcp") server.codemode = false
+          // Aerless: its picture tools must be direct tools so the chat can show them as picture cards.
+          if (/(^|[\\/])aerless(\.exe)?$/.test(server.command[0] ?? "") && server.command[1] === "mcp") server.codemode = false
           continue
         }
         if (!URL.canParse(server.url)) continue
