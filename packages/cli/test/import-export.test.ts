@@ -47,6 +47,7 @@ const status = () =>
 
 function run(args: string[], stdin?: string) {
   const child = Bun.spawn([process.execPath, "run", "src/index.ts", ...args], {
+    env: process.env,
     cwd: path.join(import.meta.dir, ".."),
     stdin: stdin === undefined ? undefined : new Blob([stdin]),
     stdout: "pipe",

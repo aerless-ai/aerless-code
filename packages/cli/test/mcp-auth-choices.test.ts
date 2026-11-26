@@ -45,12 +45,13 @@ test("offers only OAuth-capable MCP servers by their server identity", () => {
 test("mcp auth accepts an optional server name and rejects no-name noninteractive calls before connecting", async () => {
   const cli = (args: string[]) =>
     Bun.spawn([process.execPath, "run", "src/index.ts", "mcp", "auth", ...args], {
+      env: process.env,
       cwd: path.join(import.meta.dir, ".."),
       stdout: "pipe",
       stderr: "pipe",
     })
   const help = cli(["--help"])
-  expect(await new Response(help.stdout).text()).toContain("opencode mcp auth [flags] [<name>]")
+  expect(await new Response(help.stdout).text()).toContain("aerless-code mcp auth [flags] [<name>]")
   expect(await help.exited).toBe(0)
 
   const missing = cli([])
