@@ -13,6 +13,9 @@ import { testEffect } from "../../core/test/lib/effect"
 
 const it = testEffect(NodeServices.layer)
 
+// These cover opencode's update flow, which Aerless Code keeps behind AERLESS_ALLOW_OPENCODE_UPGRADE=1.
+process.env.AERLESS_ALLOW_OPENCODE_UPGRADE = "1"
+
 declare const OPENCODE_CLI_NAME: string | undefined
 
 function fixture(
@@ -289,11 +292,11 @@ managers.forEach((manager) => {
       expect(yield* test.updater.method()).toBeUndefined()
       const latest = yield* test.updater.managed()
       const pinned = yield* test.updater.managed("v2.2.6")
-      expect(latest?.title).toBe(`OpenCode is managed by ${manager.name}`)
+      expect(latest?.title).toBe(`Aerless Code is managed by ${manager.name}`)
       expect(latest?.command).toBe(`${manager.command}@2.3.4`)
       expect(pinned?.command).toBe(`${manager.command}@2.2.6`)
       const applied = yield* test.updater.apply("2.3.4").pipe(Effect.flip)
-      expect(applied.message).toBe(`OpenCode is managed by ${manager.name}. Update it with ${manager.command}@2.3.4`)
+      expect(applied.message).toBe(`Aerless Code is managed by ${manager.name}. Update it with ${manager.command}@2.3.4`)
       // An explicit --method keeps its existing command, and the version check reports the untouched copy.
       const explicit = yield* test.updater.upgrade("npm", "2.3.4").pipe(Effect.flip)
       expect(explicit.message).toContain("is still version 2.2.7")

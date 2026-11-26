@@ -90,6 +90,8 @@ async function bundleInputs(entrypoint: string) {
         "--format=esm",
         "--packages=bundle",
         "--external=@opentui/core-*",
+        // The in-process server (services/standalone.ts) pulls in the web UI, whose assets exist only in builds.
+        "--external=virtual:opencode-app-assets",
         `--metafile=${metafile}`,
         `--outdir=${path.join(temporary, "out")}`,
       ],

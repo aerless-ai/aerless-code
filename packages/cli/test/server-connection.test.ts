@@ -42,7 +42,8 @@ test("resolution groups Effect-native lifecycle operations only for the managed 
         pid: process.pid,
       }),
     )
-    const resolved = await runPromise(ServerConnection.resolve())
+    // Aerless Code uses a private server by default; the managed service is asked for explicitly.
+    const resolved = await runPromise(ServerConnection.resolve({ standalone: false }))
 
     expect(resolved.endpoint.url).toBe(server.url.toString())
     expect(resolved.service).toBeDefined()
@@ -51,7 +52,7 @@ test("resolution groups Effect-native lifecycle operations only for the managed 
     expect(Effect.isEffect(resolved.service.restart())).toBe(true)
     expect(await runPromise(resolved.service.reconnect())).toEqual(resolved.endpoint)
 
-    const existing = await runPromise(ServerConnection.resolve({ autostart: false }))
+    const existing = await runPromise(ServerConnection.resolve({ standalone: false, autostart: false }))
     expect(existing.endpoint.url).toBe(server.url.toString())
     expect(existing.service).toBeDefined()
 
@@ -102,7 +103,7 @@ test("global --server and --standalone flags parse in any position for server-co
           captured.push({
             path: currentPath,
             server: inputServer ?? Option.getOrUndefined(serverFlag),
-            standalone: inputStandalone ?? Option.getOrElse(standaloneFlag, () => false),
+            standalone: inputStandalone ?? Option.getOrElse(standaloneFlag, () => true),
           })
         }),
       ),
@@ -129,39 +130,39 @@ test("global --server and --standalone flags parse in any position for server-co
 
   const url = "http://127.0.0.1:43210"
   const serverCases: ReadonlyArray<readonly [ReadonlyArray<string>, string]> = [
-    [["--server", url, "session", "list"], "opencode session list"],
-    [["session", "--server", url, "list"], "opencode session list"],
-    [["session", "list", "--server", url], "opencode session list"],
-    [["session", "--server", url, "delete", "ses_123"], "opencode session delete"],
-    [["--server", url, "plugin", "list"], "opencode plugin list"],
-    [["plugin", "--server", url, "list"], "opencode plugin list"],
-    [["plugin", "list", "--server", url], "opencode plugin list"],
-    [["plugin", "--server", url, "check"], "opencode plugin check"],
-    [["plugin", "--server", url, "update"], "opencode plugin update"],
-    [["--server", url, "mcp", "list"], "opencode mcp list"],
-    [["mcp", "--server", url, "list"], "opencode mcp list"],
-    [["mcp", "list", "--server", url], "opencode mcp list"],
-    [["mcp", "--server", url, "auth", "linear"], "opencode mcp auth"],
-    [["mcp", "--server", url, "logout", "linear"], "opencode mcp logout"],
-    [["auth", "--server", url, "list"], "opencode auth list"],
-    [["debug", "--server", url, "config"], "opencode debug config"],
-    [["debug", "--server", url, "agents"], "opencode debug agents"],
-    [["debug", "--server", url, "heap-dump"], "opencode debug heap-dump"],
-    [["--server", url, "models"], "opencode models"],
-    [["models", "--server", url], "opencode models"],
-    [["--server", url, "run", "hello"], "opencode run"],
-    [["run", "hello", "--server", url], "opencode run"],
+    [["--server", url, "session", "list"], "aerless-code session list"],
+    [["session", "--server", url, "list"], "aerless-code session list"],
+    [["session", "list", "--server", url], "aerless-code session list"],
+    [["session", "--server", url, "delete", "ses_123"], "aerless-code session delete"],
+    [["--server", url, "plugin", "list"], "aerless-code plugin list"],
+    [["plugin", "--server", url, "list"], "aerless-code plugin list"],
+    [["plugin", "list", "--server", url], "aerless-code plugin list"],
+    [["plugin", "--server", url, "check"], "aerless-code plugin check"],
+    [["plugin", "--server", url, "update"], "aerless-code plugin update"],
+    [["--server", url, "mcp", "list"], "aerless-code mcp list"],
+    [["mcp", "--server", url, "list"], "aerless-code mcp list"],
+    [["mcp", "list", "--server", url], "aerless-code mcp list"],
+    [["mcp", "--server", url, "auth", "linear"], "aerless-code mcp auth"],
+    [["mcp", "--server", url, "logout", "linear"], "aerless-code mcp logout"],
+    [["auth", "--server", url, "list"], "aerless-code auth list"],
+    [["debug", "--server", url, "config"], "aerless-code debug config"],
+    [["debug", "--server", url, "agents"], "aerless-code debug agents"],
+    [["debug", "--server", url, "heap-dump"], "aerless-code debug heap-dump"],
+    [["--server", url, "models"], "aerless-code models"],
+    [["models", "--server", url], "aerless-code models"],
+    [["--server", url, "run", "hello"], "aerless-code run"],
+    [["run", "hello", "--server", url], "aerless-code run"],
   ]
 
   for (const [args, expectedPath] of serverCases) {
     captured.length = 0
     await runArgs(args)
-    expect(captured).toEqual([{ path: expectedPath, server: url, standalone: false }])
+    expect(captured).toEqual([{ path: expectedPath, server: url, standalone: true }])
   }
 
   captured.length = 0
   await runArgs(["session", "--standalone", "list"])
-  expect(captured).toEqual([{ path: "opencode session list", server: undefined, standalone: true }])
+  expect(captured).toEqual([{ path: "aerless-code session list", server: undefined, standalone: true }])
 
   await expect(runArgs(["plugin", "add", "some-plugin", "--server", url])).rejects.toThrow()
   await expect(runArgs(["plugin", "remove", "some-plugin", "--server", url])).rejects.toThrow()
@@ -210,7 +211,7 @@ test("local config commands do not start or require a server", async () => {
         },
       },
     })
-    expect(await Bun.file(path.join(root, "state", "opencode", ServiceConfig.filename())).exists()).toBe(false)
+    expect(await Bun.file(path.join(root, "state", "aerless-code", ServiceConfig.filename())).exists()).toBe(false)
   } finally {
     await fs.rm(root, { recursive: true, force: true })
   }

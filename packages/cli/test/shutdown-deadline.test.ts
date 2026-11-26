@@ -35,6 +35,7 @@ async function hang(
   body: (proc: Bun.Subprocess<"ignore", "pipe", "pipe">, pid: number) => Promise<void>,
 ) {
   const proc = Bun.spawn([process.execPath, path.join(import.meta.dir, "fixture/shutdown-hang.ts"), String(deadline)], {
+    env: process.env,
     cwd: path.join(import.meta.dir, ".."),
     stdin: "ignore",
     stdout: "pipe",

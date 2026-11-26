@@ -15,6 +15,13 @@ describe("upgrade command", () => {
     expect(help.stdout).toContain("-m")
   })
 
+  test("prints the Aerless installer command without looking anything up", async () => {
+    const result = await cli([], { AERLESS_ALLOW_OPENCODE_UPGRADE: "0" })
+    expect(result.exitCode).toBe(0)
+    expect(result.events).toEqual([])
+    expect(result.stdout).toContain("To update Aerless Code, run:")
+  })
+
   test("detects the installation method and resolves the latest version", async () => {
     const result = await cli([])
     expect(result.exitCode).toBe(0)
@@ -98,6 +105,8 @@ async function cli(args: string[], env: Record<string, string> = {}, entry = "fi
           XDG_CACHE_HOME: path.join(root, "cache"),
           XDG_STATE_HOME: path.join(root, "state"),
           OPENCODE_DISABLE_AUTOUPDATE: "1",
+          // The opencode upgrade flow stays available behind this switch; by default upgrade prints the Aerless installer.
+          AERLESS_ALLOW_OPENCODE_UPGRADE: "1",
           ...env,
         },
         stdout: "pipe",
@@ -113,7 +122,7 @@ async function cli(args: string[], env: Record<string, string> = {}, entry = "fi
       .split("\n")
       .filter((line) => line.startsWith("EVENT "))
       .map((line) => JSON.parse(line.slice(6)))
-    expect(await Bun.file(path.join(root, "state", "opencode", "service-local.json")).exists()).toBe(false)
+    expect(await Bun.file(path.join(root, "state", "aerless-code", "service-local.json")).exists()).toBe(false)
     return { stdout, stderr, exitCode, events }
   } finally {
     await rm(root, { recursive: true, force: true })
