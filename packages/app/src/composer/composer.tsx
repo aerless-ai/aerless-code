@@ -8,6 +8,7 @@ import { Keybind } from "@opencode/ui/keybind"
 import { Slash } from "@opencode/ui/slash"
 import { Tooltip } from "@opencode/ui/tooltip"
 import { ComposerEditor } from "./editor/editor"
+import { PictureControls } from "./pictures"
 import { DialogSelectModel, ModelSelectorDrawer } from "@/providers/models/select-dialog"
 import { DialogSelectModelUnpaid } from "@/providers/models/unpaid"
 import { formatKeybind, useCommand } from "@/shell/commands/command"
@@ -85,16 +86,7 @@ export function Composer(props: {
               onClose={props.model.restoreFocus}
               onUnpaidClick={() => dialog.show(() => <DialogSelectModelUnpaid model={props.model.model.selection} />)}
             />
-            <Button
-              data-action="composer-pictures"
-              type="button"
-              variant="ghost"
-              size="small"
-              title={language.t("command.studio.open.description")}
-              onClick={() => command.trigger("studio.open")}
-            >
-              {language.t("command.studio.open")}
-            </Button>
+            <PictureControls />
           </>
         }
       />

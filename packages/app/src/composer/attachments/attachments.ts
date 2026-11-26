@@ -3,6 +3,7 @@ import { makeEventListener } from "@solid-primitives/event-listener"
 import { createBlobReference } from "@/runtime/persistence/drafts"
 import { dragOutText, draggingOut } from "@/runtime/platform/drag-out"
 import { uuid } from "@opencode/util/uuid"
+import { getFilename } from "@opencode/util/path"
 import type { ComposerPrompt } from "../types"
 import type { ImageAttachmentPart, PathAttachmentPart } from "../state"
 import type { AttachmentDestination } from "./destination"
@@ -220,6 +221,10 @@ export function createComposerAttachments(
 
     if (plainText?.startsWith("file:")) {
       const path = plainText.slice("file:".length)
+      const image = imageExtensions.get(path.split(".").pop()?.toLowerCase() ?? "")
+      const target = capture()
+      // An image is a chip, never its path in the text.
+      if (image && target) return void addPath(target, { filename: getFilename(path), mime: image, path })
       input.focusEditor()
       input.addPart({ type: "file", path, content: `@${path}`, start: 0, end: 0 })
 
@@ -247,6 +252,19 @@ export function createComposerAttachments(
       if (event.key === "Escape") clearDrag()
     })
     makeEventListener(document, "drop", handleDrop)
+    // A picture card's Edit (session-ui `EDIT_PICTURE_EVENT`) puts that picture in as a chip; its path reaches the
+    // model as an attached picture, which generate_image takes as a reference.
+    makeEventListener(window, "aerless:edit-picture", (event) => {
+      const path = event instanceof CustomEvent ? event.detail?.path : undefined
+      const editor = input.editor()
+      // shortcut: every mounted composer hears this, so only one on screen takes it; route by session if panes split.
+      if (typeof path !== "string" || !editor?.offsetParent) return
+      const target = capture()
+      if (!target) return
+      const ext = path.split(".").pop()?.toLowerCase() ?? ""
+      addPath(target, { filename: getFilename(path), mime: imageExtensions.get(ext) ?? "image/png", path })
+      input.focusEditor()
+    })
   })
 
   return {

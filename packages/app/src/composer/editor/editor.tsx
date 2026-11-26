@@ -454,7 +454,11 @@ export function ComposerEditor(props: ComposerEditorProps) {
                 {view.placeholder?.() ??
                   (mode() === "shell"
                     ? i18n.t("ui.promptInput.placeholder.shell")
-                    : i18n.t("ui.promptInput.placeholder.normal", { slash: "/", at: "@" }))}
+                    : props.controller
+                          .attachments()
+                          .some((part) => part.type === "path" && part.mime.startsWith("image/"))
+                      ? "Describe the change…"
+                      : i18n.t("ui.promptInput.placeholder.normal", { slash: "/", at: "@" }))}
               </div>
             </Show>
           </div>
