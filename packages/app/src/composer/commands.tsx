@@ -1,3 +1,4 @@
+import { useNavigate } from "@solidjs/router"
 import { useCommand, type CommandOption } from "@/shell/commands/command"
 import { useLanguage } from "@/runtime/i18n/language"
 import { DialogSelectModel } from "@/providers/models/select-dialog"
@@ -8,6 +9,8 @@ import { useWorkspaceLocation } from "@/workspaces/location"
 import { useData } from "@/runtime/server/current"
 import { useServerSDK } from "@/runtime/server/client"
 import { formatServerError } from "@/runtime/server/errors"
+import { ServerConnection } from "@/runtime/server/registry"
+import { sessionHref } from "@/shell/routes/session"
 import { showToast } from "@/shell/notifications/toast"
 import { toaster } from "@opencode/ui/toast"
 import { createConfigReloadState, transitionConfigReload, type ConfigReloadEvent } from "@/composer/reload-machine"
@@ -28,6 +31,7 @@ export const useComposerCommands = (input: { model?: ModelSelection } = {}) => {
   const { params } = useSessionLayout()
   const data = useData()
   const sdk = useServerSDK()
+  const navigate = useNavigate()
   const model = input.model ?? local.model
   const modelCommand = withCategory(language.t("command.category.model"))
   const agentCommand = withCategory(language.t("command.category.agent"))
@@ -81,6 +85,16 @@ export const useComposerCommands = (input: { model?: ModelSelection } = {}) => {
         description: formatServerError(effect.cause, language.t),
       })
     })
+  }
+
+  // Runs the Aerless `/imgengine` command, as typing it does, in this session or a new one in this location.
+  const openPictures = async () => {
+    const session = params.id ? { id: params.id } : data.session.create({ location: workspace().ref })
+    if ("request" in session) {
+      await session.request
+      navigate(sessionHref(ServerConnection.key(sdk.server), session.id))
+    }
+    await sdk.api.session.command({ sessionID: session.id, name: "imgengine", text: "" })
   }
 
   const chooseModel = () => {
@@ -139,6 +153,19 @@ export const useComposerCommands = (input: { model?: ModelSelection } = {}) => {
       title: language.t("command.usage.view"),
       description: language.t("command.usage.view.description"),
       onSelect: () => void viewUsage(),
+    }),
+    viewCommand({
+      id: "studio.open",
+      title: language.t("command.studio.open"),
+      description: language.t("command.studio.open.description"),
+      onSelect: () =>
+        void openPictures().catch((error: unknown) =>
+          showToast({
+            variant: "error",
+            title: language.t("common.requestFailed"),
+            description: formatServerError(error, language.t),
+          }),
+        ),
     }),
     providerCommand({
       id: "provider.connect",

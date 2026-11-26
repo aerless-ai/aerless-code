@@ -63,6 +63,8 @@ export const dict = {
   "command.config.reload.done": "Configuration reloaded",
   "command.config.reload.failed": "Couldn't reload configuration",
   "command.usage.view": "View usage",
+  "command.studio.open": "Pictures",
+  "command.studio.open.description": "Open the Aerless picture studio (/imgengine) in this session",
   "command.usage.view.description": "See your OpenCode Go allowance and Console budgets",
   "command.session.location.cycle": "Cycle session location",
   "command.session.branch.choose": "Choose base branch",

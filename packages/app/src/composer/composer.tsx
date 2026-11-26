@@ -73,17 +73,29 @@ export function Composer(props: {
         exitShellKeybind={[formatKeybind("esc", language.t)]}
         suggestionBoundary={props.suggestionBoundary}
         modelControl={
-          <ComposerModelControl
-            loading={props.model.model.loading}
-            preview={!!props.model.model.preview}
-            paid={props.model.model.paid}
-            title={language.t("command.model.choose")}
-            keybind={command.keybindParts("model.choose")}
-            model={props.model.model.selection}
-            label={modelLabel()}
-            onClose={props.model.restoreFocus}
-            onUnpaidClick={() => dialog.show(() => <DialogSelectModelUnpaid model={props.model.model.selection} />)}
-          />
+          <>
+            <ComposerModelControl
+              loading={props.model.model.loading}
+              preview={!!props.model.model.preview}
+              paid={props.model.model.paid}
+              title={language.t("command.model.choose")}
+              keybind={command.keybindParts("model.choose")}
+              model={props.model.model.selection}
+              label={modelLabel()}
+              onClose={props.model.restoreFocus}
+              onUnpaidClick={() => dialog.show(() => <DialogSelectModelUnpaid model={props.model.model.selection} />)}
+            />
+            <Button
+              data-action="composer-pictures"
+              type="button"
+              variant="ghost"
+              size="small"
+              title={language.t("command.studio.open.description")}
+              onClick={() => command.trigger("studio.open")}
+            >
+              {language.t("command.studio.open")}
+            </Button>
+          </>
         }
       />
     </div>
