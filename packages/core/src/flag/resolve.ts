@@ -26,7 +26,7 @@ const onByDefault = (channel: string) => channel === "local" || channel === "dev
  * document that sets `experimental` (the same document every other `experimental` setting reads), then `all_flags: true`
  * from the highest-priority document that sets `all_flags`, so a global switch survives a project's own `experimental`
  * block, then on for local and dev builds. `all_flags: false` falls through rather than turning flags off.
- * Opt-in-only flags skip both wildcards and default to off on every channel. Local-only flags are off outside local and
+ * Aerless defaults are on in every build. Opt-in-only flags skip both wildcards and default to off on every channel. Local-only flags are off outside local and
  * dev builds, whatever the environment or config say.
  * A remote kill switch belongs above `OPENCODE_FLAGS` here.
  */
@@ -60,7 +60,7 @@ export function resolve(input: {
         ? [override, "env"]
         : configured !== undefined
           ? [configured, "config"]
-          : [!optInOnly && onByDefault(input.channel), "default"]
+          : [ConfigFlag.aerlessDefault.has(key) || (!optInOnly && onByDefault(input.channel)), "default"]
     return { enabled, source }
   })
 }

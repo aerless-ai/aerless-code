@@ -33,6 +33,11 @@ const every = (state: Flag.State): Record<Flag.Key, Flag.State> => ({
   opencode_api: { enabled: false, source: "default" },
 })
 
+// Aerless turns these on in every build.
+const aerless = Object.fromEntries(
+  [...ConfigFlag.aerlessDefault].map((key) => [key, { enabled: true, source: "default" }]),
+)
+
 describe("Flag.resolve", () => {
   test.each([
     ["local", true],
@@ -42,7 +47,7 @@ describe("Flag.resolve", () => {
     ["my-branch", false],
     ["unknown", false],
   ] as const)("applies %s build defaults", (channel, enabled) => {
-    expect(Flag.resolve({ entries: [], channel })).toEqual(every({ enabled, source: "default" }))
+    expect(Flag.resolve({ entries: [], channel })).toEqual({ ...every({ enabled, source: "default" }), ...aerless })
   })
 
   test.each(["todo"] as const)("%s is opt-in only: on only when named in OPENCODE_FLAGS or experimental.%s", (key) => {
@@ -73,7 +78,7 @@ describe("Flag.resolve", () => {
       ])
   })
 
-  test.each(["full_codemode", "sqlite_fts"] as const)(
+  test.each(["full_codemode"] as const)(
     "%s defaults to on in local and dev builds, off in releases, and follows overrides and wildcards",
     (key) => {
       expect(Flag.resolve({ entries: [], channel: "local" })[key]).toEqual({
@@ -175,9 +180,10 @@ describe("Flag.resolve", () => {
     expect(
       Flag.resolve({ entries: [global, document({ subagent_depth: 2, full_codemode: false })], channel: "latest" }),
     ).toEqual({ ...every({ enabled: true, source: "config" }), full_codemode: { enabled: false, source: "config" } })
-    expect(Flag.resolve({ entries: [global, document({ all_flags: false })], channel: "latest" })).toEqual(
-      every({ enabled: false, source: "default" }),
-    )
+    expect(Flag.resolve({ entries: [global, document({ all_flags: false })], channel: "latest" })).toEqual({
+      ...every({ enabled: false, source: "default" }),
+      ...aerless,
+    })
   })
 })
 
