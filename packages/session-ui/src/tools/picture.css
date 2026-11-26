@@ -81,6 +81,15 @@
   }
 }
 
+[data-component="picture"] [data-slot="picture-progress"] {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  background: var(--v2-background-bg-accent);
+  transition: width 0.5s linear;
+}
+
 [data-component="picture"] [data-slot="picture-blur"] {
   position: absolute;
   inset: 0;

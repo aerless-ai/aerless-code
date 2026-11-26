@@ -12,6 +12,22 @@ import "./picture.css"
 /** The composer listens for this to put the picture in as a chip; session-ui cannot reach the composer itself. */
 export const EDIT_PICTURE_EVENT = "aerless:edit-picture"
 
+/** The composer sets these: the saved picture shape (placeholder size) and the default picture model (progress timing). */
+export const [pictureAspect, setPictureAspect] = createSignal("auto")
+export const [pictureModel, setPictureModel] = createSignal("")
+
+const ASPECT_RATIO: Record<string, string> = { wide: "16 / 9", tall: "9 / 16", "4:3": "4 / 3", "3:4": "3 / 4" }
+
+// Expected time per model: the last finished picture, kept in localStorage; 30 s until there is one.
+const durationKey = (model: string) => `aerless:picture-ms:${model}`
+const expectedMs = (model: string) => {
+  try {
+    return Number(localStorage.getItem(durationKey(model))) || 30_000
+  } catch {
+    return 30_000
+  }
+}
+
 const STATUS = ["Getting started…", "Adding details…", "Final touches…"]
 
 // `Saved <path> (<w>x<h>, <model>, $<cost>)`, one line per picture; older CLIs print the path relative to `In folder`.
@@ -27,7 +43,7 @@ function saved(output: string | undefined) {
 
 function sizeRatio(size: unknown) {
   const match = typeof size === "string" ? size.match(/^(\d+)x(\d+)$/) : null
-  return match ? `${match[1]} / ${match[2]}` : "1 / 1"
+  return match ? `${match[1]} / ${match[2]}` : (ASPECT_RATIO[pictureAspect()] ?? "1 / 1")
 }
 
 async function pngBlob(src: string) {
@@ -43,6 +59,28 @@ export function PictureTool(props: ToolProps) {
   const pictures = () => saved(props.output)
   const pending = () => props.status === "streaming" || props.status === "running"
   const count = () => Math.min(4, Math.max(1, Number(props.input.count) || 1))
+  const model = () => (typeof props.input.model === "string" ? props.input.model : pictureModel())
+
+  // The API reports no progress: 95% of an exponential curve that fits the expected time, 100% on arrival.
+  const [now, setNow] = createSignal(Date.now())
+  const percent = () => {
+    if (!pending()) return 100
+    const tau = expectedMs(model()) / 3
+    return Math.round(95 * (1 - Math.exp(-Math.max(0, now() - (props.started ?? now())) / tau)))
+  }
+  let seenPending = false
+  createEffect(() => {
+    if (pending()) {
+      seenPending = true
+      const timer = setInterval(() => setNow(Date.now()), 500)
+      onCleanup(() => clearInterval(timer))
+    } else if (seenPending && props.started) {
+      seenPending = false
+      try {
+        localStorage.setItem(durationKey(model()), String(Date.now() - props.started))
+      } catch {}
+    }
+  })
 
   return (
     <Show when={pending() || pictures().length > 0} fallback={<div data-component="picture-note">{props.output}</div>}>
@@ -51,13 +89,13 @@ export function PictureTool(props: ToolProps) {
           when={!pending()}
           fallback={
             <Index each={Array.from({ length: count() })}>
-              {() => <PictureCard ratio={sizeRatio(props.input.size)} />}
+              {() => <PictureCard ratio={sizeRatio(props.input.size)} percent={percent()} />}
             </Index>
           }
         >
           <For each={pictures()}>
             {(picture, index) => (
-              <PictureCard ratio={picture.ratio} path={picture.path} fallback={props.files?.[index()]} />
+              <PictureCard ratio={picture.ratio} percent={100} path={picture.path} fallback={props.files?.[index()]} />
             )}
           </For>
         </Show>
@@ -66,7 +104,7 @@ export function PictureTool(props: ToolProps) {
   )
 }
 
-function PictureCard(props: { ratio: string; path?: string; fallback?: string }) {
+function PictureCard(props: { ratio: string; percent: number; path?: string; fallback?: string }) {
   const markdown = useMarkdown()
   const dialog = useDialog()
   const [src, setSrc] = createSignal<string>()
@@ -140,7 +178,7 @@ function PictureCard(props: { ratio: string; path?: string; fallback?: string })
   return (
     <div data-component="picture" data-done={loaded() ? "" : undefined}>
       <div data-slot="picture-label" aria-live="polite">
-        <span data-slot="picture-title">{loaded() ? "Image created" : "Creating image"}</span>
+        <span data-slot="picture-title">{loaded() ? "Image created" : `Creating image · ${props.percent}%`}</span>
         <Show when={!loaded()}>
           <span data-slot="picture-status">{STATUS[status()]}</span>
         </Show>
@@ -150,6 +188,9 @@ function PictureCard(props: { ratio: string; path?: string; fallback?: string })
           <img ref={image} src={src()} alt={name()} draggable={false} onLoad={() => setLoaded(true)} onClick={view} />
         </Show>
         <div data-slot="picture-blur" aria-hidden="true" />
+        <Show when={!loaded()}>
+          <div data-slot="picture-progress" style={{ width: `${props.percent}%` }} />
+        </Show>
         <Show when={loaded()}>
           <div data-slot="picture-actions">
             <button type="button" title="Download" aria-label="Download" onClick={download}>

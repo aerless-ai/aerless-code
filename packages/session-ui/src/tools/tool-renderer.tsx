@@ -683,6 +683,7 @@ export function CurrentContextToolGroup(props: {
                                         output={currentToolOutput(tool())}
                                         error={currentToolError(tool())}
                                         status={tool().state.status}
+                                        started={tool().time.ran ?? tool().time.created}
                                         defaultOpen={props.toolDefaultOpen?.(tool()) ?? false}
                                         open={props.toolOpen?.(tool().id) ?? props.toolDefaultOpen?.(tool())}
                                         onOpenChange={(open) => props.onToolOpenChange?.(tool().id, open)}
@@ -1275,6 +1276,8 @@ export interface ToolProps {
   /** Image results as data URLs (MCP image content), for tools that draw pictures. */
   files?: readonly string[]
   status?: string
+  /** When the tool call began (ms), for progress estimates. */
+  started?: number
   hideDetails?: boolean
   defaultOpen?: boolean
   open?: boolean
