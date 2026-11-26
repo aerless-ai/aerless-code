@@ -448,6 +448,7 @@ function snapshot(input: ComposerSubmitInput, alternate: boolean, first = false)
     alternate,
     delivery: queueFirst ? "queue" : (input.delivery?.(alternate) ?? "steer"),
     first: queueFirst,
+    vision: input.adapter.controls().model.selection.current()?.capabilities.input.image,
     selection: currentSelection(input),
     loading: input.adapter.controls().model.loading,
     retry: target.retry.current(),
@@ -1032,10 +1033,13 @@ async function buildSubmissionRequest(session: ComposerSession, value: ComposerS
     existingMentions: mentions.length > 0 ? await existingMentions(session, mentions) : undefined,
   })
   const saved = await savePictures(session, images)
+  // A model without picture input rejects image parts: send only the saved paths (generate_image can still use them).
+  const inline = new Set(value.vision === false ? images.map((image) => image.dataUrl) : [])
+  const files = inline.size ? request.files.filter((file) => !inline.has(file.uri)) : request.files
 
   return saved.length
-    ? { ...request, text: [request.text, ...saved.map(formatAttachmentReference)].join("\n") }
-    : request
+    ? { ...request, files, text: [request.text, ...saved.map(formatAttachmentReference)].join("\n") }
+    : { ...request, files }
 }
 
 // A pasted or desktop-dropped picture has no path in the workspace, and the picture tool only takes workspace paths:

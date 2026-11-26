@@ -15,6 +15,8 @@ export type ComposerSubmission = {
   context: ComposerStore["context"]["items"]
   text: string
   images: ImageAttachmentPart[]
+  /** The selected model reads pictures; false sends only their saved paths. */
+  vision?: boolean
   selection: ComposerSelection
   delivery: ComposerDelivery
   first?: boolean
@@ -107,6 +109,7 @@ export type SubmitSnapshot = {
   first?: boolean
   delivery: ComposerDelivery
   selection: ComposerSelection | undefined
+  vision?: boolean
   loading: boolean
   retry: ComposerRetry | undefined
   id: SessionMessage.ID
@@ -455,6 +458,7 @@ function prepare(
   // Only a prompt is admitted under its ID; shell commands and server commands always start fresh.
   const value: ComposerSubmission = {
     ...payload,
+    vision: snapshot.vision,
     id: kind.type === "prompt" ? claimRetry(snapshot.retry, payload, snapshot.id) : snapshot.id,
   }
 
