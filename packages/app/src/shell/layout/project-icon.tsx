@@ -23,7 +23,7 @@ export function ProjectIcon(props: ProjectIconProps) {
     <ProjectAvatar
       {...rest}
       fallback={local.fallback ?? displayName(local.project)}
-      src={getProjectAvatarSource(local.project.id, icon())}
+      src={getProjectAvatarSource(icon())}
       variant={getProjectAvatarVariant(icon()?.color)}
       generated={getProjectAvatarGenerated({ ...local.project, icon: icon() })}
     />

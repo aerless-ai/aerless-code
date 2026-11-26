@@ -1118,10 +1118,6 @@ export const dict = {
   "tips.browse.description":
     "Nechajte Aerless Code pracovať vo vašom prehliadači s vašimi kartami, prihláseniami a rozšíreniami.",
   "tips.browse.install": "Nainštalovať",
-  "tips.hex.title": "Používajte svoj hlas",
-  "tips.hex.description":
-    "S Hex podržíte kláves a výzvy jednoducho vyslovíte. Beží na vašom počítači a funguje v každej aplikácii.",
-  "tips.hex.install": "Nainštalovať Hex",
   "session.tab.more": "Viac...",
   "session.tab.recentHint": "Podržte {{key}} pre nedávno zatvorené",
   "session.tab.showMore": "Zobraziť viac",

@@ -1183,10 +1183,6 @@ export const dict = {
   "tips.browse.description":
     "Позвольте Aerless Code работать в вашем браузере с вашими вкладками, входами в аккаунты и расширениями.",
   "tips.browse.install": "Установить",
-  "tips.hex.title": "Используйте голос",
-  "tips.hex.description":
-    "Hex позволяет удерживать клавишу и надиктовывать запросы. Он работает на вашем компьютере и в любом приложении.",
-  "tips.hex.install": "Установить Hex",
   "session.tab.more": "Ещё...",
   "session.tab.recentHint": "Удерживайте {{key}}, чтобы увидеть недавно закрытые",
   "session.tab.showMore": "Показать больше",

@@ -1092,10 +1092,6 @@ export const dict = {
   "tips.browse.description":
     "Aerless Code-un tablarınız, girişləriniz və genişləndirmələrinizlə brauzerinizdə işləməsinə icazə verin.",
   "tips.browse.install": "Quraşdır",
-  "tips.hex.title": "Səsinizdən istifadə edin",
-  "tips.hex.description":
-    "Hex düyməni basıb saxlayaraq promptlarınızı səslə deməyə imkan verir. Kompüterinizdə işləyir və istənilən tətbiqdə işləyir.",
-  "tips.hex.install": "Hex-i quraşdır",
   "session.tab.more": "Daha çox...",
   "session.tab.recentHint": "Son bağlananlar üçün {{key}} basıb saxlayın",
   "session.tab.showMore": "Daha çox göstər",

@@ -1,4 +1,4 @@
-import type { Locator, Page } from "@playwright/test"
+import type { Page } from "@playwright/test"
 import { expect, sourceURL, story } from "../../stories/playwright/story"
 
 const png = Buffer.from(
@@ -677,79 +677,7 @@ for (const theme of ["light", "dark"]) {
   })
 }
 
-story("keeps favicon space stable across loading and failure without fetching private hosts", async ({ page }) => {
-  const requested: string[] = []
-  let release: () => void = () => undefined
-  const loading = new Promise<void>((resolve) => (release = resolve))
-  await page.route("https://www.google.com/s2/favicons?**", async (route) => {
-    requested.push(route.request().url())
-
-    if (route.request().url().includes("developer.mozilla.org")) await loading
-
-    if (route.request().url().includes("broken.example.org")) return route.abort()
-    await route.fulfill({ status: 200, contentType: "image/png", body: png })
-  })
-
-  await page.evaluate(async (fixture) => {
-    const { mountMarkdown } = await import(fixture)
-    await mountMarkdown({
-      text: [
-        "[docs](https://developer.mozilla.org/docs)",
-        "[missing](https://broken.example.org/docs)",
-        "[private](http://localhost:8080/docs)",
-        "[GitHub](https://github.com/anomalyco/opencode)",
-      ].join(" · "),
-      cached: true,
-    })
-  }, fixture)
-
-  const markdown = page.getByTestId("markdown-fixture").locator('[data-component="markdown"]')
-  await expect(markdown).toHaveAttribute("data-markdown-ready", "")
-  const docs = markdown.getByRole("link", { name: "docs" })
-  const mark = docs.locator(".markdown-link-favicon")
-
-  const artwork = (mark: Locator) =>
-    mark.evaluate((icon) => {
-      const style = getComputedStyle(icon, "::before")
-
-      return { mask: style.maskImage, background: style.backgroundImage }
-    })
-
-  await expect.poll(() => requested.some((url) => url.includes("developer.mozilla.org"))).toBe(true)
-  await expect(mark).not.toHaveAttribute("data-loaded", "")
-  expect((await artwork(mark)).mask).toContain("data:image/svg+xml")
-  expect((await mark.boundingBox())?.width).toBe(14)
-  // A late web font swap also changes the link width; measure after fonts settle.
-  await page.evaluate(() => document.fonts.ready.then(() => undefined))
-  const width = await docs.evaluate((link) => link.getBoundingClientRect().width)
-  release()
-  await expect(mark).toHaveAttribute("data-loaded", "")
-  expect(await artwork(mark)).toEqual({
-    mask: "none",
-    background: expect.stringContaining("https://www.google.com/s2/favicons?domain=developer.mozilla.org"),
-  })
-  await expect(mark.locator("img")).toBeHidden()
-  expect(await docs.evaluate((link) => link.getBoundingClientRect().width)).toBe(width)
-
-  const missing = markdown.getByRole("link", { name: "missing" }).locator(".markdown-link-favicon")
-  await expect(missing).not.toHaveAttribute("data-loaded", "")
-  expect((await artwork(missing)).mask).toContain("data:image/svg+xml")
-  await expect(markdown.getByRole("link", { name: "private" }).locator(".markdown-link-favicon img")).toHaveCount(0)
-  await expect(markdown.getByRole("link", { name: "GitHub" }).locator(".markdown-link-favicon img")).toHaveCount(0)
-
-  // Routing disables the browser cache, so a loaded favicon's CSS artwork requests its URL again here. That includes
-  // the story's own example.com link, whose favicon can load before this route exists and its artwork after.
-  const domains = new Set(requested.map((url) => new URL(url).searchParams.get("domain")))
-  domains.delete("example.com")
-
-  expect(domains).toEqual(new Set(["developer.mozilla.org", "broken.example.org"]))
-  expect(requested.every((url) => !url.includes("localhost") && !url.includes("github.com"))).toBe(true)
-})
-
 story("keeps link icons on the same line as the start of their label", async ({ page }) => {
-  await page.route("https://www.google.com/s2/favicons?**", (route) =>
-    route.fulfill({ status: 200, contentType: "image/png", body: png }),
-  )
   await page.evaluate(async (fixture) => {
     const { mountMarkdown } = await import(fixture)
     await mountMarkdown({
@@ -795,9 +723,6 @@ story("keeps link icons on the same line as the start of their label", async ({ 
 })
 
 story("selects the whole paragraph on triple click across link icons", async ({ page }) => {
-  await page.route("https://www.google.com/s2/favicons?**", (route) =>
-    route.fulfill({ status: 200, contentType: "image/png", body: png }),
-  )
   await page.evaluate(async (fixture) => {
     const { mountMarkdown } = await import(fixture)
     await mountMarkdown({

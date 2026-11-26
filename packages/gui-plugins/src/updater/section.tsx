@@ -18,27 +18,9 @@ export default function UpdatesSection(props: {
 }) {
   const ctx = usePlugin<typeof definition>()
   const ui = ctx.ui
-  const releaseNotes = ctx.stores.releaseNotes
 
   return (
     <ui.SettingsSection title={ctx.t("section.title")}>
-      <ui.SettingsRow
-        id="settings-release-notes"
-        title={ctx.t("releaseNotes.title")}
-        description={ctx.t("releaseNotes.description")}
-      >
-        <ui.Switch
-          label={ctx.t("releaseNotes.title")}
-          hideLabel
-          checked={releaseNotes.value.enabled}
-          onChange={(checked) =>
-            releaseNotes.update((draft) => {
-              draft.enabled = checked
-            })
-          }
-        />
-      </ui.SettingsRow>
-
       <ui.SettingsRow
         id="settings-check-updates"
         title={ctx.t("check.title")}

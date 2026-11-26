@@ -1110,10 +1110,6 @@ export const dict = {
   "tips.browse.description":
     "Lasă Aerless Code să lucreze în browserul tău, cu filele, autentificările și extensiile tale.",
   "tips.browse.install": "Instalează",
-  "tips.hex.title": "Folosește-ți vocea",
-  "tips.hex.description":
-    "Hex te lasă să ții apăsată o tastă și să-ți dictezi prompturile. Rulează pe computerul tău și funcționează în orice aplicație.",
-  "tips.hex.install": "Instalează Hex",
   "session.tab.more": "Mai multe...",
   "session.tab.recentHint": "Ține apăsat {{key}} pentru cele închise recent",
   "session.tab.showMore": "Afișează mai multe",

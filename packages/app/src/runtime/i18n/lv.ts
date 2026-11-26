@@ -1111,10 +1111,6 @@ export const dict = {
   "tips.browse.description":
     "Ļaujiet Aerless Code strādāt jūsu pārlūkprogrammā ar jūsu cilnēm, pierakstīšanās datiem un paplašinājumiem.",
   "tips.browse.install": "Instalēt",
-  "tips.hex.title": "Izmantojiet savu balsi",
-  "tips.hex.description":
-    "Ar Hex varat turēt taustiņu un izrunāt savas uzvednes. Tas darbojas jūsu datorā un jebkurā lietotnē.",
-  "tips.hex.install": "Instalēt Hex",
   "session.tab.more": "Vairāk...",
   "session.tab.recentHint": "Turiet {{key}}, lai redzētu nesen aizvērtās",
   "session.tab.showMore": "Rādīt vairāk",

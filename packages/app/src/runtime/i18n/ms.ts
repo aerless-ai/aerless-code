@@ -1089,10 +1089,6 @@ export const dict = {
   "tips.browse.title": "Kawal pelayar anda",
   "tips.browse.description": "Benarkan Aerless Code bekerja dalam pelayar anda dengan tab, log masuk dan sambungan anda.",
   "tips.browse.install": "Pasang",
-  "tips.hex.title": "Gunakan suara anda",
-  "tips.hex.description":
-    "Hex membolehkan anda menahan kekunci dan menuturkan prompt anda. Ia berjalan pada komputer anda dan berfungsi dalam mana-mana aplikasi.",
-  "tips.hex.install": "Pasang Hex",
   "session.tab.more": "Lagi...",
   "session.tab.recentHint": "Tahan {{key}} untuk yang baru ditutup",
   "session.tab.showMore": "Tunjukkan lagi",

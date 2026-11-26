@@ -617,10 +617,6 @@ function wrapTables(root: HTMLDivElement) {
   })
 }
 
-const publicFaviconHost = /^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,63}$/
-
-const privateFaviconSuffix = /\.(?:alt|example|internal|invalid|local|localhost|onion|test|ts\.net)$/
-
 function markExternalLinkFavicons(root: HTMLDivElement) {
   root.querySelectorAll<HTMLAnchorElement>("a.external-link[href]").forEach((link) => {
     if (!link.textContent?.trim() || link.querySelector("img")) return
@@ -633,48 +629,11 @@ function markExternalLinkFavicons(root: HTMLDivElement) {
     const favicon = document.createElement("span")
     favicon.className = "markdown-link-favicon"
     favicon.setAttribute("aria-hidden", "true")
-    const host = url.hostname.toLowerCase()
-
-    if (host === "github.com") favicon.dataset.github = ""
-    else if (
-      publicFaviconHost.test(host) &&
-      !privateFaviconSuffix.test(host) &&
-      host !== "home.arpa" &&
-      !host.endsWith(".home.arpa")
-    ) {
-      const image = document.createElement("img")
-      image.src = `https://www.google.com/s2/favicons?domain=${encodeURIComponent(url.host)}&sz=32`
-      favicon.style.setProperty("--markdown-link-favicon", `url("${image.src}")`)
-      image.alt = ""
-      image.setAttribute("data-markdown-favicon", "")
-      image.width = 14
-      image.height = 14
-      image.decoding = "async"
-      favicon.appendChild(image)
-    }
+    // A generic globe, not a favicon lookup: rendering a link must not send its host to a third party.
+    if (url.hostname.toLowerCase() === "github.com") favicon.dataset.github = ""
 
     link.insertBefore(favicon, link.firstChild)
   })
-}
-
-// The globe stands in only until the favicon loads, then the favicon replaces it so a transparent one hides it.
-function showFavicon(image: HTMLImageElement) {
-  image.dataset.loaded = ""
-  image.parentElement?.setAttribute("data-loaded", "")
-}
-
-function setupExternalLinkFavicons(root: HTMLDivElement) {
-  const loaded = (event: Event) => {
-    const image = event.target
-
-    if (!(image instanceof HTMLImageElement) || !image.hasAttribute("data-markdown-favicon")) return
-
-    if (image.naturalWidth > 0) showFavicon(image)
-  }
-
-  root.addEventListener("load", loaded, true)
-
-  return () => root.removeEventListener("load", loaded, true)
 }
 
 // A path becomes a link once `localFileExists` says the file exists. A streaming block skips the check: its last code
@@ -1144,7 +1103,6 @@ export function Markdown(
   let overflowCleanup: (() => void) | undefined
   let linkCleanup: (() => void) | undefined
   let diagramCleanup: (() => void) | undefined
-  let faviconCleanup: (() => void) | undefined
   let sessionLinkCleanup: (() => void) | undefined
   let fragmentLinkCleanup: (() => void) | undefined
   let readImage: ReadMarkdownImage | undefined
@@ -1258,9 +1216,6 @@ export function Markdown(
 
     images?.update(container)
     previewImages(container)
-    container.querySelectorAll<HTMLImageElement>("img[data-markdown-favicon]").forEach((image) => {
-      if (image.complete && image.naturalWidth > 0) showFavicon(image)
-    })
 
     // A button gets the labels of the run that creates it, so the others only need new ones when the language changes.
     // Relabelling every button on each streamed delta re-rendered each one's tooltip and icon button.
@@ -1294,7 +1249,6 @@ export function Markdown(
 
     if (!fragmentLinkCleanup) fragmentLinkCleanup = setupFragmentLinks(container)
 
-    if (!faviconCleanup) faviconCleanup = setupExternalLinkFavicons(container)
     container.toggleAttribute("data-local-links", !!markdown?.openLocalFile)
     // Cold timelines already wait for Markdown readiness before measuring and revealing their content. Include
     // path classification so the first visible frame uses the final blue-link styling and padding.
@@ -1318,7 +1272,6 @@ export function Markdown(
 
     if (fragmentLinkCleanup) fragmentLinkCleanup()
 
-    if (faviconCleanup) faviconCleanup()
     const container = root()
 
     if (container) disposeRenderedMarkdown(container)

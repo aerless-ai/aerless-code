@@ -1095,10 +1095,6 @@ export const dict = {
   "tips.browse.title": "اپنا براؤزر کنٹرول کرو",
   "tips.browse.description": "Aerless Code نوں اپنے براؤزر وچ تہاڈیاں ٹیباں، لاگ اناں تے ایکسٹینشناں نال کم کرن دیو۔",
   "tips.browse.install": "انسٹال کرو",
-  "tips.hex.title": "اپنی آواز ورتو",
-  "tips.hex.description":
-    "Hex نال تسیں اک کلید دبا کے اپنے پرامپٹ بول سکدے او۔ ایہہ تہاڈے کمپیوٹر تے چلدا اے تے ہر ایپ وچ کم کردا اے۔",
-  "tips.hex.install": "Hex انسٹال کرو",
   "session.tab.more": "ہور...",
   "session.tab.recentHint": "حال ای وچ بند کیتیاں لئی ⁨{{key}}⁩ دبا کے رکھو",
   "session.tab.showMore": "ہور وکھاؤ",

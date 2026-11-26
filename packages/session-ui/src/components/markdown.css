@@ -193,16 +193,6 @@
     mask-image: url("./markdown-github.svg");
   }
 
-  .markdown-link-favicon[data-loaded]::before {
-    border-radius: 2px;
-    background: var(--markdown-link-favicon) center / contain no-repeat;
-    mask: none;
-  }
-
-  .markdown-link-favicon img {
-    display: none;
-  }
-
   a[data-local-link] {
     cursor: pointer;
   }

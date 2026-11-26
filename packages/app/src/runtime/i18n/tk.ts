@@ -1082,10 +1082,6 @@ export const dict = {
   "tips.browse.description":
     "Aerless Code-a brauzeriňizde goýmalaryňyz, girişleriňiz we giňeltmeleriňiz bilen işlemäge rugsat beriň.",
   "tips.browse.install": "Gurna",
-  "tips.hex.title": "Sesiňizi ulanyň",
-  "tips.hex.description":
-    "Hex bilen düwmäni basyp saklap, promptlaryňyzy aýdyp bilersiňiz. Ol kompýuteriňizde işleýär we islendik programmada işleýär.",
-  "tips.hex.install": "Hex-i gurnaň",
   "session.tab.more": "Ýene...",
   "session.tab.recentHint": "Ýakynda ýapylanlar üçin {{key}} düwmesini basyp saklaň",
   "session.tab.showMore": "Köpräk görkez",

@@ -1100,10 +1100,6 @@ export const dict = {
   "tips.browse.description":
     "Aerless Code brauzeringizda varaqlaringiz, hisoblaringiz va kengaytmalaringiz bilan ishlashiga ruxsat bering.",
   "tips.browse.install": "O‘rnatish",
-  "tips.hex.title": "Ovozingizdan foydalaning",
-  "tips.hex.description":
-    "Hex yordamida tugmani bosib turib promptlarni aytishingiz mumkin. U kompyuteringizda ishlaydi va istalgan ilovada qo‘llanadi.",
-  "tips.hex.install": "Hex’ni o‘rnatish",
   "session.tab.more": "Yana...",
   "session.tab.recentHint": "Yaqinda yopilganlar uchun {{key}} ni bosib turing",
   "session.tab.showMore": "Ko‘proq ko‘rsatish",

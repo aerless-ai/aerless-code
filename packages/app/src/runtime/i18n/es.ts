@@ -1180,10 +1180,6 @@ export const dict = {
   "tips.browse.description":
     "Deja que Aerless Code trabaje en tu navegador con tus pestañas, inicios de sesión y extensiones.",
   "tips.browse.install": "Instalar",
-  "tips.hex.title": "Usa tu voz",
-  "tips.hex.description":
-    "Hex te permite mantener pulsada una tecla y dictar tus prompts. Se ejecuta en tu equipo y funciona en cualquier aplicación.",
-  "tips.hex.install": "Instalar Hex",
   "session.tab.more": "Más...",
   "session.tab.recentHint": "Mantén pulsado {{key}} para ver las cerradas recientemente",
   "session.tab.showMore": "Mostrar más",

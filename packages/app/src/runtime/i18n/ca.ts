@@ -1121,10 +1121,6 @@ export const dict = {
   "tips.browse.description":
     "Deixeu que Aerless Code treballi al navegador amb les vostres pestanyes, sessions iniciades i extensions.",
   "tips.browse.install": "Instal·la",
-  "tips.hex.title": "Feu servir la veu",
-  "tips.hex.description":
-    "Hex us permet mantenir premuda una tecla i dictar les indicacions. S'executa al vostre ordinador i funciona en qualsevol aplicació.",
-  "tips.hex.install": "Instal·la Hex",
   "session.tab.more": "Més...",
   "session.tab.recentHint": "Manteniu premut {{key}} per veure les tancades recentment",
   "session.tab.showMore": "Mostra'n més",

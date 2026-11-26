@@ -1067,10 +1067,6 @@ export const dict = {
   "tips.browse.title": "שליטה בדפדפן",
   "tips.browse.description": "אפשר ל-Aerless Code לעבוד בדפדפן שלך עם הכרטיסיות, ההתחברויות וההרחבות שלך.",
   "tips.browse.install": "התקן",
-  "tips.hex.title": "השתמש בקול שלך",
-  "tips.hex.description":
-    "Hex מאפשר לך להחזיק מקש לחוץ ולהכתיב את הפרומפטים שלך. הוא פועל במחשב שלך ועובד בכל אפליקציה.",
-  "tips.hex.install": "התקן את Hex",
   "session.tab.more": "עוד...",
   "session.tab.recentHint": "החזק את {{key}} לכרטיסיות שנסגרו לאחרונה",
   "session.tab.showMore": "הצג עוד",

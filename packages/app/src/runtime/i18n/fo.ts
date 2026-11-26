@@ -1082,10 +1082,6 @@ export const dict = {
   "tips.browse.title": "Stýr kaganum",
   "tips.browse.description": "Lat Aerless Code arbeiða í kaganum við tínum flipum, innritanum og víðkanum.",
   "tips.browse.install": "Set upp",
-  "tips.hex.title": "Brúka røddina",
-  "tips.hex.description":
-    "Við Hex kanst tú halda ein knøtt niðri og tala promptirnar. Tað koyrir á tíni teldu og virkar í øllum forritum.",
-  "tips.hex.install": "Set Hex upp",
   "session.tab.more": "Meira...",
   "session.tab.recentHint": "Halt {{key}} niðri fyri nýliga stongd",
   "session.tab.showMore": "Vís meira",

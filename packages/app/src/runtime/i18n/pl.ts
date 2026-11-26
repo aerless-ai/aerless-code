@@ -1130,10 +1130,6 @@ export const dict = {
   "tips.browse.description":
     "Pozwól Aerless Code pracować w Twojej przeglądarce z Twoimi kartami, logowaniami i rozszerzeniami.",
   "tips.browse.install": "Zainstaluj",
-  "tips.hex.title": "Używaj głosu",
-  "tips.hex.description":
-    "Hex pozwala przytrzymać klawisz i wypowiadać prompty. Działa na Twoim komputerze i w każdej aplikacji.",
-  "tips.hex.install": "Zainstaluj Hex",
   "session.tab.more": "Więcej...",
   "session.tab.recentHint": "Przytrzymaj {{key}}, aby zobaczyć ostatnio zamknięte",
   "session.tab.showMore": "Pokaż więcej",

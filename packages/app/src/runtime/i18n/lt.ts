@@ -1120,10 +1120,6 @@ export const dict = {
   "tips.browse.description":
     "Leiskite Aerless Code dirbti jūsų naršyklėje su jūsų skirtukais, prisijungimais ir plėtiniais.",
   "tips.browse.install": "Įdiegti",
-  "tips.hex.title": "Naudokite balsą",
-  "tips.hex.description":
-    "Su Hex galite laikyti nuspaudę klavišą ir diktuoti raginimus. Jis veikia jūsų kompiuteryje ir bet kurioje programoje.",
-  "tips.hex.install": "Įdiegti Hex",
   "session.tab.more": "Daugiau...",
   "session.tab.recentHint": "Laikykite {{key}}, kad matytumėte neseniai uždarytus",
   "session.tab.showMore": "Rodyti daugiau",

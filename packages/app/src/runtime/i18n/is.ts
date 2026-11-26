@@ -1082,10 +1082,6 @@ export const dict = {
   "tips.browse.description":
     "Leyfðu Aerless Code að vinna í vafranum þínum með flipunum, innskráningunum og viðbótunum þínum.",
   "tips.browse.install": "Setja upp",
-  "tips.hex.title": "Notaðu röddina",
-  "tips.hex.description":
-    "Með Hex heldurðu inni takka og talar kvaðningarnar þínar. Það keyrir á tölvunni þinni og virkar í hvaða forriti sem er.",
-  "tips.hex.install": "Setja upp Hex",
   "session.tab.more": "Meira...",
   "session.tab.recentHint": "Haltu inni {{key}} fyrir nýlega lokaða",
   "session.tab.showMore": "Sýna meira",

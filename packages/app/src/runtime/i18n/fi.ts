@@ -1087,10 +1087,6 @@ export const dict = {
   "tips.browse.description":
     "Anna OpenCoden työskennellä selaimessasi välilehtiesi, kirjautumistesi ja laajennustesi kanssa.",
   "tips.browse.install": "Asenna",
-  "tips.hex.title": "Käytä ääntäsi",
-  "tips.hex.description":
-    "Hexin avulla voit pitää näppäintä pohjassa ja sanella kehotteesi. Se toimii omalla tietokoneellasi ja missä tahansa sovelluksessa.",
-  "tips.hex.install": "Asenna Hex",
   "session.tab.more": "Lisää...",
   "session.tab.recentHint": "Pidä {{key}} pohjassa nähdäksesi äskettäin suljetut",
   "session.tab.showMore": "Näytä lisää",

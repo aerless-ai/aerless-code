@@ -1083,10 +1083,6 @@ export const dict = {
   "tips.browse.title": "مرورگر خود را کنترل کنید",
   "tips.browse.description": "اجازه دهید Aerless Code با برگه‌ها، ورودها و افزونه‌های شما در مرورگرتان کار کند.",
   "tips.browse.install": "نصب",
-  "tips.hex.title": "از صدای خود استفاده کنید",
-  "tips.hex.description":
-    "Hex به شما امکان می‌دهد کلیدی را نگه دارید و پرامپت‌هایتان را بگویید. روی رایانه شما اجرا می‌شود و در هر برنامه‌ای کار می‌کند.",
-  "tips.hex.install": "نصب Hex",
   "session.tab.more": "بیشتر...",
   "session.tab.recentHint": "برای موارد اخیراً بسته‌شده ⁨{{key}}⁩ را نگه دارید",
   "session.tab.showMore": "نمایش بیشتر",

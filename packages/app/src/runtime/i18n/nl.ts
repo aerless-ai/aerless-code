@@ -1103,10 +1103,6 @@ export const dict = {
   "tips.browse.title": "Bedien je browser",
   "tips.browse.description": "Laat Aerless Code in je browser werken met je tabbladen, aanmeldingen en extensies.",
   "tips.browse.install": "Installeren",
-  "tips.hex.title": "Gebruik je stem",
-  "tips.hex.description":
-    "Met Hex houd je een toets ingedrukt en spreek je je prompts in. Het draait op je computer en werkt in elke app.",
-  "tips.hex.install": "Hex installeren",
   "session.tab.more": "Meer...",
   "session.tab.recentHint": "Houd {{key}} ingedrukt voor onlangs gesloten",
   "session.tab.showMore": "Meer tonen",

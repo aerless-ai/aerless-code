@@ -1100,10 +1100,6 @@ export const dict = {
   "tips.browse.description":
     "Hagyja, hogy az Aerless Code a böngészőjében dolgozzon a lapjaival, bejelentkezéseivel és bővítményeivel.",
   "tips.browse.install": "Telepítés",
-  "tips.hex.title": "Használja a hangját",
-  "tips.hex.description":
-    "A Hex segítségével egy billentyűt nyomva tartva kimondhatja a promptjait. A számítógépén fut, és bármely alkalmazásban működik.",
-  "tips.hex.install": "Hex telepítése",
   "session.tab.more": "Továbbiak...",
   "session.tab.recentHint": "A nemrég bezártakhoz tartsa lenyomva a(z) {{key}} billentyűt",
   "session.tab.showMore": "Több megjelenítése",

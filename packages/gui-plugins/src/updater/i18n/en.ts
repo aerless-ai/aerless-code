@@ -15,8 +15,6 @@ export default {
   "migration.description":
     "For now, Aerless Code Beta is moving to Aerless Code Stable. Download version {{version}}, then install Aerless Code from the disk image to continue receiving updates.",
   "section.title": "Updates",
-  "releaseNotes.title": "Release notes",
-  "releaseNotes.description": "Show What's New popups after updates",
   "check.title": "Check for updates",
   "check.description": "Manually check for updates and install if available",
   "check.unavailable": "This build is updated outside Aerless Code, for example by your package manager.",
@@ -35,8 +33,4 @@ export default {
   "web.reset.title": "Reload from server",
   "web.reset.description": "Clear the saved copy of the app and load the server's current version",
   "web.reset.action": "Reload from server",
-  "releaseNotes.action.getStarted": "Get started",
-  "releaseNotes.action.next": "Next",
-  "releaseNotes.action.hideFuture": "Don't show these in the future",
-  "releaseNotes.media.alt": "Release preview",
 }

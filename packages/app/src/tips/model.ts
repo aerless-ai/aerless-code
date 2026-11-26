@@ -1,4 +1,3 @@
-import { createMediaQuery } from "@solid-primitives/media"
 import { showToast, toaster } from "@opencode/ui/toast"
 import { Schema } from "effect"
 import { createEffect, createMemo, createSignal, onCleanup } from "solid-js"
@@ -25,7 +24,6 @@ export function createTipToasts() {
   const servers = useServers()
   const language = useLanguage()
   const platform = usePlatform()
-  const touch = createMediaQuery("(hover: none)")
 
   const server = createMemo(() => {
     const conn = servers.visible.find(servers.current) ?? servers.visible[0]
@@ -35,14 +33,8 @@ export function createTipToasts() {
 
   const location = () => server()?.data.location
   const [awake, setAwake] = createSignal(false)
-  const [hexInstalled, setHexInstalled] = createSignal<boolean>()
 
-  const startup = setTimeout(() => {
-    setAwake(true)
-
-    if (!platform.checkAppExists) return setHexInstalled(false)
-    void platform.checkAppExists("hex").then(setHexInstalled, () => setHexInstalled(false))
-  }, STARTUP_DELAY)
+  const startup = setTimeout(() => setAwake(true), STARTUP_DELAY)
 
   onCleanup(() => clearTimeout(startup))
   createEffect(() => {
@@ -70,18 +62,6 @@ export function createTipToasts() {
         run: () => platform.openExternal(
             "https://chromewebstore.google.com/detail/mfnicocicmmlkpjnaffgihfjhdgjkdjg?utm_source=opencode-desktop&utm_campaign=tip-browse",
           ),
-      },
-    },
-    {
-      id: "hex",
-      title: "tips.hex.title",
-      description: "tips.hex.description",
-      when: () => !touch() && hexInstalled() === false,
-      action: {
-        label: "tips.hex.install",
-        // anoma.ly/hex 404s with a query string; the trailing slash is required.
-        run: () =>
-          platform.openExternal("https://anoma.ly/hex/?utm_source=opencode-desktop&utm_campaign=tip-hex"),
       },
     },
   ]

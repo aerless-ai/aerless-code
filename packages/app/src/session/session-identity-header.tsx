@@ -237,7 +237,7 @@ export function SessionLocation(props: {
               class="shrink-0"
               aria-hidden="true"
               fallback={projectName()}
-              src={getProjectAvatarSource(props.project?.id, props.project?.icon)}
+              src={getProjectAvatarSource(props.project?.icon)}
               variant={getProjectAvatarVariant(props.project?.icon?.color)}
               generated={getProjectAvatarGenerated(props.project)}
             />
@@ -271,7 +271,7 @@ export function SessionLocation(props: {
                 class="shrink-0"
                 aria-hidden="true"
                 fallback={projectName()}
-                src={getProjectAvatarSource(props.project?.id, props.project?.icon)}
+                src={getProjectAvatarSource(props.project?.icon)}
                 variant={getProjectAvatarVariant(props.project?.icon?.color)}
                 generated={getProjectAvatarGenerated(props.project)}
               />

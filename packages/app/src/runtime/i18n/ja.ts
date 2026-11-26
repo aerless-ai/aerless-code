@@ -1099,10 +1099,6 @@ export const dict = {
   "tips.browse.title": "ブラウザーを操作",
   "tips.browse.description": "タブ、ログイン、拡張機能をそのまま使って、OpenCodeにブラウザーで作業させましょう。",
   "tips.browse.install": "インストール",
-  "tips.hex.title": "声で入力",
-  "tips.hex.description":
-    "Hexを使うと、キーを押したまま話すだけでプロンプトを入力できます。コンピューター上で動作し、どのアプリでも使えます。",
-  "tips.hex.install": "Hexをインストール",
   "session.tab.more": "その他…",
   "session.tab.recentHint": "{{key}}を長押しで最近閉じたタブを表示",
   "session.tab.showMore": "さらに表示",

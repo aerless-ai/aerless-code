@@ -1078,10 +1078,6 @@ export const dict = {
   "tips.browse.description":
     "អនុញ្ញាតឱ្យ Aerless Code ធ្វើការក្នុងកម្មវិធីរុករករបស់អ្នក ជាមួយផ្ទាំង ការចូលគណនី និងផ្នែកបន្ថែមរបស់អ្នក។",
   "tips.browse.install": "ដំឡើង",
-  "tips.hex.title": "ប្រើសំឡេងរបស់អ្នក",
-  "tips.hex.description":
-    "Hex អនុញ្ញាតឱ្យអ្នកចុចសង្កត់គ្រាប់ចុច ហើយនិយាយប្រអប់បញ្ចូលរបស់អ្នក។ វាដំណើរការនៅលើកុំព្យូទ័ររបស់អ្នក និងប្រើបានក្នុងកម្មវិធីណាមួយ។",
-  "tips.hex.install": "ដំឡើង Hex",
   "session.tab.more": "ច្រើនទៀត...",
   "session.tab.recentHint": "សង្កត់ {{key}} សម្រាប់ផ្ទាំងដែលបានបិទថ្មីៗ",
   "session.tab.showMore": "បង្ហាញច្រើនទៀត",

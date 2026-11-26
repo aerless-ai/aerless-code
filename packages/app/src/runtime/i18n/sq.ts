@@ -1092,10 +1092,6 @@ export const dict = {
   "tips.browse.title": "Kontrolloni shfletuesin tuaj",
   "tips.browse.description": "Lejoni Aerless Code të punojë në shfletuesin tuaj me skedat, hyrjet dhe zgjerimet tuaja.",
   "tips.browse.install": "Instalo",
-  "tips.hex.title": "Përdorni zërin tuaj",
-  "tips.hex.description":
-    "Hex ju lejon të mbani shtypur një tast dhe të thoni kërkesat me zë. Funksionon në kompjuterin tuaj dhe në çdo aplikacion.",
-  "tips.hex.install": "Instalo Hex",
   "session.tab.more": "Më shumë...",
   "session.tab.recentHint": "Mbani {{key}} për të mbyllurat së fundmi",
   "session.tab.showMore": "Shfaq më shumë",

@@ -1163,10 +1163,6 @@ export const dict = {
   "tips.browse.description":
     "Aerless Code'un sekmeleriniz, oturum açtığınız hesaplar ve uzantılarınızla tarayıcınızda çalışmasına izin verin.",
   "tips.browse.install": "Yükle",
-  "tips.hex.title": "Sesinizi kullanın",
-  "tips.hex.description":
-    "Hex, bir tuşa basılı tutup istemlerinizi sesli söylemenizi sağlar. Bilgisayarınızda çalışır ve her uygulamada kullanılabilir.",
-  "tips.hex.install": "Hex'i yükle",
   "session.tab.more": "Daha fazla...",
   "session.tab.recentHint": "Son kapatılanlar için {{key}} tuşunu basılı tutun",
   "session.tab.showMore": "Daha fazla göster",

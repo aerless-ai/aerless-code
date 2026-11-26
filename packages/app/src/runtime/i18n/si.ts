@@ -1090,10 +1090,6 @@ export const dict = {
   "tips.browse.title": "ඔබගේ බ්‍රවුසරය පාලනය කරන්න",
   "tips.browse.description": "ඔබගේ ටැබ්, පිවිසුම් සහ දිගු සමඟ ඔබගේ බ්‍රවුසරයේ Aerless Code හට වැඩ කිරීමට ඉඩ දෙන්න.",
   "tips.browse.install": "ස්ථාපනය කරන්න",
-  "tips.hex.title": "ඔබගේ හඬ භාවිතා කරන්න",
-  "tips.hex.description":
-    "Hex මඟින් ඔබට යතුරක් අල්ලාගෙන ඔබගේ ප්‍රොම්ප්ට් කථා කළ හැක. එය ඔබගේ පරිගණකයේ ධාවනය වන අතර ඕනෑම යෙදුමක ක්‍රියා කරයි.",
-  "tips.hex.install": "Hex ස්ථාපනය කරන්න",
   "session.tab.more": "තව...",
   "session.tab.recentHint": "මෑතකදී වසා දැමූ දේ සඳහා {{key}} අල්ලාගෙන සිටින්න",
   "session.tab.showMore": "තව පෙන්වන්න",

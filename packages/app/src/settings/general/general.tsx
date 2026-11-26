@@ -335,7 +335,7 @@ export const SettingsGeneral: Component = () => {
           <div class="settings-tab-header-actions">
             <ExternalLink
               data-action="settings-help-feedback"
-              href="https://opencode.ai/desktop-feedback"
+              href="https://aerless.io"
               class="inline-flex items-center gap-1.5 text-13-regular text-v2-text-text-muted no-underline hover:text-v2-text-text-base hover:underline"
             >
               {language.t("settings.helpFeedback")}

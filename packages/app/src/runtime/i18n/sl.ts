@@ -1117,10 +1117,6 @@ export const dict = {
   "tips.browse.title": "Upravljajte svoj brskalnik",
   "tips.browse.description": "Naj Aerless Code dela v vašem brskalniku z vašimi zavihki, prijavami in razširitvami.",
   "tips.browse.install": "Namesti",
-  "tips.hex.title": "Uporabite svoj glas",
-  "tips.hex.description":
-    "Hex vam omogoča, da držite tipko in izgovorite pozive. Teče na vašem računalniku in deluje v vseh aplikacijah.",
-  "tips.hex.install": "Namesti Hex",
   "session.tab.more": "Več …",
   "session.tab.recentHint": "Za nedavno zaprte držite {{key}}",
   "session.tab.showMore": "Pokaži več",

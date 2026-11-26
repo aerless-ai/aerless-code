@@ -557,7 +557,7 @@ function ProjectRow(props: {
         <ProjectAvatar
           class="shrink-0"
           fallback={displayName(props.project)}
-          src={getProjectAvatarSource(props.project.id, props.project.icon)}
+          src={getProjectAvatarSource(props.project.icon)}
           variant={getProjectAvatarVariant(props.project.icon?.color)}
           generated={getProjectAvatarGenerated(props.project)}
         />

@@ -509,7 +509,7 @@ export const ProjectSettingsExtensions: Component<{
                 kind="skills"
                 empty={projectSkills().length === 0}
                 action={
-                  <ExternalLink class="settings-extension-link" href="https://opencode.ai/docs/skills">
+                  <ExternalLink class="settings-extension-link" href="https://aerless.io/docs">
                     {language.t("settings.extensions.addSkills")}
                   </ExternalLink>
                 }

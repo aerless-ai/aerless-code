@@ -1142,10 +1142,6 @@ export const dict = {
   "tips.browse.title": "Styr din browser",
   "tips.browse.description": "Lad Aerless Code arbejde i din browser med dine faner, logins og udvidelser.",
   "tips.browse.install": "Installer",
-  "tips.hex.title": "Brug din stemme",
-  "tips.hex.description":
-    "Med Hex kan du holde en tast nede og indtale dine prompts. Det kører på din computer og virker i alle apps.",
-  "tips.hex.install": "Installer Hex",
   "session.tab.more": "Mere...",
   "session.tab.recentHint": "Hold {{key}} nede for at se nyligt lukkede",
   "session.tab.showMore": "Vis mere",

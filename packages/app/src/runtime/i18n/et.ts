@@ -1076,10 +1076,6 @@ export const dict = {
   "tips.browse.description":
     "Lase Aerless Code'il töötada sinu brauseris sinu vahekaartide, sisselogimiste ja laiendustega.",
   "tips.browse.install": "Paigalda",
-  "tips.hex.title": "Kasuta oma häält",
-  "tips.hex.description":
-    "Hexiga saad klahvi all hoides oma viipasid dikteerida. See töötab sinu arvutis ja igas rakenduses.",
-  "tips.hex.install": "Paigalda Hex",
   "session.tab.more": "Veel...",
   "session.tab.recentHint": "Hiljuti suletute nägemiseks hoia all {{key}}",
   "session.tab.showMore": "Näita rohkem",

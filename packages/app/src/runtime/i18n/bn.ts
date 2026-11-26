@@ -1090,10 +1090,6 @@ export const dict = {
   "tips.browse.title": "আপনার ব্রাউজার নিয়ন্ত্রণ করুন",
   "tips.browse.description": "আপনার ট্যাব, লগইন ও এক্সটেনশন সহ Aerless Code-কে আপনার ব্রাউজারে কাজ করতে দিন।",
   "tips.browse.install": "ইনস্টল করুন",
-  "tips.hex.title": "আপনার কণ্ঠস্বর ব্যবহার করুন",
-  "tips.hex.description":
-    "Hex দিয়ে একটি কী চেপে ধরে আপনার প্রম্পট বলতে পারবেন। এটি আপনার কম্পিউটারে চলে এবং যেকোনো অ্যাপে কাজ করে।",
-  "tips.hex.install": "Hex ইনস্টল করুন",
   "session.tab.more": "আরও...",
   "session.tab.recentHint": "সম্প্রতি বন্ধ করা ট্যাবের জন্য {{key}} চেপে ধরুন",
   "session.tab.showMore": "আরও দেখান",

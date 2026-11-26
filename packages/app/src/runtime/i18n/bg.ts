@@ -1100,10 +1100,6 @@ export const dict = {
   "tips.browse.description":
     "Позволете на Aerless Code да работи в браузъра ви с вашите раздели, данни за вход и разширения.",
   "tips.browse.install": "Инсталиране",
-  "tips.hex.title": "Използвайте гласа си",
-  "tips.hex.description":
-    "Hex ви позволява да задържите клавиш и да изговаряте подканите си. Работи на компютъра ви и във всяко приложение.",
-  "tips.hex.install": "Инсталиране на Hex",
   "session.tab.more": "Още...",
   "session.tab.recentHint": "Задръжте {{key}} за наскоро затворените",
   "session.tab.showMore": "Показване на още",

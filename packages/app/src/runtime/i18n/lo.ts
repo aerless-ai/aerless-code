@@ -1071,10 +1071,6 @@ export const dict = {
   "tips.browse.title": "ຄວບຄຸມເບຣາວເຊີຂອງທ່ານ",
   "tips.browse.description": "ໃຫ້ Aerless Code ເຮັດວຽກໃນເບຣາວເຊີຂອງທ່ານດ້ວຍແຖບ, ການເຂົ້າສູ່ລະບົບ ແລະສ່ວນຂະຫຍາຍຂອງທ່ານ.",
   "tips.browse.install": "ຕິດຕັ້ງ",
-  "tips.hex.title": "ໃຊ້ສຽງຂອງທ່ານ",
-  "tips.hex.description":
-    "Hex ໃຫ້ທ່ານກົດປຸ່ມຄ້າງໄວ້ ແລະເວົ້າ prompt ຂອງທ່ານ. ມັນແລ່ນໃນຄອມພິວເຕີຂອງທ່ານ ແລະໃຊ້ໄດ້ໃນທຸກແອັບ.",
-  "tips.hex.install": "ຕິດຕັ້ງ Hex",
   "session.tab.more": "ເພີ່ມເຕີມ...",
   "session.tab.recentHint": "ກົດ {{key}} ຄ້າງໄວ້ເພື່ອເບິ່ງລາຍການທີ່ປິດບໍ່ດົນມານີ້",
   "session.tab.showMore": "ສະແດງເພີ່ມເຕີມ",

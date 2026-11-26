@@ -1153,10 +1153,6 @@ export const dict = {
   "tips.browse.title": "Kendalikan peramban Anda",
   "tips.browse.description": "Biarkan Aerless Code bekerja di peramban Anda dengan tab, login, dan ekstensi Anda.",
   "tips.browse.install": "Instal",
-  "tips.hex.title": "Gunakan suara Anda",
-  "tips.hex.description":
-    "Hex memungkinkan Anda menahan tombol dan mengucapkan prompt. Hex berjalan di komputer Anda dan berfungsi di aplikasi apa pun.",
-  "tips.hex.install": "Instal Hex",
   "session.tab.more": "Lainnya...",
   "session.tab.recentHint": "Tahan {{key}} untuk yang baru saja ditutup",
   "session.tab.showMore": "Tampilkan lebih banyak",

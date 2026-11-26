@@ -1097,10 +1097,6 @@ export const dict = {
   "tips.browse.description":
     "Aerless Code-д таны таб, нэвтрэлт, өргөтгөлүүдтэйгээр хөтөч дээр тань ажиллах боломж олгоно уу.",
   "tips.browse.install": "Суулгах",
-  "tips.hex.title": "Дуу хоолойгоо ашиглах",
-  "tips.hex.description":
-    "Hex нь товч дарж байгаад промптоо ярьж оруулах боломж олгоно. Таны компьютер дээр ажиллах ба аль ч апп дээр ажилладаг.",
-  "tips.hex.install": "Hex суулгах",
   "session.tab.more": "Бусад...",
   "session.tab.recentHint": "Саяхан хаагдсаныг харахын тулд {{key}}-г дарж барина уу",
   "session.tab.showMore": "Илүүг харуулах",

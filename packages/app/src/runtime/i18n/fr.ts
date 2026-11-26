@@ -1138,10 +1138,6 @@ export const dict = {
   "tips.browse.description":
     "Laissez Aerless Code travailler dans votre navigateur, avec vos onglets, vos connexions et vos extensions.",
   "tips.browse.install": "Installer",
-  "tips.hex.title": "Utilisez votre voix",
-  "tips.hex.description":
-    "Hex vous permet de maintenir une touche enfoncée pour dicter vos invites. Il s’exécute sur votre ordinateur et fonctionne dans toutes les applications.",
-  "tips.hex.install": "Installer Hex",
   "session.tab.more": "Plus...",
   "session.tab.recentHint": "Maintenez {{key}} pour les éléments récemment fermés",
   "session.tab.showMore": "Afficher plus",

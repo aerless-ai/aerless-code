@@ -1221,7 +1221,7 @@ function App() {
         name: "docs.open",
         title: "Open docs",
         run: () => {
-          openUrl("https://opencode.ai/docs").catch(() => {})
+          openUrl("https://aerless.io/docs").catch(() => {})
           dialog.clear()
         },
         category: "System",

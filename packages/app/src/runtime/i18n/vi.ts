@@ -1087,10 +1087,6 @@ export const dict = {
   "tips.browse.description":
     "Cho phép Aerless Code làm việc trong trình duyệt của bạn với các tab, thông tin đăng nhập và tiện ích mở rộng.",
   "tips.browse.install": "Cài đặt",
-  "tips.hex.title": "Dùng giọng nói của bạn",
-  "tips.hex.description":
-    "Hex cho phép bạn giữ một phím và nói lời nhắc. Ứng dụng chạy trên máy tính của bạn và hoạt động trong mọi ứng dụng.",
-  "tips.hex.install": "Cài đặt Hex",
   "session.tab.more": "Thêm...",
   "session.tab.recentHint": "Giữ {{key}} để xem mục đã đóng gần đây",
   "session.tab.showMore": "Hiển thị thêm",

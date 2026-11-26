@@ -1087,10 +1087,6 @@ export const dict = {
   "tips.browse.description":
     "OpenCode가 사용자의 탭, 로그인, 확장 프로그램을 그대로 사용해 브라우저에서 작업하게 하세요.",
   "tips.browse.install": "설치",
-  "tips.hex.title": "음성으로 입력하기",
-  "tips.hex.description":
-    "Hex를 사용하면 키를 누른 채 말해서 프롬프트를 입력할 수 있습니다. 컴퓨터에서 실행되며 모든 앱에서 작동합니다.",
-  "tips.hex.install": "Hex 설치",
   "session.tab.more": "더 보기...",
   "session.tab.recentHint": "{{key}}을(를) 길게 눌러 최근에 닫은 항목 보기",
   "session.tab.showMore": "더 보기",

@@ -759,7 +759,7 @@ export function DirectoryPickerDialog(props: DirectoryPickerDialogProps) {
                         class="shrink-0"
                         aria-hidden="true"
                         fallback={name()}
-                        src={getProjectAvatarSource(project.id, project.icon)}
+                        src={getProjectAvatarSource(project.icon)}
                         variant={getProjectAvatarVariant(project.icon?.color)}
                         generated={getProjectAvatarGenerated(project)}
                       />
@@ -793,7 +793,7 @@ export function DirectoryPickerDialog(props: DirectoryPickerDialogProps) {
                               class="shrink-0"
                               aria-hidden="true"
                               fallback={name()}
-                              src={getProjectAvatarSource(project.id, project.icon)}
+                              src={getProjectAvatarSource(project.icon)}
                               variant={getProjectAvatarVariant(project.icon?.color)}
                               generated={getProjectAvatarGenerated(project)}
                             />

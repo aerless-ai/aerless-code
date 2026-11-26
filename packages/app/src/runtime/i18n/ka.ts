@@ -1090,10 +1090,6 @@ export const dict = {
   "tips.browse.description":
     "მიეცით Aerless Code-ს საშუალება, იმუშაოს თქვენს ბრაუზერში თქვენი ჩანართებით, ანგარიშებითა და გაფართოებებით.",
   "tips.browse.install": "დაყენება",
-  "tips.hex.title": "გამოიყენეთ ხმა",
-  "tips.hex.description":
-    "Hex საშუალებას გაძლევთ, დააჭიროთ კლავიშს და მოთხოვნები ხმით თქვათ. ის თქვენს კომპიუტერზე მუშაობს და ნებისმიერ აპში მოქმედებს.",
-  "tips.hex.install": "Hex-ის დაყენება",
   "session.tab.more": "მეტი...",
   "session.tab.recentHint": "ბოლოს დახურულებისთვის დააჭირეთ და გეჭიროთ {{key}}",
   "session.tab.showMore": "მეტის ჩვენება",

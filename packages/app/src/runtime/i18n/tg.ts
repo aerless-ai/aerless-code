@@ -1104,10 +1104,6 @@ export const dict = {
   "tips.browse.description":
     "Ба Aerless Code иҷозат диҳед, ки дар браузери шумо бо варақаҳо, воридшавиҳо ва васеъкуниҳоятон кор кунад.",
   "tips.browse.install": "Насб кардан",
-  "tips.hex.title": "Овози худро истифода баред",
-  "tips.hex.description":
-    "Hex имкон медиҳад, ки тугмаеро нигоҳ дошта, промптҳоятонро гӯед. Он дар компютери шумо кор мекунад ва дар ҳама барномаҳо амал мекунад.",
-  "tips.hex.install": "Насб кардани Hex",
   "session.tab.more": "Боз...",
   "session.tab.recentHint": "Барои ба наздикӣ пӯшидашудаҳо {{key}}-ро нигоҳ доред",
   "session.tab.showMore": "Бештар нишон диҳед",

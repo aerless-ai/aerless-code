@@ -1122,10 +1122,6 @@ export const dict = {
   "tips.browse.description":
     "Lassen Sie Aerless Code in Ihrem Browser arbeiten – mit Ihren Tabs, Anmeldungen und Erweiterungen.",
   "tips.browse.install": "Installieren",
-  "tips.hex.title": "Ihre Stimme nutzen",
-  "tips.hex.description":
-    "Mit Hex halten Sie eine Taste gedrückt und sprechen Ihre Prompts. Es läuft auf Ihrem Computer und funktioniert in jeder App.",
-  "tips.hex.install": "Hex installieren",
   "session.tab.more": "Mehr...",
   "session.tab.recentHint": "{{key}} gedrückt halten für kürzlich geschlossene",
   "session.tab.showMore": "Mehr anzeigen",
