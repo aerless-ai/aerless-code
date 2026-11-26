@@ -63,7 +63,9 @@ const makeEndpoint = Effect.fn("cli.standalone.endpoint")(
 const embedded = Effect.fn("cli.standalone.embedded")(function* () {
   const { ServerProcess } = yield* Effect.promise(() => import("../server-process"))
   const ready = yield* Deferred.make<{ url: string; password: string }, Error>()
-  yield* Effect.forkDetach(
+  // Scoped to the app: quitting interrupts the server, whose finalizers stop the shell commands it started
+  // (a dev server the assistant ran must not keep its port after Aerless Code closes).
+  yield* Effect.forkScoped(
     ServerProcess.run({
       mode: "embedded",
       port: 0,

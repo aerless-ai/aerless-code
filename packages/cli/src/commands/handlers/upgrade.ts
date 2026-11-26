@@ -11,19 +11,29 @@ export default Runtime.handler(
   Commands.commands.upgrade,
   Effect.fn("cli.upgrade")(
     function* (input) {
+      // Aerless Code updates come from the Aerless installer (it replaces aerless and aerless-code together);
+      // opencode's updater would fetch opencode releases.
+      if (process.env.AERLESS_ALLOW_OPENCODE_UPGRADE !== "1") {
+        console.log(
+          process.platform === "win32"
+            ? "To update Aerless Code, run: irm https://aerless.io/install.ps1 | iex"
+            : "To update Aerless Code, run: curl -fsSL https://aerless.io/install | sh",
+        )
+        return
+      }
       intro("Upgrade")
       const updater = yield* Updater.Service
       const method = Option.getOrUndefined(input.method) ?? (yield* updater.method())
       if (!method)
         return yield* Effect.fail(
-          new Error("Could not detect the installation method. Pass --method to choose how to upgrade OpenCode."),
+          new Error("Could not detect the installation method. Pass --method to choose how to upgrade Aerless Code."),
         )
 
       log.info(`Using method: ${method}`)
       const target = Option.getOrUndefined(input.target) ?? (yield* updater.latest(method))
       const version = target.trim().replace(/^v/, "")
       if (version === OPENCODE_VERSION) {
-        log.warn(`OpenCode upgrade skipped: ${version} is already installed`)
+        log.warn(`Aerless Code upgrade skipped: ${version} is already installed`)
         outro("Done")
         return
       }

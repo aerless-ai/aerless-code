@@ -14,7 +14,7 @@ declare const OPENCODE_CLI_NAME: string | undefined
 
 const ServerParams = {
   standalone: Flag.boolean("standalone").pipe(
-    Flag.withDescription("Run with a private server instead of the background service (Aerless Code: always on)"),
+    Flag.withDescription("Always on in Aerless Code (kept for compatibility)"),
     Flag.withDefault(true),
   ),
   server: Flag.string("server").pipe(
@@ -41,7 +41,7 @@ const Root = Spec.make(typeof OPENCODE_CLI_NAME === "string" ? OPENCODE_CLI_NAME
     ...ServerParams,
     ...PermissionParams,
     directory: Argument.string("directory").pipe(
-      Argument.withDescription("Directory to start OpenCode in"),
+      Argument.withDescription("Directory to start Aerless Code in"),
       Argument.optional,
     ),
     continue: Flag.boolean("continue").pipe(
@@ -58,7 +58,7 @@ const Root = Spec.make(typeof OPENCODE_CLI_NAME === "string" ? OPENCODE_CLI_NAME
   },
   commands: [
     Spec.make("upgrade", {
-      description: "Upgrade OpenCode to the latest or a specific version",
+      description: "Upgrade Aerless Code: run the Aerless installer again",
       aliases: ["update"],
       params: {
         target: Argument.string("target").pipe(
@@ -73,7 +73,7 @@ const Root = Spec.make(typeof OPENCODE_CLI_NAME === "string" ? OPENCODE_CLI_NAME
       },
     }),
     Spec.make("uninstall", {
-      description: "Uninstall OpenCode, keeping session data, configuration, and state",
+      description: "Uninstall Aerless Code: run aerless uninstall",
       params: {
         dryRun: Flag.boolean("dry-run").pipe(
           Flag.withDescription("Show what would be removed without removing"),
@@ -372,7 +372,7 @@ const Root = Spec.make(typeof OPENCODE_CLI_NAME === "string" ? OPENCODE_CLI_NAME
       },
     }),
     Spec.make("run", {
-      description: "Run OpenCode with a message",
+      description: "Run Aerless Code with a message",
       params: {
         ...ServerParams,
         message: Argument.string("message").pipe(

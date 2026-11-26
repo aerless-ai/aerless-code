@@ -90,7 +90,7 @@ export function DialogUpdate(props: {
       <box flexDirection="row" justifyContent="space-between">
         <text attributes={TextAttributes.BOLD} fg={theme.text.base}>
           {state().type === "installing"
-            ? "Updating OpenCode"
+            ? "Updating Aerless Code"
             : state().type === "available" || state().type === "failed"
               ? "Update available"
               : "Update"}
@@ -108,7 +108,7 @@ export function DialogUpdate(props: {
               </Match>
               <Match when={current.type === "available"}>
                 <text fg={theme.text.muted}>
-                  An update is available. After installing, you'll be prompted to restart OpenCode.
+                  An update is available. After installing, you'll be prompted to restart Aerless Code.
                 </text>
               </Match>
               <Match when={current.type === "installing"}>
