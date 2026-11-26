@@ -1,7 +1,17 @@
+# Aerless Code
+
+This is Aerless Code, the Aerless fork of opencode (binary `aerless-code`, folders `~/.config/aerless-code`, `~/.local/share/aerless-code`). The `aerless` CLI and picture studio that launch it live in `havecreator/haveapi` under `apps/cli`; the full handoff (what we changed vs opencode, Bun version, builds for 12 platforms, releases, Homebrew/Scoop) is `docs/aerless-handoff.md` there.
+
+- Bun **1.4.4** exactly (the `packageManager` in `package.json`). `bun install`, then `bun run dev` to run from source.
+- Commits here are authored `Aerless <code@aerless.io>`; anything public says Aerless, never havecreator.
+- Releases: `.github/workflows/release.yml` makes the draft as github-actions, then upload the builds and publish (see the handoff).
+
+---
+
 - After changing the public Protocol or Server `HttpApi`, run `bun run generate` from `packages/client`. Do not edit generated client files directly.
 - Keep runtime dependencies directed from Schema to Core and Protocol, then from Core and Protocol to Server. Client runtime code may depend on Schema and Protocol but never Core or Server; `sdk` composes Client, Core, and Server.
 - This repository does not use Changesets. Do not add `.changeset` files; follow the existing release workflow instead.
-- The default branch is `dev`. Base branches and worktrees on `origin/dev`, target PRs at `dev`, and diff against `origin/dev` unless told otherwise.
+- The default branch in this repo is `main` (upstream opencode uses `dev`; the remote `upstream` is sst/opencode).
 
 ## Live TUI Testing
 

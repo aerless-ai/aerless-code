@@ -1,114 +1,37 @@
-<p align="center">
-  <a href="https://opencode.ai">
-    <picture>
-      <source srcset=".github/assets/logo-ornate-dark.svg" media="(prefers-color-scheme: dark)">
-      <source srcset=".github/assets/logo-ornate-light.svg" media="(prefers-color-scheme: light)">
-      <img src=".github/assets/logo-ornate-light.svg" alt="OpenCode logo">
-    </picture>
-  </a>
-</p>
-<p align="center">The open source AI coding agent.</p>
-<p align="center">
-  <a href="https://opencode.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
-  <a href="https://www.npmjs.com/package/@opencode/cli"><img alt="npm" src="https://img.shields.io/npm/v/@opencode/cli?style=flat-square" /></a>
-  <a href="https://github.com/anomalyco/opencode/actions/workflows/release.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/anomalyco/opencode/release.yml?style=flat-square&branch=dev" /></a>
-</p>
+# Aerless Code
 
-<p align="center">
-  <a href="README.md">English</a> |
-  <a href="README.zh.md">简体中文</a> |
-  <a href="README.zht.md">繁體中文</a> |
-  <a href="README.ko.md">한국어</a> |
-  <a href="README.de.md">Deutsch</a> |
-  <a href="README.es.md">Español</a> |
-  <a href="README.fr.md">Français</a> |
-  <a href="README.it.md">Italiano</a> |
-  <a href="README.da.md">Dansk</a> |
-  <a href="README.ja.md">日本語</a> |
-  <a href="README.pl.md">Polski</a> |
-  <a href="README.ru.md">Русский</a> |
-  <a href="README.bs.md">Bosanski</a> |
-  <a href="README.ar.md">العربية</a> |
-  <a href="README.no.md">Norsk</a> |
-  <a href="README.br.md">Português (Brasil)</a> |
-  <a href="README.th.md">ไทย</a> |
-  <a href="README.tr.md">Türkçe</a> |
-  <a href="README.uk.md">Українська</a> |
-  <a href="README.bn.md">বাংলা</a> |
-  <a href="README.gr.md">Ελληνικά</a> |
-  <a href="README.vi.md">Tiếng Việt</a>
-</p>
-
-[![OpenCode Terminal UI](services/site/public/v1/docs/assets/lander/screenshot.png)](https://opencode.ai)
-
----
-
-### Installation
+The coding assistant for your terminal, with pictures built in. Made by [Aerless](https://aerless.io).
 
 ```bash
-# YOLO
-curl -fsSL https://opencode.ai/v2/install | bash
-
-# Package managers
-npm i -g @opencode/cli@latest      # or bun/pnpm/yarn
-brew install anomalyco/tap/opencode-v2 # macOS and Linux (recommended, always up to date)
-brew install opencode              # macOS and Linux (official brew formula, updated less)
-sudo pacman -S opencode            # Arch Linux (Stable)
-paru -S opencode-beta              # Arch Linux (Latest from AUR)
-mise use -g opencode               # Any OS
-nix run github:anomalyco/opencode  # Nix
+curl -fsSL https://github.com/aerless-ai/aerless-code/releases/latest/download/install.sh | sh          # macOS, Linux, WSL
+```
+```powershell
+irm https://github.com/aerless-ai/aerless-code/releases/latest/download/install.ps1 | iex            # Windows
 ```
 
-> [!TIP]
-> Remove versions older than 0.1.x before installing.
+Then open a new terminal and type `aerless` in any project folder. The first time it signs you in.
 
-### Desktop App (BETA)
+## What is different from opencode
 
-OpenCode is also available as a desktop application. Download it from [opencode.ai/download](https://opencode.ai/download).
+Aerless Code is a fork of [opencode](https://github.com/anomalyco/opencode) 2.0.26 (MIT). It installs next to opencode and never touches its settings or sessions.
 
-| Platform              | Download                           |
-| --------------------- | ---------------------------------- |
-| macOS (Apple Silicon) | `opencode-desktop-mac-arm64.dmg`   |
-| macOS (Intel)         | `opencode-desktop-mac-x64.dmg`     |
-| Windows               | `opencode-desktop-win-x64.exe`     |
-| Linux                 | `.deb`, `.rpm`, or `.AppImage`     |
+- **Own app:** the `aerless-code` command, its own folders (`~/.config/aerless-code`, `~/.local/share/aerless-code`), the Aerless theme and logo.
+- **Lighter:** the interface and its server run in one process, and the 100+ provider catalog loads only when needed. About 300 MB idle instead of about 450-560 MB.
+- **Pictures:** `/imgengine` opens the Aerless picture studio; the assistant can make, crop and place images in your project.
+- **Signed in from the start:** Aerless, OpenRouter or Venice keys are set up by `aerless login`.
+- **Nothing left running:** no background service; quitting stops the commands the assistant started.
+
+## Build from source
+
+Needs Bun 1.4.2.
 
 ```bash
-# macOS (Homebrew)
-brew install --cask opencode-desktop
+bun install
+cd packages/cli && bun run script/build.ts --single
 ```
 
-#### Installation Directory
+The build is at `packages/cli/dist/cli-<os>-<arch>/bin/aerless-code`. Release builds of all platforms: `bun run script/build.ts` with `OPENCODE_VERSION` set.
 
-The install script installs OpenCode to `$HOME/.opencode/bin`.
+## License
 
-### Agents
-
-OpenCode includes two built-in agents you can switch between with the `Tab` key.
-
-- **build** - Default, full-access agent for development work
-- **plan** - Read-only agent for analysis and code exploration
-  - Denies file edits by default
-  - Asks permission before running bash commands
-  - Ideal for exploring unfamiliar codebases or planning changes
-
-Also included is a **general** subagent for complex searches and multistep tasks.
-This is used internally and can be invoked using `@general` in messages.
-
-Learn more about [agents](https://opencode.ai/docs/agents).
-
-### Documentation
-
-For more info on how to configure OpenCode, [**head over to our docs**](https://opencode.ai/docs).
-
-### Contributing
-
-If you're interested in contributing to OpenCode, please read our [contributing docs](./CONTRIBUTING.md) before submitting a pull request.
-
-### Building on OpenCode
-
-If you are working on a project that's related to OpenCode and is using "opencode" as part of its name, for example "opencode-dashboard" or "opencode-mobile", please add a note to your README to clarify that it is not built by the OpenCode team and is not affiliated with us in any way.
-
----
-
-**Join our community** [Discord](https://discord.gg/opencode) | [X.com](https://x.com/opencode)
+MIT, like opencode. See [LICENSE](LICENSE); opencode's copyright notice is kept as the license requires.
