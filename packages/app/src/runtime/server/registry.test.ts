@@ -135,7 +135,9 @@ test("used and last projects follow dynamic server scopes, and migration consume
     scope: () => ServerScope.fromServerKey(props.server, props.canonicalLocalServer),
   })
 
+  expect(projects.fresh()).toBe(true)
   projects.touch("remote-project")
+  expect(projects.fresh()).toBe(false)
   expect(projects.last()).toBe("remote-project")
   expect(projects.used()).toEqual(["remote-project"])
   expect(projects.legacy()).toBeUndefined()

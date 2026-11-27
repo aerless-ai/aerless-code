@@ -327,6 +327,13 @@ function createServerController(
     untrack(() => projects.migrate(legacy.flatMap((directory) => forDirectory(directory)?.id ?? [])))
   })
 
+  // A browser new to this server starts with the projects the server already knows (the terminal app's, and the
+  // folder `aerless-code webui <folder>` loaded), instead of an empty list.
+  createEffect(() => {
+    if (!projects.fresh() || !sync.project.ready()) return
+    untrack(() => projects.use(unique().map((project) => project.id)))
+  })
+
   // Resolving a directory registers its project on the server; the list then reloads to include it, and the
   // project becomes this client's last used one.
   function add(directory: string) {

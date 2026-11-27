@@ -17,19 +17,19 @@ By default it makes no calls to other sites: no Google favicon lookups, no GitHu
 
 ## How it compares
 
-Nothing below has been tried in a browser yet. "Built in" means the code is in place and type-checks. "Not run yet" means nobody has watched it work.
+"Works" rows were clicked through in a browser on 2026-11-27 (macOS, Aerless free use). "Built in, not run yet" means the code is in place and type-checks, but nobody has watched it work.
 
 | Feature | Codex / Claude desktop apps | Aerless web UI | Note |
 | --- | --- | --- | --- |
-| Chat with the agent, see tool calls live | Yes | Built in, not run yet | Same timeline as opencode desktop |
-| Approve permissions and answer questions | Yes | Built in, not run yet | |
-| Diffs and review | Yes | Built in, not run yet | |
-| File tree and file viewer, HTML preview | Yes | Built in, not run yet | HTML files preview in a sandboxed frame |
-| Terminal | Yes | Built in, not run yet | Server-side terminal |
+| Chat with the agent, see tool calls live | Yes | Works | Same timeline as opencode desktop |
+| Approve permissions and answer questions | Yes | Works (permissions) | |
+| Diffs and review | Yes | Works | |
+| File tree and file viewer, HTML preview | Yes | Works | HTML files preview in a sandboxed frame |
+| Terminal | Yes | Works | Server-side terminal |
 | Sessions and projects, shared with the terminal app | Partly | Built in, not run yet | Same database and live events |
 | Parallel sessions and worktrees | Yes | Built in, not run yet | |
 | Models, providers, MCP servers, skills, plugins, settings | Yes | Built in, not run yet | |
-| Add a project folder | Native picker | Works with limits, not run yet | Folders are picked from a list the server provides |
+| Add a project folder | Native picker | Works | Folders are picked from a list the server provides |
 | Attach files, paste images | Yes | Built in, not run yet | Browser file picker and paste |
 | Import a session file | Yes | Built in, not run yet | Browser file picker, new in this branch |
 | Notifications | Yes | Works with limits, not run yet | Only when the browser allows notifications |

@@ -66,6 +66,8 @@ export function createServerProjects(input: {
     },
     used,
     use,
+    /** True until this client has used or hidden any project on this server. */
+    fresh: () => input.store.usedProjectIDs[input.scope()] === undefined,
     hide(projectIDs: string[]) {
       input.setStore(
         "usedProjectIDs",
