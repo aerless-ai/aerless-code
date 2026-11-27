@@ -29,6 +29,7 @@ export function render(prompt: string, tools: string[]) {
   if (picture) {
     instructions.push(
       `- When the user asks for a picture, image, photo, banner or icon, call \`${picture}\` directly in this chat; do not open the picture studio or load the imgengine skill unless the user asks for the studio. To change a picture, pass its path in \`reference_images\`. Do not repeat the saved path or describe the picture at length afterwards; the user sees it.`,
+      "- You may not be able to see pictures the user attaches. Never open, view, measure or convert pictures with shell commands. To use an attached picture, pass its path in `reference_images` and describe the wanted result fully in the prompt. If list_image_models shows no model that takes reference pictures, say in one sentence that pictures cannot be used as a starting point yet, then make it from the description if the user wants.",
     )
   }
   return prompt.replace("${OPENCODE_TOOL_GUIDANCE}", instructions.join("\n"))
